@@ -1,0 +1,1111 @@
+<html lang="en">
+
+  <head>
+    <title>Samples for Preview</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../css/mathology_tr_template.css" />
+
+    <style>
+      body {
+        max-width: 1024px;
+        margin: auto;
+        padding: 50px;
+        font-size: 115%;
+      }
+    
+      hr {
+        margin: 0;
+      }
+    
+      h1 {
+        font-size: 1.75rem;
+        line-height: 2rem;
+      }
+    
+      .code_format {
+        display: block;
+        background-color: #e2f2f2;
+        border: solid #020202;
+        padding: 10px 20px;
+      }
+    
+      code {
+        display: block;
+        font-family: monospace;
+        margin-top: -20px;
+        white-space: pre;
+        overflow-x: auto;
+      }
+    
+      .code_format * {
+        padding: 0;
+        margin: 0;
+      }
+    
+      .template_hr {
+        display: block;
+        height: 10px;
+        border: 0;
+        border-top: 10px solid red;
+        margin: 1rem 0;
+        padding: 0;
+      }
+    
+      .code_snippet {
+        color: #600000;
+        font-weight: bold;
+      }
+    
+      .main_title {
+        text-align: center;
+        font-size: 3rem;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 3.25rem;
+        letter-spacing: 5px;
+        margin: 0;
+        font-variant: small-caps;
+      }
+    
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+    
+      #myBtn:hover {
+        background-color: red;
+      }
+    
+      .links {
+        column-count: 3;
+        column-gap: 40px;
+      }
+    
+      .links a {
+        font-weight: unset;
+      }
+    
+      .links li {
+        font-size: 0.85rem;
+        line-height: 1.45rem;
+        margin: 0;
+      }
+    
+      .links p {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.45rem;
+      }
+    
+      .links ol {
+        list-style-type: upper-alpha;
+      }
+    
+      .links2 {
+        display: none;
+        width: 100%;
+        font-size: 1.15rem;
+        margin: 1.15rem 0;
+        border: 1px solid black;
+      }
+    
+      .p-darkred,
+      .p-grey {
+        color: #707070;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.65rem;
+      }
+    
+      .p-darkred {
+        color: #600000;
+      }
+    
+      @media only screen and (max-width: 600px) {
+        .links {
+          display: none;
+        }
+    
+        .links2 {
+          display: block;
+        }
+      }
+    
+      @media only screen and (max-width: 450px) {
+        #myBtn {
+          bottom: 70px;
+          right: 10px;
+        }
+    
+        .main_title {
+          font-size: 2.25rem;
+          line-height: 2.75rem;
+          letter-spacing: 1px;
+        }
+      }
+    </style>
+    
+    <script>
+      window.onload = function init() {
+        var codeblock = document.querySelectorAll(".code_format > code");
+        console.log(codeblock);
+        var len = codeblock.length;
+        console.log(typeof (len));
+        for (var i = 0; i < len; i++) {
+          var dom = codeblock[i];
+          var html = dom.innerHTML;
+          var pattern = html.match(/\s*\n[\t\s]*/);
+          var pattern01 = html.match(/\s+\n*$/);
+          var pattern02 = html.match(/^\n*(\<)/);
+          html = html.replace(new RegExp(pattern, "g"), '\n');
+          html = html.replace(/(<img([\w\W]+?))(>)/gm, "$1/>");
+          html = html.replace(/—/gm, "&#x2014;");
+          html = html.replace(/–/gm, "&#x2013;");
+          var temphtml = html.match(/^[^\n]+\n/gm);
+
+          //html = html.replace(new RegExp(pattern01, "m"), ''); html = html.replace(new RegExp(pattern02, "m", "g"), '<'); console.log(temphtml.join(""));
+          var text = document.createTextNode(String(temphtml.join("")));
+          dom.innerHTML = "";
+          dom.appendChild(text);
+        }
+      }
+
+      window.onscroll = function () {
+        scrollFunction()
+      };
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("myBtn").style.display = "block";
+        } else {
+          document.getElementById("myBtn").style.display = "none";
+        }
+      }
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+  </head>
+
+  <body epub:type="bodymatter">
+    <button onclick="topFunction();" id="myBtn" title="Go to top">Top</button>
+    <section id="read_speaker">
+      <section>
+        <header>
+          <h1 class="main_title">Samples for Preview</h1>
+        </header>
+        <p class="p-grey">[A combination sample is comprised of different standard components combined together, or with different element(s)
+        and/or layout(s). This section provides some common combination samples that will occur in the Mathology teacher's guide for your preview and is not meant to be referenced in your markup]</p>
+        <hr />
+
+        <ol class="links">
+        
+          <li>
+            <p><strong><a href="#marginalia">Marginalia Combination</a></strong></p>
+            <ol>
+              <li>
+                <p><a href="#marginalia_01">SR-Only Title + Grid + Informalfigure + Title + Unordered List + <strong>Marginalia 01</strong></a></p>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <p><strong><a href="#sidebar">Sidebar Combination</a></strong></p>
+            <ol>
+              <li>
+                <p><a href="#sidebar_01">Title + 2-Column Grid + Paragraph Texts + Note + <strong>Sidebar 01</strong> + 2 Subtitles + 2 Unordered List</a></p>
+              </li>
+              <li>
+                <p><a href="#sidebar_02">Title + Arial Paragraph Text + Grid + <strong>Sidebar 01</strong> + Black Bordered Informalfigure + Title + Unordered List</a></p>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <p><strong><a href="#practice">Practice Combination</a></strong></p>
+            <ol>
+              <li>
+                <p><a href="#practice_01">SR-Only Title + Grid + Informalfigure + Note + <strong>Practice 01</strong> + Practice List</a></p>
+              </li>
+            </ol>
+          </li>
+
+          <li>
+            <p><strong><a href="#card">Card Combination</a></strong></p>
+            <ol>
+              <li>
+                <p><a href="#card_01"><strong>Card 01</strong> + Grid + Title + Title + Pargraph Text + Note + Practice + Practice List</a></p>
+              </li>
+              <li>
+                <p><a href="#card_02"><strong>Card 02</strong> + Grid + Title + Title + Unordered List with Unordered List with Dashes + Note</a></p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+
+        <select class="links2" onchange="location = this.value;">
+          <option>** Pick from dropdown **</option>
+          <option value="#marginalia">- Marginalia Combination -</option>
+          <option value="#marginalia_01">SR-Only Title + Grid + Informalfigure + Title + Unordered List + Marginalia 01</option>
+
+          <option value="#sidebar">- Sidebar Combination -</option>
+          <option value="#sidebar_01">Title + 2-Column Grid + Paragraph Texts + Note + Sidebar 01 + 2 Subtitles + 2 Unordered List</option>
+          <option value="#sidebar_02">Title + Arial Paragraph Text + Grid + Sidebar 01 + Black Bordered Informalfigure + Title + Unordered
+          List</option>
+
+          <option value="#practice">- Practice Combination -</option>
+          <option value="#practice_01">SR-Only Title + Grid + Informalfigure + Note + Practice 01 + Practice List</option>
+
+          <option value="#card">- Card Combination -</option>
+          <option value="#card_01">Card 01 + Grid + Title + Title + Pargraph Text + Note + Practice + Practice List</option>
+          <option value="#card_02">Card 02 + Grid + Title + Title + Unordered List with Unordered List with Dashes + Note</option>
+        </select>
+
+      </section>
+        
+      <hr class="template_hr" style="border-top: 40px double MediumVioletRed;" />
+
+      <!-- Marginalia Section Starts -->
+      <section id="marginalia">
+        <header>
+          <h1>Marginalia Combination</h1>
+        </header>
+        <p class="p-grey">[This section display a preview of combination marginalia component which includes elements and layouts that will generally occured in the Mathology Teacher's Guide epub design template.]</p>
+
+        <!-- SR-Only Title + Grid + Informalfigure + Title + Unordered List + Marginalia 01 Section Starts -->
+        <hr id="marginalia_01" />
+        <section>
+          <header>
+            <h2 class="p-grey">SR-Only Title + Grid + Informalfigure + Title + Unordered List + Marginalia 01:</h2>
+          </header>
+          <p class="p-grey">[Below is a SR-Only title, a grid 02 with three grid items, informalfigure with black borders in grid item 01, Unordered list in grid item 02 and Marginalia 01 in grid item 03.]</p>
+
+          <section id="unique_section_id" aria-labelledby="header_unique_section_id">
+            <header id="header_unique_section_id" class="sr-only">
+              <h2 id="unique_heading_id" class="title title_01">Math Conversations</h2>
+            </header>
+
+            <div class="grid-container grid-container_02">
+              <div class="grid-item">
+                <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                  <img id="unique_image_id" class="border-black" src="../../images/placeholder_images/mathology_img.jpg" alt="alt text">
+                </figure>
+              </div>
+              <div class="grid-item">
+                <section id="unique_section_id" aria-labelledby="header_unique_section_id" class="margin-bottom-0">
+                  <header id="header_unique_section_id">
+                    <h3 id="unique_heading_id" class="title title_02 text-color-dodgerblue">Adding and Subtracting</h3>
+                  </header>
+                  <ul class="margin-bottom-0">
+                    <li>
+                      <p>Do you agree that 140 and 140 is 280? How can you convince someone who is not sure? (Chart suggestions as they
+                        are
+                        offered.)</p>
+                    </li>
+                    <li>
+                      <p class="margin-bottom-0">The brother brushes about 40 strokes. What if he also brushes his teeth twice a day—about how many strokes does
+                        he make? <em>(80)</em> About how many fewer strokes is that than his big sister makes? <em>(200 fewer)</em> How did you
+                        figure that out? <em>(answers will vary)</em></p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+              <div class="grid-item">
+                <aside id="unique_aside_id" class="marginalia marginalia_01">
+                  <header id="header_unique_header_id" class="bg_lightseagreen">
+                    <h3 id="unique_heading_id" class="title title_06 text_uppercase">Connecting to Measurement</h3>
+                  </header>
+                  <div class="padding-left-default padding-right-default">
+                    <p>TLinear Measures: Explore the relationship between a number of units (in this case, the number of steps) and the
+                      size of
+                      the unit. Ask questions such as: <strong>The girl takes 234 steps. Suppose she takes giant steps. Do you think
+                        that will result
+                        in more steps or fewer steps? What if she takes toe-to-toe steps?</strong></p>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </section>
+
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id" aria-labelledby="header_unique_section_id">
+                  <header id="header_unique_section_id" class="sr-only">
+                    <h1 id="unique_heading_id" class="title title_01">Math Conversations</h1>
+                  </header>
+                
+                  <div class="grid-container grid-container_02">
+                    <div class="grid-item">
+                      <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                        <img id="unique_image_id" class="border-black" src="../images/mathology_img.jpg" alt="alt text">
+                      </figure>
+                    </div>
+                    <div class="grid-item">
+                      <section id="unique_section_id" aria-labelledby="header_unique_section_id" class="margin-bottom-0">
+                        <header id="header_unique_section_id">
+                          <h2 id="unique_heading_id" class="title title_02 text-color-dodgerblue">Adding and Subtracting</h2>
+                        </header>
+                        <ul class="margin-bottom-0">
+                          <li>
+                            <p>Do you agree that 140 and 140 is 280? How can you convince someone who is not sure? (Chart suggestions as
+                              they are offered.)</p>
+                          </li>
+                          <li>
+                            <p class="margin-bottom-0">The brother brushes about 40 strokes. What if he also brushes his teeth twice a
+                              day—about how many strokes does he make? <em>(80)</em> About how many fewer strokes is that than his big sister makes? <em>(200
+                                fewer)</em> How did you figure that out? <em>(answers will vary)</em></p>
+                          </li>
+                        </ul>
+                      </section>
+                    </div>
+                    <div class="grid-item">
+                      <aside id="unique_aside_id" class="marginalia marginalia_01">
+                        <header id="header_unique_header_id" class="bg_lightseagreen">
+                          <h2 id="unique_heading_id" class="title title_06 text_uppercase">Connecting to Measurement</h2>
+                        </header>
+                        <div class="padding-left-default padding-right-default">
+                          <p>TLinear Measures: Explore the relationship between a number of units (in this case, the number of steps)
+                            and the size of the unit. Ask questions such as: <strong>The girl takes 234 steps. Suppose she takes giant steps. Do you
+                              think that will result in more steps or fewer steps? What if she takes toe-to-toe steps?</strong></p>
+                        </div>
+                      </aside>
+                    </div>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- SR-Only Title + Grid + Informalfigure + Title + Unordered List + Marginalia 01 Section  Ends -->
+        
+      </section>
+      <!-- Marginalia Section Ends -->
+
+      <hr class="template_hr" />
+
+      <!-- Sidebar Section Starts -->
+      <section id="sidebar">
+        <header>
+          <h1>Sidebar Combination</h1>
+        </header>
+        <p class="p-grey">[This section display a preview of combination sidebar components which includes elements and layouts
+          that will generally occured in the Mathology Teacher's Guide epub design template.]</p>
+      
+        <!-- Title + 2-Column Grid + Paragraph Texts + Note + Sidebar 01 + 2 Subtitles + 2 Unordered List Section Starts -->
+        <hr id="sidebar_01" />
+        <section>
+          <header>
+            <h2 class="p-grey">Title + 2-Column Grid + Paragraph Texts + Note + Sidebar 01 + 2 Subtitles + 2 Unordered List:</h2>
+          </header>
+          <p class="p-grey">[Below is a Title 01, and a 2 column grid. Left column has a bunch of paragraph text and a note 02. Right column has a Sidebar 01 that has 2 subtitles and 2 unordered lists.]</p>
+
+          <section id="unique_section_id">
+            <header id="header_unique_section_id">
+              <h3 id="unique_heading_id" class="title title_01 margin-bottom-0"><em>Math Makes Me Laugh</em>: Planning Guide</h3>
+            </header>
+            <div id="unique_id" class="grid-container">
+              <div class="grid-row">
+                <div class="grid-col width-66">
+                  <p>This series offers a variety of options to support different groupings with varied math focuses. This helps to promote
+                  differentiated learning.</p>
+                  <p><strong class="text_uppercase text-arial">Large Group Options</strong> are lessons that engage a large group (perhaps the whole class) in an investigation that can be continued and revisited
+                  another time. Such experiences can help to establish a community of learners who share vocabulary and practices.</p>
+                  <p><strong class="text_uppercase text-arial">Small Group Options</strong> offer you the chance to listen more deeply to children’s thinking and to observe, up-close, how they can demonstrate
+                  their learning. You can probe children’s thinking and understanding; model strategies and language; and encourage
+                  learners.</p>
+                  <p><strong class="text_uppercase text-arial">Options for Independent Work</strong> presents five activities. These options offer children the opportunity to practise and consolidate their learning
+                  independently while you meet with small groups or individuals.</p>
+                  <div class="note note_02 margin-bottom-0">
+                    <p class="margin-bottom-0"><strong>Note:</strong> After introducing and working on any one of these options, you may decide to introduce another to the same group,
+                    or to reorganize the group before introducing a new option. Your choices depend on your curriculum, your children’s
+                    learning needs, and resources on hand.</p>
+                  </div>
+                </div>
+                <div class="grid-col width-30">
+                  <aside id="unique_aside_id" class="sidebar sidebar_01" aria-labelledby="header_unique_header_id">
+                    <header id="header_unique_header_id">
+                      <h4 id="unique_heading_id" class="title title_06 text_uppercase margin-bottom-0">Math Focus</h4>
+                    </header>
+                    <p class="subtitle margin-top-0"><strong>Add and Subtract to 1000</strong></p>
+                    <ul>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Estimate sums and differences</p>
+                      </li>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Model and symbolize addition and subtraction</p>
+                      </li>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Develop mental and personal addition and subtraction strategies</p>
+                      </li>
+                    </ul>
+                    <p class="subtitle"><strong>Estimate, Compare, and Order Numbers to 1000</strong></p>
+                    <ul>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Estimate and compare quantities to 1000</p>
+                      </li>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Order three or more quantities</p>
+                      </li>
+                      <li>
+                        <p class="margin-top-0 margin-bottom-0">Estimate and find out how many more/less one quantity is compared to another</p>
+                      </li>
+                    </ul>
+                  </aside>
+                </div>
+              </div>
+            </div>            
+          </section>
+
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id">
+                  <header id="header_unique_section_id">
+                    <h1 id="unique_heading_id" class="title title_01 margin-bottom-0"><em>Math Makes Me Laugh</em>: Planning Guide</h1>
+                  </header>
+                  <div id="unique_id" class="grid-container">
+                    <div class="grid-row">
+                      <div class="grid-col width-66">
+                        <p>This series offers a variety of options to support different groupings with varied math focuses. This helps
+                          to promote
+                          differentiated learning.</p>
+                        <p><strong class="text_uppercase text-arial">Large Group Options</strong> are lessons that engage a large group
+                          (perhaps the whole class) in an investigation that can be continued and revisited
+                          another time. Such experiences can help to establish a community of learners who share vocabulary and
+                          practices.</p>
+                        <p><strong class="text_uppercase text-arial">Small Group Options</strong> offer you the chance to listen more
+                          deeply to children’s thinking and to observe, up-close, how they can demonstrate
+                          their learning. You can probe children’s thinking and understanding; model strategies and language; and
+                          encourage
+                          learners.</p>
+                        <p><strong class="text_uppercase text-arial">Options for Independent Work</strong> presents five activities.
+                          These options offer children the opportunity to practise and consolidate their learning
+                          independently while you meet with small groups or individuals.</p>
+                        <div class="note note_02 margin-bottom-0">
+                          <p class="margin-bottom-0"><strong>Note:</strong> After introducing and working on any one of these options, you may decide to
+                            introduce another to the same group,
+                            or to reorganize the group before introducing a new option. Your choices depend on your curriculum, your
+                            children’s
+                            learning needs, and resources on hand.</p>
+                        </div>
+                      </div>
+                      <div class="grid-col width-30">
+                        <aside id="unique_aside_id" class="sidebar sidebar_01" aria-labelledby="header_unique_header_id">
+                          <header id="header_unique_header_id">
+                            <h2 id="unique_heading_id" class="title title_06 text_uppercase margin-bottom-0">Math Focus</h2>
+                          </header>
+                          <p class="subtitle margin-top-0"><strong>Add and Subtract to 1000</strong></p>
+                          <ul id="unique_ul_id">
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Estimate sums and differences</p>
+                            </li>
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Model and symbolize addition and subtraction</p>
+                            </li>
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Develop mental and personal addition and subtraction strategies
+                              </p>
+                            </li>
+                          </ul>
+                          <p class="subtitle"><strong>Estimate, Compare, and Order Numbers to 1000</strong></p>
+                          <ul id="unique_ul_id">
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Estimate and compare quantities to 1000</p>
+                            </li>
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Order three or more quantities</p>
+                            </li>
+                            <li>
+                              <p class="margin-top-0 margin-bottom-0">Estimate and find out how many more/less one quantity is compared
+                                to another</p>
+                            </li>
+                          </ul>
+                        </aside>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- Title + 2-Column Grid + Paragraph Texts + Note + Sidebar 01 + 2 Subtitles + 2 Unordered List SEction Ends -->
+
+        <!-- Title + Arial Paragraph Text + Grid + Sidebar 01 + Black Bordered Informalfigure + Title + Unordered
+          List Section Starts -->
+        <hr id="sidebar_02" />
+        <section>
+          <header>
+            <h2 class="p-grey">Title + Arial Paragraph Text + Grid + Sidebar 01 + Black Bordered Informalfigure + Title + Unordered
+            List:</h2>
+          </header>
+          <p class="p-grey">[Title 01 with paragraph text that is arial and differecnt colours. Next is grid 01 with Sidebar 01 with an unordered list without bullets inside grid item 01, grid item 02 contains an informalfigure with black border and grid item 03 contains a Title 02 and an unordered list.]</p>
+        
+          <section id="unique_section_id">
+            <header id="header_unique_section_id">
+              <h2 id="unique_heading_id" class="title title_01">Math Conversations</h2>
+            </header>
+            <p class="text-arial"><strong><em>Math Makes Me Laugh</em></strong> offers opportunities for children to <span class="text-color-dodgerblue">model and solve addition and subtraction</span> problems using
+            estimates and calculations, and to <span class="text-color-peru">estimate, compare, and order numbers to 1000</span>. Prompts are clustered under those
+            headings. Select prompts based on which will best meet the needs of the group you are working with and initiate
+            worthwhile conversations. The extent of the conversation will depend on the children’s abilities and interests, the
+            group’s dynamics, and your instructional and assessment goals. <strong><em>Please remember that these prompts are options for you to
+            select from, and it is actually the children’s responses that will guide the most powerful and appropriate
+            conversations.</em></strong></p>
+            <div id="unique_id" class="grid-container grid-container_01">
+              <div class="grid-item">
+                <aside id="unique_aside_id" class="sidebar sidebar_01 margin-top-0" aria-labelledby="header_unique_header_id">
+                  <header id="header_unique_header_id">
+                    <h3 id="unique_heading_id" class="title title_06 text_uppercase margin-top-0 margin-bottom-0">Math Focus</h3>
+                  </header>
+                  <ul id="unique_ul_id" class="ul_none margin-top-0">
+                    <li>
+                      <p class="text-color-dodgerblue margin-top-0 margin-bottom-0"><strong><span class="text_uppercase">Blue</span> <span class="text-color-black">headings</span></strong>: Add and subtract</p>
+                    </li>
+                    <li>
+                      <p class="text-color-peru margin-top-0"><strong><span class="text_uppercase">Orange</span> <span
+                            class="text-color-black">headings</span></strong>: Estimate, compare, and order numbers</p>
+                    </li>
+                  </ul>
+                </aside>
+              </div>
+              <div class="grid-item">
+                <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                  <img id="unique_image_id" class="border-black" src="../../images/placeholder_images/cover.jpg" alt="alt text">
+                </figure>
+              </div>
+              <div class="grid-item">
+                <section id="unique_section_id" aria-labelledby="header_unique_section_id" class="margin-bottom-0">
+                  <header id="header_unique_section_id">
+                    <h3 id="unique_heading_id" class="title title_02 text-color-peru">Estimating and comparing numbers</h3>
+                  </header>
+                  <ul class="margin-bottom-0">
+                    <li>
+                      <p>What do you notice about these numbers? <em>(possible answers include they increase from
+                      the bottom up, they follow a counting-by-25s pattern, the numbers all have a 0 or a 5 in the 1s place)</em></p>
+                    </li>
+                    <li>
+                      <p>Suppose there were numbers greater than 175 listed. What would they be? <em>(200, 225, 250,…)</em></p>
+                    </li>
+                    <li>
+                      <p>What might we count by 25s? <em>(quarters; other answers children can justify)</em></p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </section>
+        
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id">
+                  <header id="header_unique_section_id">
+                    <h1 id="unique_heading_id" class="title title_01">Math Conversations</h1>
+                  </header>
+                  <p class="text-arial"><strong><em>Math Makes Me Laugh</em></strong> offers opportunities for children to <span
+                      class="text-color-dodgerblue">model and solve addition and subtraction</span> problems using
+                    estimates and calculations, and to <span class="text-color-peru">estimate, compare, and order numbers to
+                      1000</span>. Prompts are clustered under those
+                    headings. Select prompts based on which will best meet the needs of the group you are working with and initiate
+                    worthwhile conversations. The extent of the conversation will depend on the children’s abilities and interests, the
+                    group’s dynamics, and your instructional and assessment goals. <strong><em>Please remember that these prompts are
+                        options for you to
+                        select from, and it is actually the children’s responses that will guide the most powerful and appropriate
+                        conversations.</em></strong></p>
+                  <div id="unique_id" class="grid-container grid-container_01">
+                    <div class="grid-item">
+                      <aside id="unique_aside_id" class="sidebar sidebar_01 margin-top-0" aria-labelledby="header_unique_header_id">
+                        <header id="header_unique_header_id">
+                          <h2 id="unique_heading_id" class="title title_06 text_uppercase margin-top-0 margin-bottom-0">Math Focus</h2>
+                        </header>
+                        <ul id="unique_ul_id" class="ul_none margin-top-0">
+                          <li>
+                            <p class="text-color-dodgerblue margin-top-0 margin-bottom-0"><strong><span
+                                  class="text_uppercase">Blue</span> <span class="text-color-black">headings</span></strong>: Add and
+                              subtract</p>
+                          </li>
+                          <li>
+                            <p class="text-color-peru margin-top-0"><strong><span class="text_uppercase">Orange</span> <span
+                                  class="text-color-black">headings</span></strong>: Estimate, compare, and order numbers</p>
+                          </li>
+                        </ul>
+                      </aside>
+                    </div>
+                    <div class="grid-item">
+                      <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                        <img id="unique_image_id" class="border-black" src="../images/cover.jpg" alt="alt text">
+                      </figure>
+                    </div>
+                    <div class="grid-item">
+                      <section id="unique_section_id" aria-labelledby="header_unique_section_id" class="margin-bottom-0">
+                        <header id="header_unique_section_id">
+                          <h2 id="unique_heading_id" class="title title_02 text-color-peru">Estimating and comparing numbers</h2>
+                        </header>
+                        <ul class="margin-bottom-0">
+                          <li>
+                            <p>What do you notice about these numbers? <em>(possible answers include they increase from
+                                the bottom up, they follow a counting-by-25s pattern, the numbers all have a 0 or a 5 in the 1s
+                                place)</em></p>
+                          </li>
+                          <li>
+                            <p>Suppose there were numbers greater than 175 listed. What would they be? <em>(200, 225, 250,…)</em></p>
+                          </li>
+                          <li>
+                            <p>What might we count by 25s? <em>(quarters; other answers children can justify)</em></p>
+                          </li>
+                        </ul>
+                      </section>
+                    </div>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- Title + Arial Paragraph Text + Grid + Sidebar 01 + Black Bordered Informalfigure + Title + Unordered
+          List SEction Ends -->
+      </section>
+      <!-- Sidebar Section Ends -->
+
+      <hr class="template_hr" />
+
+      <!-- Practice Section Starts -->
+      <section id="practice">
+        <header>
+          <h1>Practice Combination</h1>
+        </header>
+        <p class="p-grey">[This section display a preview of combination practice component which includes elements and layouts
+        that will generally occured in the Mathology Teacher's Guide epub design template.]</p>
+
+        <!-- Practice 01 + Practice List Section starts -->
+        <hr id="practice_01"/>
+        <section>
+          <header>
+            <h2 class="p-grey">SR-Only Title + Grid + Informalfigure + Note + Practice 01 + Practice List</h2>
+          </header>
+          <p class="p-grey">[Below is a SR-Only title, a grid 03 with three grid items, informalfigure with black borders in grid item 01, a note 02 in grid item 02 and practice 01 that has a practice list within grid item 03.]</p>
+
+          <section id="unique_section_id" aria-labelledby="header_unique_header_id">
+            <header id="header_unique_header_id" class="sr-only">
+              <h3 id="unique_heading_id" class="title title_01">Math Conversations</h3>
+            </header>
+            <div class="grid-container grid-container_03">
+              <div class="grid-item">
+                <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                  <img id="unique_image_id" class="border-black" src="../../images/placeholder_images/mathology_img.jpg" alt="alt text">
+                </figure>
+              </div>
+              <div class="grid-item">
+                <div id="unique_note_id" class="note note_02">
+                  <p><strong>Note:</strong> You might choose to use the question in the speech bubble to initiate an investigation. Have children work individually, in pairs, or in small groups. Provide counters and drawing materials and encourage them to think of ways that they can arrive at an answer for the total number of animals (e.g., use ten-frames and counters; count by 1s, 2s, 5s, or 10s; use tally marks). Share responses.</p>
+                </div>
+              </div>
+              <div class="grid-item">
+                <section id="unique_section_id" class="practice practice_01 bg_lightseagreen margin-bottom-0" aria-labelledby="header_unique_header_id">
+                  <header id="header_unique_header_id" class="bg_darkgreen">
+                    <h4 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Watch For...</h4>
+                  </header>
+                  <ul id="unique_practice_list_id" class="practicelist margin-left-default padding-right-default">
+                    <li class="general-problem">
+                      <div class="question">
+                        <p>Does the child offer estimates that are resonable?</p>
+                      </div>
+                    </li>
+                    <li class="general-problem">
+                      <div class="question">
+                        <p class="margin-bottom-0">Can the child count on by 1s, 2s, 5s, or 10s with accuracy to check her/his estimates?</p>
+                      </div>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </section>
+
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id" aria-labelledby="header_unique_header_id">
+                  <header id="header_unique_header_id" class="sr-only">
+                    <h1 id="unique_heading_id" class="title title_01">Math Conversations</h1>
+                  </header>
+                  <div class="grid-container grid-container_03">
+                    <div class="grid-item">
+                      <figure id="unique_figure_id" class="informalfigure width-100 margin-top-0 margin-bottom-0">
+                        <img id="unique_image_id" class="border-black" src="../../images/placeholder_images/mathology_img.jpg" alt="alt text">
+                      </figure>
+                    </div>
+                    <div class="grid-item">
+                      <div id="unique_note_id" class="note note_02">
+                        <p><strong>Note:</strong> You might choose to use the question in the speech bubble to initiate an
+                          investigation. Have children work individually, in pairs, or in small groups. Provide counters and drawing
+                          materials and encourage them to think of ways that they can arrive at an answer for the total number of
+                          animals (e.g., use ten-frames and counters; count by 1s, 2s, 5s, or 10s; use tally marks). Share responses.
+                        </p>
+                      </div>
+                    </div>
+                    <div class="grid-item">
+                      <section id="unique_section_id" class="practice practice_01 bg_lightseagreen margin-bottom-0"
+                        aria-labelledby="header_unique_header_id">
+                        <header id="header_unique_header_id" class="bg_darkgreen">
+                          <h2 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Watch For...</h2>
+                        </header>
+                        <ul id="unique_practice_list_id" class="practicelist margin-left-default padding-right-default">
+                          <li class="general-problem">
+                            <div class="question">
+                              <p>Does the child offer estimates that are resonable?</p>
+                            </div>
+                          </li>
+                          <li class="general-problem">
+                            <div class="question">
+                              <p class="margin-bottom-0">Can the child count on by 1s, 2s, 5s, or 10s with accuracy to check her/his
+                                estimates?</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </section>
+                    </div>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- Practice 01 + Practice List Section ends -->
+      </section>
+      <!-- Practice Section ends -->
+
+      <hr class="template_hr" />
+
+      <!-- Card Section Starts -->
+      <section id="card">
+        <header>
+          <h1>Card Combination</h1>
+        </header>
+        <p class="p-grey">[This section display a preview of combination for the card component which includes elements and layouts
+        that will generally occured in the Mathology Teacher's Guide epub design template.]</p>
+
+        <!-- Card 01 + Grid + Title + Title + Pargraph Text + Note + Practice + Practice List section starts -->
+        <hr id="card_01" />
+        <section>
+          <header>
+            <h2 class="p-grey">Card 01 + Grid + Title + Title + Pargraph Text + Note + Practice + Practice List:</h2>
+          </header>
+          <p class="p-grey">[Below is the card 01 component that is using the grid 04 layout. In grid item 01 it contains the card's main title. Grid item 02 contains multiple sections that have title 03 and paragraphs. Grid item 03 contains a note 01 and grid item 04 contains a practice 01 with practice list.]</p>
+
+          <section id="unique_section_id" class="card card_01 grid-container grid-container_04" aria-labelledby="header_unique_header_id">
+            <header id="header_unique_header_id" class="bg_peru grid-item">
+              <h3 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">I'm Thinking of A Number!</h3>
+            </header>
+            <div class="grid-item">
+              <section id="unique_section_id" class="padding-left-default padding-right-default" aria-labelledby="header_unique_header_id">
+                <header id="header_unique_header_id">
+                  <h4 id="unique_heading_id" class="title title_03 text_uppercase">Engage</h4>
+                </header>
+                <p>Sketch a number line and mark it with the following: 0, 50, 100, 150, 200. Engage children in identifying a “secret
+                number”:</p>
+                <ul id="unique_ul_id">
+                  <li>
+                    <p><strong>We learned that the girl in <em>Math Makes Me Laugh</em> is always thinking of numbers. Well, right now I’m thinking of a number.
+                    My number is between 0 and 200. What number am I thinking of?</strong></p>
+                  </li>
+                </ul>
+                <p>Each time a child guesses a number, respond by describing your secret number as greater than or less than the guess.
+                Record the guess on the number line—you might use different markings, including &lt; and &gt; symbols—and keep a tally of the
+                  number of guesses.</p>
+                <p class="text-color-peru text-arial"><strong>Some informalfigure image here.</strong></p>
+                <p>Alternatively, have two children act this out. Each child stands at one end of a number line, and one child moves up or
+                down according to each response, thus physically indicating the narrowing range of possibilities.</p>
+                <p>After each guess ask: <strong>What do we know now about my secret number?</strong> <em>(e.g., it is greater than 60 and less than 100)</em> When
+                the number is identified, count the number of guesses. You might repeat to see whether children identify another number
+                using fewer guesses.</p>
+              </section>
+              <section id="unique_section_id" class="padding-left-default padding-right-default"
+                aria-labelledby="header_unique_header_id">
+                <header id="header_unique_header_id">
+                  <h4 id="unique_heading_id" class="title title_03 text_uppercase">Work On It</h4>
+                </header>
+                <p>Children can continue playing “I’m Thinking of a Number” in pairs or small groups.</p>
+                <ul id="unique_ul_id">
+                  <li>
+                    <p><strong>Now you get to think of secret numbers. Take turns being the player with a number in your head. Count how many guesses were needed before switching roles.</strong></p>
+                  </li>
+                </ul>
+                <p>Suggest that children use a number line to record and tally guesses just as you did with the larger group. Children can
+                use I’m Thinking of a Number! (LM 5) to record guesses.</p>
+              </section>
+            </div>
+            <div class="grid-item bg_lightblue">
+                <div id="unique_note_id" class="note note_01 padding-left-default padding-right-default">
+                  <p><strong class="text_uppercase">Math Focus:</strong> compare and order numbers</p>
+                  <p><strong class="text_uppercase">Materials:</strong> number lines; I’m Thinking of a Number! (LM5–optional)</p>
+                </div>
+            </div>
+            <div class="grid-item">
+              <section id="unique_section_id" class="practice practice_01 bg_lightblue margin-top-0 margin-bottom-0" aria-labelledby="header_unique_header_id">
+                <header id="header_unique_header_id" class="bg_darkgreen">
+                  <h4 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Watch For...</h4>
+                </header>
+                <ul id="unique_practice_list_id" class="practicelist margin-left-default margin-bottom-0 padding-right-default padding-bottom-default">
+                  <li class="general-problem">
+                    <div class="question">
+                      <p>Can the child place numbers appropriately on the number line?</p>
+                    </div>
+                  </li>
+                  <li class="general-problem">
+                    <div class="question">
+                      <p class="margin-bottom-0">Does the child describe, compare, and/or order numbers accurately?</p>
+                    </div>
+                  </li>
+                  <li class="general-problem">
+                    <div class="question">
+                      <p class="margin-bottom-0">Does the child make guesses that reflect strategic thinking and a growing understanding of how starting with numbers in
+                      the middle of a range can serve further guesses?</p>
+                    </div>
+                  </li>
+                </ul>
+              </section>
+            </div>
+          </section>
+
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id" class="card card_01 grid-container grid-container_04" aria-labelledby="header_unique_header_id">
+                  <header id="header_unique_header_id" class="bg_peru grid-item">
+                    <h4 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">I'm Thinking of A Number!</h4>
+                  </header>
+                  <div class="grid-item">
+                    <section id="unique_section_id" class="padding-left-default padding-right-default" aria-labelledby="header_unique_header_id">
+                      <header id="header_unique_header_id">
+                        <h5 id="unique_heading_id" class="title title_03 text_uppercase">Engage</h5>
+                      </header>
+                      <p>Sketch a number line and mark it with the following: 0, 50, 100, 150, 200. Engage children in identifying a
+                        “secret number”:</p>
+                      <ul id="unique_ul_id">
+                        <li>
+                          <p><strong>We learned that the girl in <em>Math Makes Me Laugh</em> is always thinking of numbers. Well, right
+                              now I’m thinking of a number.
+                              My number is between 0 and 200. What number am I thinking of?</strong></p>
+                        </li>
+                      </ul>
+                      <p>Each time a child guesses a number, respond by describing your secret number as greater than or less than the
+                        guess.
+                        Record the guess on the number line—you might use different markings, including &lt; and &gt; symbols—and keep a
+                        tally of the
+                        number of guesses.</p>
+                      <p class="text-color-peru text-arial"><strong>Some informalfigure image here.</strong></p>
+                      <p>Alternatively, have two children act this out. Each child stands at one end of a number line, and one child
+                        moves up or
+                        down according to each response, thus physically indicating the narrowing range of possibilities.</p>
+                      <p>After each guess ask: <strong>What do we know now about my secret number?</strong> <em>(e.g., it is greater
+                          than 60 and less than 100)</em> When
+                        the number is identified, count the number of guesses. You might repeat to see whether children identify another
+                        number using fewer guesses.</p>
+                    </section>
+                    <section id="unique_section_id" class="padding-left-default padding-right-default" aria-labelledby="header_unique_header_id">
+                      <header id="header_unique_header_id">
+                        <h5 id="unique_heading_id" class="title title_03 text_uppercase">Work On It</h5>
+                      </header>
+                      <p>Children can continue playing “I’m Thinking of a Number” in pairs or small groups.</p>
+                      <ul id="unique_ul_id">
+                        <li>
+                          <p><strong>Now you get to think of secret numbers. Take turns being the player with a number in your head.
+                              Count how many guesses were needed before switching roles.</strong></p>
+                        </li>
+                      </ul>
+                      <p>Suggest that children use a number line to record and tally guesses just as you did with the larger group.
+                        Children can use I’m Thinking of a Number! (LM 5) to record guesses.</p>
+                    </section>
+                  </div>
+                  <div class="grid-item bg_lightblue">
+                    <div id="unique_note_id" class="note note_01 padding-left-default padding-right-default">
+                      <p><strong class="text_uppercase">Math Focus:</strong> compare and order numbers</p>
+                      <p><strong class="text_uppercase">Materials:</strong> number lines; I’m Thinking of a Number! (LM5–optional)</p>
+                    </div>
+                  </div>
+                  <div class="grid-item">
+                    <section id="unique_section_id" class="practice practice_01 bg_lightblue margin-top-0 margin-bottom-0" aria-labelledby="header_unique_header_id">
+                      <header id="header_unique_header_id" class="bg_darkgreen">
+                        <h5 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Watch For...</h5>
+                      </header>
+                      <ul id="unique_practice_list_id"
+                        class="practicelist margin-left-default margin-bottom-0 padding-right-default padding-bottom-default">
+                        <li class="general-problem">
+                          <div class="question">
+                            <p>Can the child place numbers appropriately on the number line?</p>
+                          </div>
+                        </li>
+                        <li class="general-problem">
+                          <div class="question">
+                            <p class="margin-bottom-0">Does the child describe, compare, and/or order numbers accurately?</p>
+                          </div>
+                        </li>
+                        <li class="general-problem">
+                          <div class="question">
+                            <p class="margin-bottom-0">Does the child make guesses that reflect strategic thinking and a growing
+                              understanding of how starting with numbers in
+                              the middle of a range can serve further guesses?</p>
+                          </div>
+                        </li>
+                      </ul>
+                    </section>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- Card 01 + Grid + Title + Title + Pargraph Text + Note + Practice + Practice List section ends -->
+
+        <!-- Card 02 + Grid + Title + Title + Unordered List with Unordered List with Dashes + Note section starts -->
+        <hr id="card_02" />
+        <section>
+          <header>
+            <h2 class="p-grey">Card 02 + Grid + Title + Title + Unordered List with Unordered List with Dashes + Note:</h2>
+          </header>
+          <p class="p-grey">[Below is the card 02 compontent that is using the grid 05 layout. In grid item 01 it contains the
+            card's main title. Grid item 02 - 01 is a subtitle. Grid item 02 - 02 has an unordered list with a list item that has an unordered
+            list with dashes. Finally grid item 02 - 03 contains a note 01.]</p>
+        
+          <section id="unique_section_id" class="card card_02 grid-container grid-container_05" aria-labelledby="header_unique_header_id">
+            <header id="header_unique_header_id" class="bg_lightgrey grid-item">
+              <h3 id="unique_heading_id" class="title title_04 text_uppercase">Independent Inquiry</h3>
+            </header>
+            <div class="grid-item">
+              <section id="unique_section_id" class="margin-top-0 margin-bottom-0 grid-container grid-container_05" aria-labelledby="header_unique_header_id">
+                <header id="header_unique_header_id" class="bg_dodgerblue grid-item">
+                  <h4 id="unique_heading_id" class="subtitle text_uppercase text-color-white margin-bottom-0">Numbers Can Tell About...</h4>
+                </header>
+                <div class="padding-left-default padding-right-default grid-item">
+                  <ul id="unique_ul_id">
+                    <li>
+                      <p>In <strong><em>Math Makes Me Laugh</em></strong>, a child uses and thinks about numbers as she goes through
+                        her day. Invite children to use
+                        numbers to describe one or several situations in their day. Issue an open-ended invitation after a brief
+                        discussion.
+                        Or, if children would benefit, use specific prompts such as:</p>
+                      <ul id="unique_ul_id" class="ul_01">
+                        <li>
+                          <p>How many minutes of recess do you have in 1 week? 1 month? 1 year?</p>
+                        </li>
+                        <li>
+                          <p>How many minutes do you spend brushing your teeth in 1 day?1 week? 1 month? 1 year?</p>
+                        </li>
+                        <li>
+                          <p>How many Mondays are in 1 year? How many Mondays have you been alive for?</p>
+                        </li>
+                        <li>
+                          <p>How many meals do you eat in 1 week? 1 month? 1 year? How many meals have you eaten in your life to date?
+                          </p>
+                        </li>
+                      </ul>
+                    </li>
+                    <li>
+                      <p>Children may record their thinking and calculations in their math journals or on paper. Invite them to
+                        present their work
+                        to others.</p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="grid-item bg_lightblue">
+                  <div id="unique_note_id" class="note note_01 padding-left-default padding-right-default">
+                    <p><strong class="text_uppercase">Math Focus:</strong> estimate sums and differences; add and subtract 3-digit
+                      numbers</p>
+                    <p><strong class="text_uppercase">Materials:</strong> math journals or paper</p>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </section>
+        
+          <p class="code_snippet">Code Snippet for Vendor:</p>
+          <p>
+            <div class="code_format">
+              <code>
+                <section id="unique_section_id" class="card card_02 grid-container grid-container_05"
+                  aria-labelledby="header_unique_header_id">
+                  <header id="header_unique_header_id" class="bg_lightgrey grid-item">
+                    <h4 id="unique_heading_id" class="title title_04 text_uppercase">Independent Inquiry</h4>
+                  </header>
+                  <div class="grid-item">
+                    <section id="unique_section_id" class="margin-top-0 margin-bottom-0 grid-container grid-container_05"
+                      aria-labelledby="header_unique_header_id">
+                      <header id="header_unique_header_id" class="bg_dodgerblue grid-item">
+                        <h5 id="unique_heading_id" class="subtitle text_uppercase text-color-white margin-bottom-0">Numbers Can Tell
+                          About...</h5>
+                      </header>
+                      <div class="padding-left-default padding-right-default grid-item">
+                        <ul id="unique_ul_id">
+                          <li>
+                            <p>In <strong><em>Math Makes Me Laugh</em></strong>, a child uses and thinks about numbers as she goes
+                              through
+                              her day. Invite children to use
+                              numbers to describe one or several situations in their day. Issue an open-ended invitation after a brief
+                              discussion.
+                              Or, if children would benefit, use specific prompts such as:</p>
+                            <ul id="unique_ul_id" class="ul_01">
+                              <li>
+                                <p>How many minutes of recess do you have in 1 week? 1 month? 1 year?</p>
+                              </li>
+                              <li>
+                                <p>How many minutes do you spend brushing your teeth in 1 day?1 week? 1 month? 1 year?</p>
+                              </li>
+                              <li>
+                                <p>How many Mondays are in 1 year? How many Mondays have you been alive for?</p>
+                              </li>
+                              <li>
+                                <p>How many meals do you eat in 1 week? 1 month? 1 year? How many meals have you eaten in your life to
+                                  date?
+                                </p>
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                            <p>Children may record their thinking and calculations in their math journals or on paper. Invite them to
+                              present their work
+                              to others.</p>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="grid-item bg_lightblue">
+                        <div id="unique_note_id" class="note note_01 padding-left-default padding-right-default">
+                          <p><strong class="text_uppercase">Math Focus:</strong> estimate sums and differences; add and subtract 3-digit
+                            numbers</p>
+                          <p><strong class="text_uppercase">Materials:</strong> math journals or paper</p>
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </section>
+              </code>
+            </div>
+          </p>
+        </section>
+        <!-- Card 02 + Grid + Title + Title + Unordered List with Unordered List with Dashes + Note section ends -->
+
+      </section>
+      <!-- Card Section Ends -->
+
+    </section> <!-- Readspeaker section closed-->
+  </body>
+
+</html>

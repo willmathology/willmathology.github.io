@@ -1,1 +1,1 @@
-# willmathology.github.io
+Mathology Styles Guide for editors and third party vendors.

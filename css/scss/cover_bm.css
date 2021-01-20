@@ -1,0 +1,77 @@
+@font-face {
+  font-family: "OpenSansBold";
+  font-weight: bold;
+  src: url("../fonts/OpenSans-Bold.eot"), url("../fonts/OpenSans-Bold.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Bold.woff2") format("woff2"), url("../fonts/OpenSans-Bold.woff") format("woff"), url("../fonts/OpenSans-Bold.tff") format("truetype"), url("../fonts/OpenSans-Bold.svg#svgFontName") format("svg"); }
+@font-face {
+  font-family: "OpenSansRegular";
+  font-weight: normal;
+  src: url("../fonts/OpenSans-Regular.eot"), url("../fonts/OpenSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/OpenSans-Regular.woff2") format("woff2"), url("../fonts/OpenSans-Regular.woff") format("woff"), url("../fonts/OpenSans-Regular.tff") format("truetype"), url("../fonts/OpenSans-Regular.svg#svgFontName") format("svg"); }
+#cover-page {
+  background: transparent;
+  margin: 0; }
+  #cover-page div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; }
+    #cover-page div > img {
+      border-style: none;
+      width: auto;
+      height: 100%;
+      margin: 0 auto;
+      display: block; }
+
+/* ************************************* Back Matter ************************************* */
+.no-widow {
+  display: inline-block; }
+
+.backmatter {
+  background-color: #FFF; }
+
+.creditsetdiv {
+  margin: 2.5% 10%;
+  padding: 0; }
+  .creditsetdiv .title01 {
+    font-family: "OpenSansBold", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 34px;
+    color: #000;
+    text-shadow: none;
+    text-transform: unset;
+    letter-spacing: initial;
+    line-height: initial; }
+  .creditsetdiv > p {
+    font-family: "OpenSansRegular", Arial, sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: initial;
+    margin: 0;
+    padding: 0;
+    color: #000; }
+  .creditsetdiv > p .ulink, .creditsetdiv > p .ulink span {
+    font-family: "OpenSansBold", Arial, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+    text-decoration: underline; }
+
+.informalfigurepearson {
+  max-width: 200px;
+  height: auto;
+  display: inline-block;
+  margin: 5px 0 0 0; }
+  .informalfigurepearson img {
+    border-style: none;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block; }
+
+/* ************************************* Mobile Responsive (767px - 600px) ************************************* */
+@media only screen and (max-width: 767px) {
+  #cover-page div > img {
+    width: 100%;
+    height: auto; } }
+
+/*# sourceMappingURL=cover_bm.css.map */

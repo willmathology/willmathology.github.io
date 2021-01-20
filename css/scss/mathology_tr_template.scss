@@ -1,0 +1,1382 @@
+@charset "UTF-8";
+
+//  ************************************* Pearson Custom variables for SCSS(SASS) *************************************
+//Paragraph
+$pFontSize: 1.25rem;
+$pLineHeight: 1.75rem;
+//title 01
+$title01FontSize: 2rem;
+$title01LineHeight: 2.5rem;
+//title 02
+$title02FontSize: 1.5rem;
+$title02LineHeight: 2rem;
+//title 03
+$title03FontSize: 1.5rem;
+$title03LineHeight: 2rem;
+//title 04 should be the same font size as the paragraph text
+//practice list 
+$practicelistFontSize: 1rem;
+$practicelistLineHeight: 1.5rem;
+//caption 
+$captionFontsize: 0.9rem;
+$captionLineHeight: 1.25rem;
+//marginalia 01
+$marginalia01FontSize: 1rem;
+$marginalia01LineHeight: 1.5rem;
+$marginalia01LetterSpacing: 0.025rem;
+$marginalia01PFontSize: 1rem;
+$marginalia01PLineHeight: 1.5rem;
+//sidebar 01
+$sidebar01FontSize: 1rem;
+$sidebar01LineHeight: 1.5rem;
+$sidebar01LetterSpacing: 0.025rem;
+$sidebar01PFontSize: 1rem;
+$sidebar01PLineHeight: 1.5rem;
+//note 01
+$note01FontSize: 1rem;
+$note01LineHeight: 1.5rem;
+//practice 01
+$practice01FontSize: 1rem;
+$practice01LineHeight: 1.5rem;
+$practice01LetterSpacing: 0.025rem;
+$practice01PFontSize: 1rem;
+$practice01PLineHeight: 1.5rem;
+//card 01
+$card01FontSize: 1rem;
+$card01LineHeight: 1.5rem;
+$card01LetterSpacing: 0.025rem;
+//card 02
+$card02FontSize: 1rem;
+$card02LineHeight: 1.5rem;
+$card02LetterSpacing: 0.025rem;
+//informaltable 01
+$informaltable01FontSize: 1rem;
+$informaltable01LineHeight: 1.5rem;
+$informaltable01LetterSpacing: 0.025rem;
+//backmatter
+$bmPFontSize: 1rem;
+$bmPLineHeight: 1.25rem;
+
+//Colors
+$pFontColor: #000;
+$lightGreyColor: #CBCCCE;
+$dodgerblueColor: #0077C1;
+$peruColor: #BF5817;
+$whiteColor: #FFF;
+$darkGreenColor: #008555;
+$lightSeaGreenColor: #E2ECE6;
+$lightBlueColor: #EAF1F9;
+
+$margins: 1.5rem;
+
+// ************************************* Function to replace spaces with underscore in font names *************************************
+
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// ************************************* Font mixin for general CSS styling *************************************
+
+@mixin generateGeneralFontCSS($fontSize, $fontLineHeight, $fontColor:null, $letterSpacing:null) {
+    font-size: $fontSize;
+    line-height: $fontLineHeight;
+    color: $fontColor;
+    letter-spacing: $letterSpacing;
+}
+
+@mixin genericMargin {
+    margin: #{$margins + " " + 0};
+}
+
+// ************************************* Font mixin for @font-face *************************************
+
+//@mixin font-face($name, $pathname, $path, $svgid, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name, $pathname, $path, $svgid: null, $weight: null, $style: null, $exts: eot woff2 woff ttf) {
+    $src: null;
+    $svgidfinal: "";
+
+    @if $svgid !="" {
+        $svgidfinal: $svgid;
+    }
+
+    @else {
+        $svgidfinal: str-replace($name, " ", "_");
+    }
+
+    //$extmods: (eot: "?iefix",
+    //svg: "#"+ $svgidfinal);
+
+    $formats: (eot: "embedded-opentype",
+        otf: "opentype",
+        ttf: "truetype"
+    );
+
+    @each $ext in $exts {
+        //$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        //$src: append($src, url(quote($path + $pathname + "." + $extmod)) format(quote($format)), comma);
+        $src: append($src, url(quote($path + "/" + $pathname + "." + $ext)) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+/* ------------------------------------Load the fonts into CSS-------------------------------------------- */
+@include font-face("Arial", "ArialMTW05-Light", "../fonts/mathology_tr_fonts", null, 100, normal);
+@include font-face("Arial", "ArialMTW05-LightItalic", "../fonts/mathology_tr_fonts", null, 100, italic);
+@include font-face("Arial", "ArialMTW05-Medium", "../fonts/mathology_tr_fonts", null, 400, normal);
+@include font-face("Arial", "ArialMTW05-MediumItalic", "../fonts/mathology_tr_fonts", null, 400, italic);
+@include font-face("Arial", "ArialMTW05-ExtraBold", "../fonts/mathology_tr_fonts", null, 700, normal);
+@include font-face("Arial", "ArialMTW05-ExtraBoldItalic", "../fonts/mathology_tr_fonts", null, 700, italic);
+@include font-face("Arial", "ArialMTW05-Black", "../fonts/mathology_tr_fonts", null, 900, normal);
+@include font-face("Arial", "ArialMTW05-BlackItalic", "../fonts/mathology_tr_fonts", null, 900, italic);
+@include font-face("TimesNewRoman", "TimesNewRomanPSW05-Regular", "../fonts/mathology_tr_fonts", null, 400, normal);
+@include font-face("TimesNewRoman", "TimesNewRomanPSW05-Italic", "../fonts/mathology_tr_fonts", null, 400, italic);
+@include font-face("TimesNewRoman", "TimesNewRomanPSW05-Bold", "../fonts/mathology_tr_fonts", null, 700, normal);
+@include font-face("TimesNewRoman", "TimesNewRomanPSW05-BoldIt", "../fonts/mathology_tr_fonts", null, 700, italic);
+@include font-face("Andy", "Andy-Regular", "../fonts/mathology_tr_fonts", null, 400, normal);
+@include font-face("Andy", "Andy-Italic", "../fonts/mathology_tr_fonts", null, 400, italic);
+@include font-face("Andy", "Andy-Bold", "../fonts/mathology_tr_fonts", null, 700, normal);
+@include font-face("Andy", "Andy-BoldItalic", "../fonts/mathology_tr_fonts", null, 700, italic);
+
+// ************************************* Font includes to be used on and inside elements *************************************
+@mixin arial_Light {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 100;
+}
+
+@mixin arial_LightItalic {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+@mixin arial_Medium {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 400;
+}
+
+@mixin arial_MediumItalic {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin arial_Bold {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 700;
+}
+
+@mixin arial_BoldItalic {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin arial_Black {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 900;
+}
+
+@mixin arial_BlackItalic {
+    font-family: "Arial", Arial, sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+@mixin timesnewroman_Regular {
+    font-family: "TimesNewRoman", Times, serif;
+    font-weight: 400;
+}
+
+@mixin timesnewroman_Italic {
+    font-family: "TimesNewRoman", Times, serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin timesnewroman_Bold {
+    font-family: "TimesNewRoman", Times, serif;
+    font-weight: 700;
+}
+
+@mixin timesnewroman_BoldItalic {
+    font-family: "TimesNewRoman", Times, serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin andy_Regular {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 400;
+}
+
+@mixin andy_Italic {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin andy_Bold {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 700;
+}
+
+@mixin andy_BoldItalic {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+// *************************************Normalization Styles CSS*************************************
+@mixin NormalizationBaseHtmlCSS {
+    html {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        letter-spacing: 0.015rem;
+        line-height: 1.25rem;
+        -webkit-text-size-adjust: 100%;
+        font-size: 100%;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        -webkit-box-sizing: inherit;
+    }
+
+    :root {
+        -moz-tab-size: 4;
+        tab-size: 4;
+    }
+
+    body {
+        @include timesnewroman_Regular;
+        margin: 0;
+        padding: 0;
+        font-size: 115%;
+        background-color: #FFFFFF;
+    }
+
+    strong {
+        font-weight: bold;
+        text-decoration: inherit;
+    }
+
+    em {
+        font-style: italic;
+        text-decoration: inherit;
+    }
+
+    section,
+    aside {
+        display: block;
+        @include genericMargin;
+        padding: 0;
+    }
+
+    header {
+        display: block;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: block;
+        color: $pFontColor;
+    }
+
+    p,
+    ol,
+    ul,
+    dl {
+        display: block;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        @include genericMargin;
+        color: $pFontColor;
+    }
+
+    p,
+    dt {
+        @include generateGeneralFontCSS($pFontSize, $pLineHeight);
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-inline-start: 20px;
+        padding-left: 20px;
+    }
+
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+
+    dl,
+    dt,
+    dd {
+        @include genericMargin;
+        padding: 0;
+        display: block;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    dt {
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    dd {
+        margin-inline-start: 0;
+        margin-top: 0;
+
+        &>p:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    dd:after {
+        display: block;
+        content: "";
+    }
+
+    figure {
+        display: block;
+        margin-block-start: $margins;
+        margin-block-end: $margins;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        margin: #{$margins + " " + auto};
+        padding: 0;
+    }
+
+    img {
+        border-style: none;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding: 0;
+        display: block;
+    }
+
+    figcaption,
+    div {
+        display: block;
+    }
+
+    figcaption {
+        margin: 0.3rem auto 0.5rem auto;
+        text-align: left;
+        padding: 0;
+    }
+
+    blockquote {
+        display: block;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
+        margin-inline-start: 4rem;
+        margin-inline-end: 4rem;
+        margin: $margins;
+        padding: 0;
+    }
+
+    cite {
+        font-style: unset;
+    }
+
+    hr {
+        display: block;
+        //unicode-bidi: isolate;
+        margin-block-start: 0.575rem;
+        margin-block-end: 0.575rem;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        margin: 0.575rem auto;
+        overflow: hidden;
+        border-style: inset;
+        border-width: 1px;
+    }
+
+    caption {
+        display: text-caption;
+        text-align: -webkit-center;
+    }
+
+    details {
+        display: block;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    details[open] {
+        cursor: initial;
+        pointer-events: auto;
+    }
+
+    summary {
+        cursor: pointer;
+        outline: none;
+        display: list-item;
+        pointer-events: auto;
+    }
+}
+
+// *************************************Elements Style CSS*************************************
+@mixin TitleCSS_Element {
+    .title {
+        @include genericMargin;
+    }
+
+    .title_01 {
+        @include arial_Black;
+        @include generateGeneralFontCSS($title01FontSize, $title01LineHeight);
+    }
+
+    .title_02 {
+        @include arial_Bold;
+        @include generateGeneralFontCSS($title02FontSize, $title02LineHeight);
+    }
+
+    .title_03 {
+        @include andy_Bold;
+        @include generateGeneralFontCSS($title03FontSize, $title03LineHeight);
+    }
+
+    .title_04 {
+        @include timesnewroman_Bold;
+        @include generateGeneralFontCSS($pFontSize, $pLineHeight);
+    }
+}
+
+@mixin ListStyleCSS_Elements {
+    .ul_none {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .ul_01 {
+        padding-inline-start: 25px;
+        padding-left: 25px;
+
+        &>li {
+            list-style: none;
+            margin: -1.5rem 0 0 0;
+        }
+
+        &>li:before {
+            content: "– ";
+            font-family: Times;
+            display: block;
+            position: relative;
+            max-width: 0;
+            max-height: 0;
+            left: -1.5rem;
+            top: 1rem;
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .practicelist {
+        @include arial_Medium;
+
+        &>.general-problem {
+            & p {
+                @include generateGeneralFontCSS($practicelistFontSize, $practicelistLineHeight);
+            }
+        }
+    }
+}
+
+@mixin InformalFigureStyleCSS_Elements {
+    .caption {
+        & p:first-of-type {
+            margin-top: 0;
+        }
+
+        & p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        & p {
+            @include arial_Light;
+            @include generateGeneralFontCSS($captionFontsize, $captionLineHeight);
+        }
+    }
+
+    .design-icon {
+        display: inline-block;
+        width: auto;
+        height: 20px;
+        margin-bottom: -0.5rem;
+    }
+}
+
+// *************************************Layout Styles CSS*************************************
+@mixin ResponsiveGridStyleCSS_Layouts {
+    .grid-container {
+        display: grid;
+        grid-template-rows: auto;
+
+        &>.grid-row {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            //2 column grid
+            &>.grid-col:first-of-type:nth-last-of-type(2),
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col {
+                width: 48.5%;
+            }
+        }
+    }
+
+    //Standard grid layout (1 x 2 where the 2nd column is split into 2 rows on the right side)
+    //Usually the first Math Conversation page
+    .grid-container_01 {
+        grid-template-columns: 60% 40%;
+
+        &>.grid-item:nth-child(odd) {
+            grid-column: 2 / 3;
+            padding-left: $margins;
+        }
+
+        &>.grid-item:nth-child(2) {
+            grid-row: 1 / span 2;
+            padding: 0;
+        }
+
+        &>.grid-item:nth-child(3) {
+            border-top: 1px solid #000;
+        }
+    }
+
+    //Standard grid layout (2 x 2 with 1 quadrant is blank at bottom left) - left side text
+    .grid-container_02 {
+        grid-template-columns: 40% 60%;
+        grid-template-rows: auto 3fr;
+        grid-auto-flow: column dense;
+
+        &>.grid-item:nth-child(odd) {
+            grid-column: 2 / 3;
+        }
+
+        &>.grid-item:nth-child(2) {
+            margin-top: #{$margins * 2};
+            margin-bottom: 0;
+            grid-row: 1 / span 2;
+            border-top: 1px solid #000;
+            padding-right: $margins;
+        }
+    }
+
+    //Standard grid layout (2 x 2 with 1 quadrant is blank at bottom right) - right side text
+    .grid-container_03 {
+        grid-template-columns: 60% 40%;
+        grid-template-rows: auto 3fr;
+        grid-auto-flow: column dense;
+
+        &>.grid-item:nth-child(2) {
+            margin-top: #{$margins * 2};
+            margin-bottom: 0;
+            grid-row: 1 / span 2;
+            border-top: 1px solid #000;
+            padding-left: $margins;
+        }
+    }
+
+    .grid-container_04 {
+        grid-template-columns: 60% 40%;
+        grid-template-rows: auto 3fr;
+
+        &>.grid-item:nth-child(1) {
+            grid-column: 1 / span 2;
+            border-bottom: 1px solid #000;
+        }
+
+        &>.grid-item:nth-child(2) {
+            grid-row: 2 / span 2;
+            padding-right: $margins;
+        }
+
+        &>.grid-item:nth-child(3) {
+            border-left: 1px solid #000;
+        }
+
+        & .practice {
+            border-right: 0;
+            border-bottom: 0;
+        }
+    }
+
+    /*
+    .grid-container_05 {
+        grid-template-columns: 60% 40%;
+
+        .grid-item:nth-child(-n+2) {
+            grid-column: 1 / span 2;
+            border-bottom: 1px solid #000;
+        }
+
+        .grid-item:nth-child(3) {
+            padding-right: $margins;
+            border-right: 1px solid #000;
+        }
+    }*/
+
+    //old version is grid-container_06 now it's 05
+    .grid-container_05 {
+        grid-template-columns: 60% 40%;
+        grid-auto-flow: row;
+
+        &>.grid-item {
+            grid-column: 1 / span 2;
+            border-bottom: 1px solid #000;
+        }
+
+        &>.grid-item:last-child {
+            border-bottom: 0;
+        }
+
+        & .grid-container_05 {
+            &>.grid-item:not(:first-child) {
+                grid-column: unset;
+                border-bottom: 0;
+            }
+
+            &>.grid-item:nth-child(2) {
+                border-right: 1px solid #000;
+                padding-right: $margins;
+            }
+        }
+    }
+}
+
+@mixin ListStyleCSS_Layouts {
+    .ul_column {
+        -webkit-column-fill: balance;
+        -moz-column-fill: balance;
+        column-fill: balance;
+        list-style-position: outside;
+
+        &>li {
+            margin-right: 1.25rem;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    }
+
+    .ul_column_01 {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+    }
+
+    .ul_column_02 {
+        -webkit-columns: 3;
+        -moz-columns: 3;
+        columns: 3;
+    }
+}
+
+// *************************************Components Styles CSS*************************************
+@mixin InformalTableCSS_Components {
+    .informaltable {
+        border: 1px solid #000;
+        @include genericMargin;
+        border-collapse: collapse;
+    }
+
+    .informaltable_01 {
+
+        & td,
+        & th {
+            border: 1px solid #000;
+            vertical-align: top;
+            text-align: left;
+            @include arial_Medium;
+        }
+
+        & td {
+            padding: 0 $margins;
+
+            & p {
+                @include generateGeneralFontCSS($informaltable01FontSize, $informaltable01LineHeight);
+            }
+        }
+
+        & th {
+            padding: #{$margins / 3} $margins;
+
+            & p {
+                @include generateGeneralFontCSS($informaltable01FontSize, $informaltable01LineHeight, null, $informaltable01LetterSpacing);
+            }
+        }
+
+        & thead {
+            & p {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@mixin SidebarStyleCSS_Components {
+    .sidebar {
+        @include genericMargin;
+        @include arial_Medium;
+    }
+
+    .sidebar_01 {
+        &>header {
+            &>.title_06 {
+                @include arial_Bold;
+                @include generateGeneralFontCSS($sidebar01FontSize, $sidebar01LineHeight, null, $sidebar01LetterSpacing)
+            }
+        }
+
+        & p {
+            @include generateGeneralFontCSS($sidebar01PFontSize, $sidebar01PLineHeight);
+        }
+    }
+}
+
+@mixin MarginaliaStyleCSS_Components {
+    .marginalia {
+        border: 1px solid #000;
+        @include genericMargin;
+        @include arial_Medium;
+    }
+
+    .marginalia_01 {
+        &>header {
+            &>.title_06 {
+                margin: 0 0 $margins 0;
+                border-bottom: 1px solid #000;
+                padding: #{$margins / 3} $margins;
+                @include arial_Black;
+                @include generateGeneralFontCSS($marginalia01FontSize, $marginalia01LineHeight, null, $marginalia01LetterSpacing);
+            }
+        }
+
+        & p {
+            @include generateGeneralFontCSS($marginalia01PFontSize, $marginalia01LineHeight);
+        }
+    }
+}
+
+@mixin NoteStyleCSS_Components {
+    .note {
+        @include genericMargin;
+    }
+
+    .note_01 {
+        & p {
+            @include arial_Medium;
+            @include generateGeneralFontCSS($note01FontSize, $note01LineHeight);
+        }
+    }
+
+    //note_02 don't need to write anything because it's the same style as regular paragraph text
+}
+
+@mixin PracticeStyleCSS_Components {
+    .practice {
+        border: 1px solid #000;
+        @include genericMargin;
+        @include arial_Medium;
+    }
+
+    .practice_01 {
+        &>header {
+            &>.title_04 {
+                margin: 0 0 $margins 0;
+                border-bottom: 1px solid #000;
+                padding: #{$margins / 3} $margins;
+                @include arial_Black;
+                @include generateGeneralFontCSS($practice01FontSize, $practice01LineHeight, null, $practice01LetterSpacing);
+            }
+        }
+
+        & p {
+            @include generateGeneralFontCSS($practice01PFontSize, $practice01PLineHeight);
+        }
+    }
+}
+
+@mixin CardStyleCSS_Components {
+    .card {
+        border: 1px solid #000;
+        @include genericMargin;
+    }
+
+    .card_01 {
+        &>header {
+            &>.title_04 {
+                margin: 0;
+                padding: #{$margins / 3} $margins;
+                @include arial_Black;
+                @include generateGeneralFontCSS($card01FontSize, $card01LineHeight, null, $card01LetterSpacing);
+            }
+        }
+    }
+
+    .card_02 {
+        &>header {
+            &>.title_04 {
+                margin: 0;
+                padding: #{$margins / 3} $margins;
+                @include arial_Black;
+                @include generateGeneralFontCSS($card02FontSize, $card02LineHeight, null, $card02LetterSpacing);
+            }
+        }
+
+
+        & section {
+            &>header {
+                &>.subtitle {
+                    margin: 0 0 $margins 0;
+                    padding: #{$margins / 3} $margins;
+                    @include arial_Black;
+                    @include generateGeneralFontCSS($card02FontSize, $card02LineHeight, null, $card02LetterSpacing);
+                }
+            }
+        }
+
+    }
+
+}
+
+@mixin CoverPageStyleCSS_Components {
+    .cover {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        &>img {
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+
+@mixin BackMatterStyleCSS_Components {
+    .backmatter {
+        @include genericMargin;
+        background-color: #FFF;
+
+        &>.creditset {
+            margin: 1rem 0;
+        }
+
+        & .title_02 {
+            margin: 1rem 0;
+        }
+
+        & p {
+            @include generateGeneralFontCSS($bmPFontSize, $bmPLineHeight);
+            margin: 0;
+        }
+
+        & .ulink {
+            font-weight: bold;
+            color: $pFontColor;
+        }
+
+        & .informalfigure:last-of-type {
+            width: 115px !important;
+            height: auto;
+        }
+    }
+}
+
+// *************************************Generic Anywhere CSS*************************************
+@mixin GenericAnywhereCSS {
+    .text_uppercase {
+        text-transform: uppercase;
+    }
+
+    .text-timesnewroman {
+        font-family: "TimesNewRoman", Times, serif !important;
+        font-weight: 400 !important;
+    }
+
+    .text-arial {
+        font-family: "Arial", Arial, sans-serif !important;
+    }
+
+    .text-andy {
+        font-family: "Andy", cursive, sans-serif !important;
+        font-weight: 400 !important;
+    }
+
+    .bg_lightgrey {
+        background-color: $lightGreyColor !important
+    }
+
+    .bg_darkgreen {
+        background-color: $darkGreenColor !important;
+    }
+
+    .bg_lightseagreen {
+        background-color: $lightSeaGreenColor !important;
+    }
+
+    .bg_lightblue {
+        background-color: $lightBlueColor !important;
+    }
+
+    .bg_dodgerblue {
+        background-color: $dodgerblueColor !important;
+    }
+
+    .bg_peru {
+        background-color: $peruColor !important;
+    }
+}
+
+// ************************************* Helper Class CSS*************************************
+@mixin HelperClassCSS {
+    .width-100 {
+        width: 100% !important;
+    }
+
+    .width-95 {
+        width: 95% !important;
+    }
+
+    .width-90 {
+        width: 90% !important;
+    }
+
+    .width-85 {
+        width: 85% !important;
+    }
+
+    .width-80 {
+        width: 80% !important;
+    }
+
+    .width-75 {
+        width: 75% !important;
+    }
+
+    .width-70 {
+        width: 70% !important;
+    }
+
+    .width-66 {
+        width: 66.6% !important;
+    }
+
+    .width-60 {
+        width: 60% !important;
+    }
+
+    .width-57 {
+        width: 57.5% !important;
+    }
+
+    .width-50 {
+        width: 50% !important;
+    }
+
+    .width-40 {
+        width: 40% !important;
+    }
+
+    .width-33 {
+        width: 33.3% !important;
+    }
+
+    .width-30 {
+        width: 30% !important;
+    }
+
+    .width-25 {
+        width: 25% !important;
+    }
+
+    .width-20 {
+        width: 20% !important;
+    }
+
+    .width-15 {
+        width: 15% !important;
+    }
+
+    .width-10 {
+        width: 10% !important;
+    }
+
+    .width-5 {
+        width: 5% !important;
+    }
+
+    .no-widow {
+        display: inline-block;
+        text-decoration: inherit;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .clear-both {
+        clear: both;
+    }
+
+    .inline {
+        display: inline;
+    }
+
+    .force-break {
+        display: block;
+    }
+
+    .overflow-x {
+        overflow-x: auto;
+    }
+
+    .lc_align-left {
+        text-align: left !important;
+    }
+
+    .lc_align-right {
+        text-align: right !important;
+    }
+
+    .lc_align-center {
+        text-align: center !important;
+    }
+
+    .margin-0-auto {
+        margin: 0 auto !important;
+    }
+
+    .margin-left-0 {
+        margin-left: 0 !important;
+    }
+
+    .margin-right-0 {
+        margin-right: 0 !important;
+    }
+
+    .margin-top-0 {
+        margin-top: 0 !important;
+    }
+
+    .margin-bottom-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .margin-top-default {
+        margin-top: #{$margins + " " + !important};
+    }
+
+    .margin-bottom-default {
+        margin-bottom: #{$margins + " " + !important};
+    }
+
+    .margin-default-auto {
+        margin: #{$margins + " " + auto + " " + !important};
+    }
+
+    .margin-left-default {
+        margin-left: #{$margins + " " + !important};
+    }
+
+    .margin-right-default {
+        margin-right: #{$margins + " " + !important};
+    }
+
+    .padding-top-0 {
+        padding-top: 0 !important;
+    }
+
+    .padding-bottom-0 {
+        padding-bottom: 0 !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0 !important;
+    }
+
+    .padding-right-0 {
+        padding-right: 0 !important;
+    }
+
+    .padding-top-default {
+        padding-top: #{$margins + " " + !important};
+    }
+
+    .padding-bottom-default {
+        padding-bottom: #{$margins + " " + !important};
+    }
+
+    .padding-left-default {
+        padding-left: #{$margins + " " + !important};
+    }
+
+    .padding-right-default {
+        padding-right: #{$margins + " " + !important};
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    .sr-only-focusable:active,
+    .sr-only-focusable:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
+
+    .text-color-dodgerblue {
+        color: $dodgerblueColor !important;
+    }
+
+    .text-color-peru {
+        color: $peruColor !important;
+    }
+
+    .text-color-black {
+        color: $pFontColor !important;
+    }
+
+    .text-color-white {
+        color: $whiteColor !important;
+    }
+
+    .border-black {
+        border: 7px solid $pFontColor !important;
+    }
+}
+
+// *************************************Layouts Style CSS (<600px)*************************************
+@mixin ResponsiveGridStyleCSS_Layouts_600 {
+    .grid-container {
+        &>.grid-row {
+            flex-direction: column;
+
+            &>.grid-col:first-of-type:nth-last-of-type(2),
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col {
+                width: 100%;
+            }
+
+            &>.grid-col:first-of-type:nth-last-of-type(2):first-of-type {
+                margin-top: 0;
+            }
+
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .grid-container_01 {
+        grid-template-columns: 100%;
+
+        &>.grid-item:nth-child(odd) {
+            grid-column: 1;
+            padding: 0;
+        }
+
+        &>.grid-item:nth-child(2) {
+            grid-row: 2;
+        }
+
+        &>.grid-item:nth-child(3) {
+            border: 0;
+        }
+    }
+
+    .grid-container_02,
+    .grid-container_03 {
+        grid-template-columns: 100%;
+
+        &>.grid-item:nth-child(n) {
+            grid-column: 1;
+            padding: 0;
+        }
+
+        &>.grid-item:nth-child(2) {
+            grid-row: 2;
+            margin-top: 0;
+            border: 0;
+        }
+
+        //if there are only 2 grid items, the 2nd grid item should not have margin-bottom
+        &>.grid-item:first-child:nth-last-child(2)~.grid-item {
+            margin-bottom: 0;
+        }
+    }
+
+    .grid-container_04 {
+        grid-template-columns: 100%;
+
+        .grid-item:nth-child(n) {
+            grid-column: 1;
+        }
+
+        .grid-item:nth-child(2) {
+            padding-right: 0;
+        }
+
+        .grid-item:nth-child(3) {
+            border-left: 0;
+            border-top: 1px solid #000;
+        }
+
+        & .practice {
+            border-left: 0;
+        }
+    }
+
+    /*
+    .grid-container_05 {
+        grid-template-columns: 100%;
+
+        .grid-item:nth-child(-n+2) {
+            grid-column: 1;
+            border-bottom: 0;
+            margin-bottom: $margins;
+        }
+
+        .grid-item:nth-child(3) {
+            grid-column: 1;
+            border-right: 0;
+            margin-bottom: $margins;
+        }
+    }*/
+
+    //old version is grid-container_06 now it's 05
+    .grid-container_05 {
+        grid-template-columns: 100%;
+
+        & .grid-container_05 {
+            &>.grid-item:nth-child(n) {
+                grid-column: 1;
+                border-right: 0;
+            }
+
+            &>.grid-item:last-child {
+                border-top: 1px solid #000;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@mixin ListStyleCSS_Layouts_600 {
+
+    .ul_column_01,
+    .ul_column_02 {
+        -webkit-columns: 1;
+        -moz-columns: 1;
+        columns: 1;
+    }
+}
+
+// ************************************* Helper Class CSS (<600px)*************************************
+@mixin HelperClassCSS_600 {
+
+    .width-95,
+    .width-90,
+    .width-85,
+    .width-80,
+    .width-75,
+    .width-70,
+    .width-66,
+    .width-60,
+    .width-57,
+    .width-50,
+    .width-40,
+    .width-33,
+    .width-30,
+    .width-25,
+    .width-20,
+    .width-15,
+    .width-10,
+    .width-5 {
+        width: 100% !important;
+    }
+}
+
+/* ------------------------------------Normalization Styles CSS-------------------------------------------- */
+@include NormalizationBaseHtmlCSS;
+/* ------------------------------------Elements Style CSS-------------------------------------------- */
+@include TitleCSS_Element;
+@include ListStyleCSS_Elements;
+@include InformalFigureStyleCSS_Elements;
+
+/* ------------------------------------Layouts Styles CSS-------------------------------------------- */
+@include ResponsiveGridStyleCSS_Layouts;
+@include ListStyleCSS_Layouts;
+/* ------------------------------------Components Styles CSS-------------------------------------------- */
+@include InformalTableCSS_Components;
+@include CardStyleCSS_Components;
+@include NoteStyleCSS_Components;
+@include PracticeStyleCSS_Components;
+@include SidebarStyleCSS_Components;
+@include MarginaliaStyleCSS_Components;
+@include CoverPageStyleCSS_Components;
+@include BackMatterStyleCSS_Components;
+/* ------------------------------------Generic CSS that belongs to anywhere-------------------------------------------- */
+@include GenericAnywhereCSS;
+/* ------------------------------------Helper Class CSS-------------------------------------------- */
+@include HelperClassCSS;
+
+/* ------------------------------------Responsive Big Phones (<600px)--------------------------------- */
+@media only screen and (max-width: 600px) {
+    /* ------------------------------------Layouts Styles CSS (<600px)-------------------------------------------- */
+    @include ResponsiveGridStyleCSS_Layouts_600;
+    @include ListStyleCSS_Layouts_600;
+    /* ------------------------------------Helper Class CSS (<600px)-------------------------------------------- */
+    @include HelperClassCSS_600;
+}

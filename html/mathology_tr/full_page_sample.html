@@ -1,0 +1,2118 @@
+<html lang="en">
+
+  <head>
+    <title>Mathology Full Page Sample</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../css/mathology_tr_template.css" />
+    <style>
+      body {
+        max-width: 1024px;
+        margin: auto;
+        padding: 50px;
+        font-size: 115%;
+      }
+
+      hr {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 1.75rem;
+        line-height: 2rem;
+      }
+
+      .code_format {
+        display: block;
+        background-color: #e2f2f2;
+        border: solid #020202;
+        padding: 10px 20px;
+      }
+
+      code {
+        display: block;
+        font-family: monospace;
+        margin-top: -20px;
+        white-space: pre;
+        overflow-x: auto;
+      }
+
+      .code_format * {
+        padding: 0;
+        margin: 0;
+      }
+
+      .grid-col {
+				text-align: center;
+			}
+
+			.grid-col:nth-child(1) {
+				background-color: #e2f2f2;
+			}
+
+			.grid-col:nth-child(2) {
+				background-color: #d9ffb3;
+			}
+
+			.grid-col:nth-child(3) {
+				background-color: #ffe6cc;
+			}
+
+			.grid-col:nth-child(4) {
+				background-color: #ffe6ff;
+			}
+
+			.grid-col:nth-child(5) {
+				background-color: #999966;
+			}
+
+			.grid-col:nth-child(6) {
+				background-color: #CC66FF;
+			}
+
+			.grid-col:nth-child(7) {
+				background-color: #FFFF66;
+			}
+
+      .template_hr {
+        display: block;
+        height: 10px;
+        border: 0;
+        border-top: 10px solid red;
+        margin: 1rem 0;
+        padding: 0;
+      }
+
+      .code_snippet {
+        color: #600000;
+        font-weight: bold;
+      }
+
+      .main_title {
+        text-align: center;
+        font-size: 3rem;
+        font-family: Arial, Helvetica, sans-serif;
+        line-height: 3.25rem;
+        letter-spacing: 5px;
+        margin: 0;
+        font-variant: small-caps;
+      }
+
+      #myBtn {
+        display: none;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 99;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        background-color: black;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 4px;
+      }
+
+      #myBtn:hover {
+        background-color: red;
+      }
+
+      .links {
+        column-count: 3;
+        column-gap: 40px;
+      }
+
+      .links a {
+        font-weight: unset;
+      }
+
+      .links li {
+        font-size: 0.85rem;
+        line-height: 1.45rem;
+        margin: 0;
+      }
+
+      .links p {
+        margin: 0;
+        font-size: 0.85rem;
+        line-height: 1.45rem;
+      }
+
+      .links ol {
+        list-style-type: upper-alpha;
+      }
+
+      .links2 {
+        display: none;
+        width: 100%;
+        font-size: 1.15rem;
+        margin: 1.15rem 0;
+        border: 1px solid black;
+      }
+
+      .p-grey, .p-darkred {
+        color: #707070;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 1.15rem;
+        line-height: 1.65rem;
+      }
+
+      .p-darkred {
+        color: #600000;
+      }
+
+      .tab-container {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        flex-direction: row;
+      }
+
+      .tab-button {
+        color: white;
+        background-color: #707070;
+        padding: 0.5rem;
+        width: 25%;
+        cursor: pointer;
+        font-size: .75rem;
+      }
+
+      @media only screen and (max-width: 600px) {
+        .links { display: none; }
+        .links2 {display: block; }
+
+        .tab-container {
+          flex-direction: column;
+        }
+
+        .tab-button {
+          width: 100%;
+          padding: 1rem 0.5rem;
+        }
+      }
+
+      @media only screen and (max-width: 450px) {
+        #myBtn {
+          bottom: 70px;
+          right: 10px;
+        }
+
+        .main_title {
+          font-size: 2.25rem;
+          line-height: 2.75rem;
+          letter-spacing: 1px;
+        }
+      }
+    </style>
+
+    <script>
+      window.onload = function init() {
+        var codeblock = document.querySelectorAll(".code_format > code");
+        var len = codeblock.length;
+        for (var i = 0; i < len; i++) {
+          var dom = codeblock[i];
+          var html = dom.innerHTML;
+          console.log(html);
+          html = html.replace(/(<img([\w\W]+?))(>)/gm, "$1/>");
+          html = html.replace(/—/gm, "&#x2014;");
+          html = html.replace(/–/gm, "&#x2013;");
+          console.log(html);
+          var pattern = html.match(/\s*\n[\t\s]*/);
+          var pattern01 = html.match(/\s+\n*$/);
+          var pattern02 = html.match(/^\n*(\<)/);
+          html = html.replace(new RegExp(pattern, "g"), '\n');
+          var temphtml = html.match(/^[^\n]+\n/gm);
+
+          //html = html.replace(new RegExp(pattern01, "m"), '');
+          //html = html.replace(new RegExp(pattern02, "m", "g"), '<');
+          var text = document.createTextNode(String(temphtml.join("")));
+          dom.innerHTML = "";
+          dom.innerText = String(temphtml.join(""));
+        }
+      }
+
+      window.onscroll = function() {scrollFunction()};
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("myBtn").style.display = "block";
+        } else {
+          document.getElementById("myBtn").style.display = "none";
+        }
+      }
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+
+      function openDesignStyle(design) {
+        var x = document.getElementsByClassName("design-display");
+
+        for (var i = 0; i < x.length; i++) {
+          x[i].style.display = "none";
+        }
+
+        document.getElementById(design).style.display = "block";
+      }
+    </script>
+  </head>
+
+  <body epub:type="bodymatter">
+    <button onclick="topFunction();" id="myBtn" title="Go to top">Top</button>
+    <section id="read_speaker">
+      <section>
+        <header>
+          <h1 class="main_title">Full Page Sample</h1>
+        </header>
+        <p class="p-grey">[This is a full page sample for editorial that comprised different elements, styles, layouts and components in the
+        Mathology teacher's guide ePub for your preview.]</p>
+        <hr />
+        <br />
+
+        <div class="tab-container">
+          <button class="tab-button" onclick="openDesignStyle('elements-list')">Elements</button>
+          <button class="tab-button" onclick="openDesignStyle('styles-list')">Styles</button>
+          <button class="tab-button" onclick="openDesignStyle('layouts-list')">Layouts</button>
+          <button class="tab-button" onclick="openDesignStyle('components-list')">Stnd. Components</button>
+        </div>
+
+        <!-- Element List -->
+        <div id="elements-list" class="design-display">
+          <ol class="links">
+          
+            <li>
+              <p><strong><a href="#paragraphs">Paragraph</a></strong></p>
+            </li>
+          
+            <li>
+              <p><strong><a href="#title01">Title</a></strong></p>
+              <ol>
+                <li>
+                  <p><a href="#title01">Title 01</a></p>
+                </li>
+                <li>
+                  <p><a href="#title02">Title 02</a></p>
+                </li>
+                <li>
+                  <p><a href="#title03">Title 03</a></p>
+                </li>
+                <li>
+                  <p><a href="#title04">Title 04</a></p>
+                </li>
+                <li>
+                  <p><a href="#subtitle">Subtitle</a></p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p><strong><a href="#unordered_list">List</a></strong></p>
+              <ol>
+                <li>
+                  <p><a href="#unordered_list">Unordered List</a></p>
+                </li>
+                <li>
+                  <p><a href="#unordered_list_ul_none">Unordered List without Bullets</a></p>
+                </li>
+                <li>
+                  <p><a href="#unordered_list_ul_01">Unordered List with Dashes</a></p>
+                </li>
+                <li>
+                  <p><a href="#practice_list">Practice List</a></p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p><strong><a href="#informalfigure">Informal Figure</a></strong></p>
+              <ol>
+                <li>
+                  <p><a href="#informalfigure">Informalfigure</a></p>
+                </li>
+                <li>
+                  <p><a href="#design-icon">Design-Icon</a></p>
+                </li>
+              </ol>
+            </li>
+          </ol>
+
+          <select class="links2" onchange="location = this.value;">
+            <option>** Pick from dropdown **</option>
+            <option value="#paragraphs">- Paragraph -</option>
+            <option value="#title01">- Title -</option>
+            <option value="#title01">Title 01</option>
+            <option value="#title02">Title 02</option>
+            <option value="#title03">Title 03</option>
+            <option value="#title04">Title 04</option>
+            <option value="#subtitle">Subtitle</option>
+          
+            <option value="#unordered_list">- List -</option>
+            <option value="#unordered_list">Unordered List</option>
+            <option value="#unordered_list_ul_none">Unordered List without Bullets</option>
+            <option value="#unordered_list_ul_01">Unordered List with Dashes</option>
+            <option value="#practice_list">Practice List</option>
+          
+            <option value="#informalfigure">- Informal Figure -</option>
+            <option value="#informalfigure">Informalfigure</option>
+            <option value="#design-icon">Design-Icon</option>
+          </select>
+        </div>
+        <!-- End of Element -->
+
+        <!-- Style List -->
+        <div id="styles-list" class="design-display" style="display: none;">
+          <ol class="links">
+            <li>
+              <p>
+                <strong>
+                  <a href="#timesnewroman">Text Typeface</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#timesnewroman">Times New Roman</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#arial">Arial</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#andy">Andy</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#strong">Text Emphasis</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#strong">Bold</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#em">Italic</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#uppercase">Uppercase</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#dodgerblue_text">Text Colours</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#dodgerblue_text">Dodger Blue Text Colour</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#peru_text">Peru Text Colour</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#black_text">Black Text Colour</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#white_text">White Text Colour</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#black_border">Border Colours</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#black_border">Black Border</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#lightgrey_bg">Background Colours</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#lightgrey_bg">Lightgrey Background</a>
+                  </p>
+                </li>
+                <li>
+                <li>
+                  <p>
+                    <a href="#darkgreen_bg">Darkgreen Background</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#lightseagreen_bg">Light Sea Green Background</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#lightblue_bg">Light Blue Background</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#dodgerblue_bg">Dodger Blue Background</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#peru_bg">Peru Background</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          </ol>
+
+          <select class="links2" onchange="location = this.value;">
+            <option>** Pick from dropdown **</option>
+            <option value="#timesnewroman">- Text Typeface -</option>
+            <option value="#timesnewroman">Times New Roman</option>
+            <option value="#arial">Arial</option>
+            <option value="#andy">Andy</option>
+          
+            <option value="#strong">- Text Emphasis -</option>
+            <option value="#strong">Bold</option>
+            <option value="#em">Italic</option>
+            <option value="#uppercase">Uppercase</option>
+          
+            <option value="#dodgerblue_text">- Text Colours -</option>
+            <option value="#dodgerblue_text">Dodger Blue Text Colour</option>
+            <option value="#peru_text">Peru Text Colour</option>
+            <option value="#black_text">Black Text Colour</option>
+            <option value="#white_text">White Text Colour</option>
+          
+            <option value="#black_border">- Border Colours -</option>
+            <option value="#black_border">Black Border</option>
+          
+            <option value="#lightgrey_bg">- Background Colours -</option>
+            <option value="#lightgrey_bg">Lightgrey Background</option>
+            <option value="#darkgreen_bg">Darkgreen Background</option>
+            <option value="#lightseagreen_bg">Light Sea Green Background</option>
+            <option value="#lightblue_bg">Light Blue Background</option>
+            <option value="#dodgerblue_bg">Dodger Blue Background</option>
+            <option value="#peru_bg">Peru Background</option>
+          </select>
+        </div>
+        <!-- End of Style -->
+
+        <!-- Layout List -->
+        <div id="layouts-list" class="design-display" style="display: none;">
+          <ol class="links">
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#grid01">Grid</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#grid01">Grid 01</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#grid02">Grid 02</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#grid03">Grid 03</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#grid04">Grid 04</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#grid05">Grid 05</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#2columns_grid">Columns</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#2columns_grid">2-Column Grid</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#2columns_ul_list">2-Column Unordered List</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#2columns_none_list">2-Column List Without Bullets</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#3columns_ul_list">3-Column Unordered List</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#3columns_none_list">3-Column List Without Bullets</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#widths">Widths</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#width-100">Width-100</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-95">Width-95</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-90">Width-90</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-85">Width-85</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-80">Width-80</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-75">Width-75</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-75">Width-70</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-66">Width-66</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-75">Width-60</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-57">Width-57</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-50">Width-50</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-40">Width-40</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-33">Width-33</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-30">Width-30</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-25">Width-25</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-20">Width-20</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-15">Width-15</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-10">Width-10</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#width-5">Width-5</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#alignments">Alignments</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#lc_align-left">Text Left-Aligned</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#lc_align-right">Text Right-Aligned</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#lc_align-center">Text Center-Aligned</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#figure_float_left">Float-Left</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#figure_float_right">Float-Right</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#clearboth">Float-Clear Both</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#inline">Inline</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#forcebreak">Force Break</a>
+                </strong>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                <strong>
+                  <a href="#overflowx">Overflow-X</a>
+                </strong>
+              </p>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#no-widow">No Widow</a>
+                </strong>
+              </p>
+            </li>
+          </ol>
+
+          <select class="links2" onchange="location = this.value;">
+            <option>** Pick from dropdown **</option>
+            <option value="#grid01">- Grid -</option>
+            <option value="#grid01">Grid 01</option>
+            <option value="#grid02">Grid 02</option>
+            <option value="#grid03">Grid 03</option>
+            <option value="#grid04">Grid 04</option>
+            <option value="#grid05">Grid 05</option>
+            <option value="#grid06">Grid 06</option>
+            <option value="#grid07">Grid 07</option>
+            <option value="#grid08">Grid 08</option>
+          
+            <option value="#2columns_grid">- Columns -</option>
+            <option value="#2columns_grid">2-Column Grid</option>
+            <option value="#2columns_ul_list">2-Column Unordered List</option>
+            <option value="#2columns_none_list">2-Column List Without Bullets</option>
+            <option value="#3columns_ul_list">3-Column Unordered List</option>
+            <option value="#3columns_none_list">3-Column List Without Bullets</option>
+          
+            <option value="#width-100">- Widths -</option>
+            <option value="#width-100">Width-100</option>
+            <option value="#width-95">Width-95</option>
+            <option value="#width-90">Width-90</option>
+            <option value="#width-85">Width-85</option>
+            <option value="#width-80">Width-80</option>
+            <option value="#width-75">Width-75</option>
+            <option value="#width-70">Width-70</option>
+            <option value="#width-66">Width-66</option>
+            <option value="#width-60">Width-60</option>
+            <option value="#width-57">Width-57</option>
+            <option value="#width-50">Width-50</option>
+            <option value="#width-40">Width-40</option>
+            <option value="#width-33">Width-33</option>
+            <option value="#width-30">Width-30</option>
+            <option value="#width-25">Width-25</option>
+            <option value="#width-20">Width-20</option>
+            <option value="#width-15">Width-15</option>
+            <option value="#width-10">Width-10</option>
+            <option value="#width-5">Width-5</option>
+          
+            <option value="#lc_align-left">- Alignments -</option>
+            <option value="#lc_align-left">Text Left-Aligned</option>
+            <option value="#lc_align-right">Text Right-Aligned</option>
+            <option value="#lc_align-center">Text Center-Aligned</option>
+            <option value="#figure_float_left">Float-Left</option>
+            <option value="#figure_float_right">Float-Right</option>
+            <option value="#clearboth">Float-Clear Both</option>
+            <option value="#inline">Inline</option>
+          
+            <option value="#forcebreak">- Force Break -</option>
+
+            <option value="#overflowx">- Overflow-X -</option>
+          
+            <option value="#no-widow">- No Widow -</option>
+          </select>
+        </div>
+        <!-- End of Layout -->
+
+        <!-- Component List -->
+        <div id="components-list" class="design-display" style="display: none;">
+          <ol class="links">
+            <li>
+              <p>
+                <strong>
+                  <a href="#marginalia_01">Marginalia</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#marginalia_01">Marginalia 01</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#sidebar_01">Sidebars</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#sidebar_01">Sidebar 01</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#note_01">Notes</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#note_01">Note 01</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#note_02">Note 02</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#practice_01">Practice</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#practice_01">Practice 01</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#card_01">Card</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#card_01">Card 01</a>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <a href="#card_02">Card 02</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p>
+                <strong>
+                  <a href="#informaltable_01">Informaltable</a>
+                </strong>
+              </p>
+              <ol>
+                <li>
+                  <p>
+                    <a href="#informaltable_01">Informaltable 01</a>
+                  </p>
+                </li>
+              </ol>
+            </li>
+          
+            <li>
+              <p><strong><a href="#long_description">Long Description</a></strong></p>
+            </li>
+          
+            <li>
+              <p><strong><a href="#cover_page">Cover Page</a></strong></p>
+            </li>
+          
+            <li>
+              <p><strong><a href="#front_matter">Front Matter</a></strong></p>
+            </li>
+
+            <li>
+              <p><strong><a href="#acknowledgement">Acknowledgement</a></strong></p>
+            </li>
+          
+            <li>
+              <p><strong><a href="#back_matter">Back Matter</a></strong></p>
+            </li>
+          </ol>
+
+          <select class="links2" onchange="location = this.value;">
+            <option>** Pick from dropdown **</option>
+            <option value="#marginalia_01">- Marginalia -</option>
+            <option value="#marginalia_01">Marginalia 01</option>
+          
+            <option value="#sidebar_01">- Sidebars -</option>
+            <option value="#sidebar_01">Sidebar 01</option>
+            <option value="#sidebar_02">Sidebar 02</option>
+          
+            <option value="#note_01">- Note -</option>
+            <option value="#note_01">Note 01</option>
+            <option value="#note_02">Note 02</option>
+          
+            <option value="#practice_01">- Practice -</option>
+            <option value="#practice_01">Practice 01</option>
+          
+            <option value="#card_01">- Card -</option>
+            <option value="#card_01">Card 01</option>
+            <option value="#card_02">Card 02</option>
+          
+            <option value="#informaltable_01">- Informaltable -</option>
+            <option value="#informaltable_01">Informaltable 01</option>
+          
+            <option value="#long_description">- Long Description -</option>
+          
+            <option value="#cover_page">- Cover Page -</option>
+          
+            <option value="#front_matter">- Front Matter -</option>
+
+            <option value="#acknowledgement">- Acknowledgement -</option>
+          
+            <option value="#back_matter">- Back Matter -</option>
+          </select>
+        </div>
+        <!-- End of Component -->
+      </section>
+
+      <hr class="template_hr" style="border-top: 40px double MediumVioletRed;"/>
+
+      <!-- Element Area -->
+      <div id="elements-area">
+        <!-- Paragraph -->
+        <p id="paragraphs" class="p-grey"><strong>[Paragraph]</strong></p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+          type specimen book.</p>
+        <!-- Paragraph Ends -->
+        <hr class="template_hr" />
+        <!-- Title 01 -->
+        <p id="title01" class="p-grey"><strong>[Title 01]</strong></p>
+        <section>
+          <header>
+            <h1 class="title title_01">Title 01</h1>
+          </header>
+        </section>
+        <!-- Title 01 Ends -->
+        <!-- Title 02 -->
+        <p id="title02" class="p-grey"><strong>[Title 02]</strong></p>
+        <section>
+          <header>
+            <h1 class="title title_02">Title 02</h1>
+          </header>
+        </section>
+        <!-- Title 02 Ends -->
+        <!-- Title 03 -->
+        <p id="title03" class="p-grey"><strong>[Title 03]</strong></p>
+        <section>
+          <header>
+            <h1 class="title title_03">Title 03</h1>
+          </header>
+        </section>
+        <!-- Title 03 Ends -->
+        <!-- Title 04 -->
+        <p id="title04" class="p-grey"><strong>[Title 04]</strong></p>
+        <section>
+          <header>
+            <h1 class="title title_04">Title 04</h1>
+          </header>
+        </section>
+        <!-- Title 04 Ends -->
+        <!-- Subtitle -->
+        <p id="subtitle" class="p-grey"><strong>[Subtitle]</strong></p>
+        <p class="subtitle"><strong><em>This is a subtitle ...</em></strong></p>
+        <!-- Subtitle Ends -->
+        <hr class="template_hr" />
+        <!-- Unordered List -->
+        <p id="unordered_list" class="p-grey"><strong>[Unordered List]</strong></p>
+        <ul>
+          <li>
+            <p>Unordered List Item one.</p>
+          </li>
+          <li>
+            <p>Unordered List Item two.</p>
+          </li>
+          <li>
+            <p>Unordered List Item three.</p>
+          </li>
+        </ul>
+        <!-- Unordered List Ends -->
+        <!-- Unordered List w/o bullets -->
+        <p id="unordered_list_ul_none" class="p-grey"><strong>[Unordered List without bullets]</strong></p>
+        <ul class="ul_none">
+          <li>
+            <p>Unordered List Item one.</p>
+          </li>
+          <li>
+            <p>Unordered List Item two.</p>
+          </li>
+          <li>
+            <p>Unordered List Item three.</p>
+          </li>
+        </ul>
+        <!-- Unordered List w/o bullets Ends -->
+        <!-- Unordered List w/ dashes -->
+        <p id="unordered_list_ul_01" class="p-grey"><strong>[Unordered List with Dashes]</strong></p>
+        <ul class="ul_01">
+          <li>
+            <p>Unordered List Item one.</p>
+          </li>
+          <li>
+            <p>Unordered List Item two.</p>
+          </li>
+          <li>
+            <p>Unordered List Item three.</p>
+          </li>
+        </ul>
+        <!-- Unordered List w/ dashes Ends -->
+        <!-- Practice List -->
+        <p id="practice_list" class="p-grey"><strong>[Practice List]</strong></p>
+        <ul class="practicelist">
+          <li class="general-problem">
+            <div class="question">
+              <p>Practice List Item one.</p>
+            </div>
+          </li>
+          <li class="general-problem">
+            <div class="question">
+              <p class="margin-bottom-0">Practice List Item two.</p>
+            </div>
+            <ul class="margin-top-0 margin-bottom-0">
+              <li>
+                <p class="margin-top-0 margin-bottom-0">Practice List Item two - Unordered List Item one.</p>
+              </li>
+              <li>
+                <p class="margin-top-0 margin-bottom-0">Practice List Item two - Unordered List Item two.</p>
+              </li>
+            </ul>
+          </li>
+          <li class="general-problem">
+            <div class="question">
+              <p>Practice List Item three.</p>
+            </div>
+          </li>
+        </ul>
+        <!-- Practice List Ends -->
+        <hr class="template_hr" />
+        <!-- Informalfigure -->
+        <p id="informalfigure" class="p-grey"><strong>[Informalfigure]</strong></p>
+        <figure class="informalfigure width-100" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Informalfigure Ends -->
+        <!-- Design Icon -->
+        <p id="design-icon" class="p-grey"><strong>[Design-Icon]</strong></p>
+        <ul>
+          <li>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </li>
+          <li>
+            <p><img class="design-icon inline" src="../../images/placeholder_images/icon_img_handclick.png" alt="alt text" />
+              Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          </li>
+        </ul>
+        <!-- Design Icon Ends -->
+      </div>
+      <!-- End of Element -->
+
+      <!-- Style Area -->
+      <div id="styles-area">
+        <hr class="template_hr" />
+        <!-- Times New Roman -->
+        <p id="timesnewroman" class="p-grey"><strong>[Times New Roman]</strong></p>
+        <p class="text-timesnewroman">This is normal paragraph text that uses the Times New Roman style class.</p>
+        <!-- Times New Roman end -->
+        <!-- Arial -->
+        <p id="arial" class="p-grey"><strong>[Arial]</strong></p>
+        <p class="text-arial">This is normal paragraph text that uses the Arial style class.</p>
+        <!-- Arial end -->
+        <!-- Andy -->
+        <p id="andy" class="p-grey"><strong>[Andy]</strong></p>
+        <p class="text-andy">This is normal paragraph text that uses the Andy style class.</p>
+        <!-- Andy end -->
+        <hr class="template_hr" />
+        <!-- Strong -->
+        <p id="strong" class="p-grey"><strong>[Bold]</strong></p>
+        <p>This is <strong>strong</strong> bolded paragraph text.</p>
+        <!-- Strong end -->
+        <!-- Italic -->
+        <p id="italic" class="p-grey"><strong>[Italic]</strong></p>
+        <p>This is <em>italic</em> paragraph text.</p>
+        <!-- Italic end -->
+        <!-- Uppercase -->
+        <p id="uppercase" class="p-grey"><strong>[Uppercase]</strong></p>
+        <p class="text_uppercase">This text is uppercase.</p>
+        <!-- Uppercase end -->
+        <hr class="template_hr" />
+        <!-- dodger blue text color -->
+        <p id="dodgerblue_text" class="p-grey"><strong>[Dodger Blue Text Colour]</strong></p>
+        <p class="text-color-dodgerblue">This is dodger blue text colour.</p>
+        <!-- dodger blue text color end -->
+        <!-- peru text color -->
+        <p id="peru_text" class="p-grey"><strong>[Peru Text Colour]</strong></p>
+        <p class="text-color-peru">This is peru text colour.</p>
+        <!-- peru text color end -->
+        <!-- black text color -->
+        <p id="black_text" class="p-grey"><strong>[Black Text Colour]</strong></p>
+        <p class="text-color-black">This is black text colour.</p>
+        <!-- black text color end -->
+        <!-- white text color -->
+        <p id="white_text" class="p-grey"><strong>[White Text Colour]</strong></p>
+        <div class="bg_dodgerblue">
+          <p class="text-color-white">This is white text colour.</p>
+        </div>
+        <!-- white text color end -->
+        <hr class="template_hr" />
+        <!-- black border -->
+        <p id="black_border" class="p-grey"><strong>[Black Border]</strong></p>
+        <figure class="informalfigure width-33" role="group">
+          <img class="border-black" src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- black border end -->
+        <hr class="template_hr" />
+        <!-- lightgrey background -->
+        <p id="lightgrey_bg" class="p-grey"><strong>[Lightgrey Background]</strong></p>
+        <div class="note note_01 bg_lightgrey">
+          <p class="text-color-black"></p>This is the text colour that should be used for this type of background colour to pass
+          accessibility.<p></p>
+        </div>
+        <!-- lightgrey background end -->
+        <!-- darkgreen background -->
+        <p id="darkgreen_bg" class="p-grey"><strong>[Darkgreen Background]</strong></p>
+        <div class="note note_01 bg_darkgreen">
+          <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+            accessibility.</p>
+        </div>
+        <!-- darkgreen background end -->
+        <!-- light sea green background -->
+        <p id="lightseagreen_bg" class="p-grey"><strong>[Light Sea Green Background]</strong></p>
+        <div class="note note_01 bg_lightseagreen">
+          <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+            accessibility.</p>
+        </div>
+        <!-- light sea green background end -->
+        <!-- light blue background -->
+        <p id="lightblue_bg" class="p-grey"><strong>[Light Blue Background]</strong></p>
+        <div class="note note_01 bg_lightblue">
+          <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+            accessibility.</p>
+        </div>
+        <!-- light blue background end -->
+        <!-- dodger blue background -->
+        <p id="dodgerblue_bg" class="p-grey"><strong>[Dodger Blue Background]</strong></p>
+        <div class="note note_01 bg_dodgerblue">
+          <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+            accessibility.</p>
+        </div>
+        <!-- dodger blue background end -->
+        <!-- Peru background -->
+        <p id="peru_bg" class="p-grey"><strong>[Peru Background]</strong></p>
+        <div class="note note_01 bg_peru">
+          <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+            accessibility.</p>
+        </div>
+        <!-- Peru background end -->
+      </div>
+      <!-- End of Style -->
+
+      <!-- Layout Area -->
+      <div id="layouts-area">
+        <hr class="template_hr" />
+        <!-- grid 01 -->
+        <p id="grid01" class="p-grey"><strong>[Grid 01]</strong></p>
+        <div class="grid-container grid-container_01">
+          <div class="grid-item grid-col">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col">
+            <p>Grid Item 02</p>
+          </div>
+          <div class="grid-item grid-col" style="border-top: 0;">
+            <p>Grid Item 03</p>
+          </div>
+        </div>
+        <!-- grid 01 end -->
+        <!-- grid 02 -->
+        <p id="grid02" class="p-grey"><strong>[Grid 02]</strong></p>
+        <div class="grid-container grid-container_02">
+          <div class="grid-item grid-col">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col" style="border-top: 0;">
+            <p>Grid Item 02</p>
+          </div>
+          <div class="grid-item grid-col">
+            <p>Grid Item 03</p>
+          </div>
+        </div>
+        <br /><br />
+        <div class="grid-container grid-container_02">
+          <div class="grid-item grid-col g-item-padding" style="padding-bottom: 50px;">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col" style="border-top: 0;">
+            <p>Grid Item 02</p>
+          </div>
+        </div>
+        <!-- grid 02 end -->
+        <!-- grid 03 -->
+        <p id="grid03" class="p-grey"><strong>[Grid 03]</strong></p>
+        <div class="grid-container grid-container_03">
+          <div class="grid-item grid-col">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col" style="border-top: 0;">
+            <p>Grid Item 02</p>
+          </div>
+          <div class="grid-item grid-col">
+            <p>Grid Item 03</p>
+          </div>
+        </div>
+        <br /><br />
+        <div class="grid-container grid-container_03">
+          <div class="grid-item grid-col g-item-padding" style="padding-bottom: 50px;">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col" style="border-top: 0;">
+            <p>Grid Item 02</p>
+          </div>
+        </div>
+        <!-- grid 03 end -->
+        <!-- grid 04 -->
+        <p id="grid04" class="p-grey"><strong>[Grid 04]</strong></p>
+        <div class="grid-container grid-container_04">
+          <div class="grid-item grid-col" style="border-bottom: 0;">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col">
+            <p>Grid Item 02</p>
+          </div>
+          <div class="grid-item grid-col" style="border-left: 0; border-top: 0;">
+            <p>Grid Item 03</p>
+          </div>
+          <div class="grid-item grid-col">
+            <p>Grid Item 04</p>
+          </div>
+        </div>
+        <!-- grid 04 end -->
+        <!-- grid 05 -->
+        <p id="grid05" class="p-grey"><strong>[Grid 05]</strong></p>
+        <div class="grid-container grid-container_05">
+          <div class="grid-item grid-col" style="border-bottom: 0;">
+            <p>Grid Item 01</p>
+          </div>
+          <div class="grid-item grid-col" style="background-color: white;">
+            <div class="grid-container grid-container_05">
+              <div class="grid-item grid-col" style="background-color: #e6ffcc; border-bottom: 0;">
+                <p>Grid Item 02 - 01</p>
+              </div>
+              <div class="grid-item grid-col" style="border-right: 0;">
+                <p>Grid Item 02 - 02</p>
+              </div>
+              <div class="grid-item grid-col" style="background-color: #ccff99; border-top: 0;">
+                <p>Grid Item 02 - 03</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <!-- grid 05 end -->
+        <hr class="template_hr" />
+        <!-- 2 column grid -->
+        <p id="2columns_grid" class="p-grey"><strong>[2-Column Grid]</strong></p>
+        <div class="grid-container">
+          <div class="grid-row">
+            <div class="grid-col">
+              <p>Column 01</p>
+            </div>
+            <div class="grid-col">
+              <p>Column 02</p>
+            </div>
+          </div>
+        </div>
+        <!-- 2 column grid end -->
+        <!-- 2 column Unordered List -->
+        <p id="2columns_ul_list" class="p-grey"><strong>[2-Column Unordered List]</strong></p>
+        <ul class="ul_column ul_column_01">
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item one.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item two.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item three.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item four.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item five.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item six.</p>
+          </li>
+        </ul>
+        <!-- 2 column Unordered List end -->
+        <!-- 2 column Unordered List w/o bullets -->
+        <p id="2columns_none_list" class="p-grey"><strong>[2-Column Unordered List without Bullets]</strong></p>
+        <ul class="ul_none ul_column ul_column_01">
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item one.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item two.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item three.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item four.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item five.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item six.</p>
+          </li>
+        </ul>
+        <!-- 2 column Unordered List w/o bullets end -->
+        <!-- 3 column Unordered List -->
+        <p id="3columns_ul_list" class="p-grey"><strong>[3-Column Unordered List]</strong></p>
+        <ul class="ul_column ul_column_02">
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item one.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item two.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item three.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item four.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item five.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item six.</p>
+          </li>
+        </ul>
+        <!-- 3 column Unordered List end -->
+        <!-- 3 column Unordered List w/o bullets -->
+        <p id="3columns_none_list" class="p-grey"><strong>[3-Column Unordered List without Bullets]</strong></p>
+        <ul class="ul_none ul_column ul_column_02">
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item one.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item two.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item three.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item four.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item five.</p>
+          </li>
+          <li class="padding-bottom-default">
+            <p class="margin-top-0 margin-bottom-0">Unordered List Item six.</p>
+          </li>
+        </ul>
+        <!-- 3 column Unordered List w/o bullets end -->
+        <hr class="template_hr" />
+        <!-- Width-100 -->
+        <p id="width-100" class="p-grey"><strong>[Width-100]</strong></p>
+        <figure class="informalfigure width-100" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-100 ends -->
+        <!-- Width-95 -->
+        <p id="width-95" class="p-grey"><strong>[Width-95]</strong></p>
+        <figure class="informalfigure width-95" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-95 ends -->
+        <!-- Width-90 -->
+        <p id="width-90" class="p-grey"><strong>[Width-90]</strong></p>
+        <figure class="informalfigure width-90" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-90 ends -->
+        <!-- Width-85 -->
+        <p id="width-85" class="p-grey"><strong>[Width-85]</strong></p>
+        <figure class="informalfigure width-85" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-85 ends -->
+        <!-- Width-80 -->
+        <p id="width-80" class="p-grey"><strong>[Width-80]</strong></p>
+        <figure class="informalfigure width-80" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-80 ends -->
+        <!-- Width-75 -->
+        <p id="width-75" class="p-grey"><strong>[Width-75]</strong></p>
+        <figure class="informalfigure width-75" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-75 ends -->
+        <!-- Width-70 -->
+        <p id="width-70" class="p-grey"><strong>[Width-70]</strong></p>
+        <figure class="informalfigure width-70" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-70 ends -->
+        <!-- Width-66 -->
+        <p id="width-66" class="p-grey"><strong>[Width-66]</strong></p>
+        <figure class="informalfigure width-66" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-66 ends -->
+        <!-- Width-60 -->
+        <p id="width-60" class="p-grey"><strong>[Width-60]</strong></p>
+        <figure class="informalfigure width-60" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-60 ends -->
+        <!-- Width-57 -->
+        <p id="width-57" class="p-grey"><strong>[Width-57]</strong></p>
+        <figure class="informalfigure width-57" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-57 ends -->
+        <!-- Width-50 -->
+        <p id="width-50" class="p-grey"><strong>[Width-50]</strong></p>
+        <figure class="informalfigure width-50" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-50 ends -->
+        <!-- Width-40 -->
+        <p id="width-40" class="p-grey"><strong>[Width-40]</strong></p>
+        <figure class="informalfigure width-40" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-40 ends -->
+        <!-- Width-33 -->
+        <p id="width-33" class="p-grey"><strong>[Width-33]</strong></p>
+        <figure class="informalfigure width-33" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-33 ends -->
+        <!-- Width-30 -->
+        <p id="width-30" class="p-grey"><strong>[Width-30]</strong></p>
+        <figure class="informalfigure width-30" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-30 ends -->
+        <!-- Width-25 -->
+        <p id="width-25" class="p-grey"><strong>[Width-25]</strong></p>
+        <figure class="informalfigure width-25" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-25 ends -->
+        <!-- Width-20 -->
+        <p id="width-20" class="p-grey"><strong>[Width-20]</strong></p>
+        <figure class="informalfigure width-20" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-20 ends -->
+        <!-- Width-15 -->
+        <p id="width-15" class="p-grey"><strong>[Width-15]</strong></p>
+        <figure class="informalfigure width-15" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-15 ends -->
+        <!-- Width-10 -->
+        <p id="width-10" class="p-grey"><strong>[Width-10]</strong></p>
+        <figure class="informalfigure width-10" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-10 ends -->
+        <!-- Width-5 -->
+        <p id="width-5" class="p-grey"><strong>[Width-5]</strong></p>
+        <figure class="informalfigure width-5" role="group">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Width-5 ends -->
+        <hr class="template_hr" />
+        <!-- Text Left Aligned -->
+        <p id="lc_align-left" class="p-grey"><strong>[Text Left-Aligned]</strong></p>
+        <p class="lc_align-left">This text is left aligned.</p>
+        <!-- Text Left Aligned ends -->
+        <!-- Text Right Aligned -->
+        <p id="lc_align-right" class="p-grey"><strong>[Text Right-Aligned]</strong></p>
+        <p class="lc_align-right">This text is right aligned.</p>
+        <!-- Text Right Aligned ends -->
+        <!-- Text Center Aligned -->
+        <p id="lc_align-center" class="p-grey"><strong>[Text Center-Aligned]</strong></p>
+        <p class="lc_align-center">This text is centered aligned.</p>
+        <!-- Text Center Aligned end -->
+        <!-- Float Left -->
+        <p id="figure_float_left" class="p-grey"><strong>[Float Left]</strong></p>
+        <figure class="informalfigure width-33 float-left">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard
+          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+          specimen
+          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+          more
+          recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <!-- Float Left ends -->
+        <!-- Float Right -->
+        <p id="figure_float_right" style="clear: both; "class="p-grey"><strong>[Float Right]</strong></p>
+        <figure class="informalfigure width-33 float-right">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard
+          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+          specimen
+          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+          unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+          more
+          recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        <!-- Float Right ends -->
+        <!-- Float Clear Both -->
+        <p id="clearboth" style="clear: both;" class="p-grey"><strong>[Float-Clear Both]</strong></p>
+        <figure class="informalfigure width-33 float-right margin-top-0 margin-right-0 margin-left-default clear-both">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <figure class="informalfigure width-33 float-right margin-top-0 margin-right-0 margin-left-default clear-both">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+            </div>
+          </figcaption>
+        </figure>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+          standard
+          dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+          specimen
+          book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+          unchanged.</p>
+        <p class="clear-both">Float-Clear Both is applied on this paragraph. Lorem Ipsum is simply dummy text of the printing
+          and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+          a
+          galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+          leap
+          into electronic typesetting, remaining essentially unchanged.</p>
+        <!-- Float Clear Both ends -->
+        <!-- Inline -->
+        <p id="inline" class="p-grey"><strong>[Inline]</strong></p>
+        <p><img class="design-icon inline" src="../../images/placeholder_images/icon_img_handclick.png" alt="alt text" /> Lorem
+          Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        <!-- INline ends -->
+        <hr class="template_hr" />
+        <!-- Forcebreak -->
+        <p id="forcebreak" class="p-grey"><strong>[Force Break]</strong></p>
+        <p>
+          <span class="force-break">Lorem ipsum dolor sit amet,</span>
+          <span class="force-break">consectetur adipiscing elit.</span>
+          <span class="force-break">Duis velit ex, suscipit ut ultrices quis.</span>
+          <span class="force-break">pharetra vel diam.</span>
+        </p>
+        <p>
+          <span class="force-break">Aenean volutpat tellus in tortor dictum,</span>
+          <span class="force-break">sed lacinia nunc lacinia.</span>
+          <span class="force-break">Vestibulum vitae risus est.</span>
+        </p>
+        <!-- Forcebreak ends -->
+        <hr class="template_hr" />
+        <!-- OverflowX -->
+        <p id="overflowx" class="p-grey"><strong>[Overflow-X]</strong></p>
+        <div class="overflow-x margin-0-auto" style="width: 500px;">
+          <table class="informaltable informaltable_01 margin-top-0 margin-bottom-0">
+            <thead>
+              <tr>
+                <th class="lc_align-right" scope="col">
+                  <p class="text_uppercase">
+                    <strong>Math Focus</strong>
+                  </p>
+                </th>
+                <th class="lc_align-right" scope="col">
+                  <p class="text_uppercase">
+                    <strong>Large Group Options</strong>
+                  </p>
+                </th>
+                <th class="lc_align-right" scope="col">
+                  <p class="text_uppercase">
+                    <strong>Small Group Options</strong>
+                  </p>
+                </th>
+                <th class="lc_align-right" scope="col">
+                  <p class="text_uppercase">
+                    <strong>Options for Independent Work</strong>
+                  </p>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </td>
+                <td>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                    a galley of type and scrambled it to make a type specimen book.</p>
+                </td>
+                <td>
+                  <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s</p>
+                </td>
+                <td>
+                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking at its layout.</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </td>
+                <td>
+                  <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took
+                    a galley of type and scrambled it to make a type specimen book.</p>
+                </td>
+                <td>
+                  <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s</p>
+                </td>
+                <td>
+                  <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                    looking at its layout.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- OverflowX ends -->
+        <!-- no-widow -->
+        <p id="no-widow" class="p-grey"><strong>[No Widow]</strong></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis velit ex, suscipit ut ultrices quis, pharetra vel diam.
+          Aenean volutpat tellus in tortor dictum, sed lacinia nunc lacinia. Vestibulum vitae risus est. Praesent sed <strong><span class="no-widow">risus urna.</span></strong>
+        </p>
+        <!-- no-widow ends -->
+      </div>
+      <!-- End of Layout -->
+
+      <!-- Component Area -->
+      <div id="components-area">
+        <hr class="template_hr" />
+        <!-- Marginalia 01 -->
+        <p id="marginalia_01" class="p-grey"><strong>[Marginalia 01]</strong></p>
+        <aside class="marginalia marginalia_01">
+          <header class="bg_lightseagreen">
+            <h1 class="title title_06 text_uppercase">Connecting to Measurement</h1>
+          </header>
+          <div class="padding-left-default padding-right-default">
+            <p>This is your body text for marginalia 01, which can be any element, layout, and/or component you specify in
+              your markup.</p>
+          </div>
+        </aside>
+        <!-- Marginalia 01 ends -->
+        <hr class="template_hr" />
+        <!-- Sidebar 01 -->
+        <p id="sidebar_01" class="p-grey"><strong>[Sidebar 01]</strong></p>
+        <aside class="sidebar sidebar_01">
+          <header>
+            <h1 class="title title_06 text_uppercase">Math Focus</h1>
+          </header>
+          <p>This is your body text for sidebar 01, which can be any element, layout,
+            and/or component you specify in your markup.</p>
+        </aside>
+        <!-- Sidebar 01 ends -->
+        <hr class="template_hr" />
+        <!-- Note 01 -->
+        <p id="note_01" class="p-grey"><strong>[Note 01]</strong></p>
+        <div class="note note_01">
+          <p>This is your body text for note 01, which can be any element, layout, and/or component you specify in your markup.
+          </p>
+        </div>
+        <!-- Note 01 ends -->
+        <!-- Note 02 -->
+        <p id="note_02" class="p-grey"><strong>[Note 02]</strong></p>
+        <div class="note note_02">
+          <p>This is your body text for note 02, which can be any element, layout, and/or component you specify in your markup.
+          </p>
+        </div>
+        <!-- Note 02 ends -->
+        <hr class="template_hr" />
+        <!-- Practice 01 -->
+        <p id="practice_01" class="p-grey"><strong>[Practice 01]</strong></p>
+        <section class="practice practice_01 bg_lightseagreen">
+          <header class="bg_darkgreen">
+            <h1 class="title title_04 text_uppercase text-color-white">Watch For...</h1>
+          </header>
+          <div class="practicelist padding-right-default padding-left-default">
+            <p>This is your body text, which can be any element, layout, and/or component you specify in your markup. However
+              this is a practice, generally it should use the <strong>practicelist element</strong> within here.</p>
+          </div>
+        </section>
+        <section class="practice practice_01 bg_lightblue">
+          <header class="bg_darkgreen">
+            <h1 class="title title_04 text_uppercase text-color-white">Watch For...</h1>
+          </header>
+          <div class="practicelist padding-right-default padding-left-default">
+            <p>This is your body text, which can be any element, layout, and/or component you specify in your markup. However
+              this is a practice, generally it should use the <strong>practicelist element</strong> within here.</p>
+          </div>
+        </section>
+        <!-- Practice 01 ends -->
+        <hr class="template_hr" />
+        <!-- Card 01 -->
+        <p id="card_01" class="p-grey"><strong>[Card 01]</strong></p>
+        <section class="card card_01">
+          <header class="bg_dodgerblue">
+            <h1 class="title title_04 text_uppercase text-color-white">Eyes in 1 Minute!</h1>
+          </header>
+          <div class="padding-left-default padding-right-default">
+            <p>This is your body text for card 01, which can be any element, layout, and/or component you specify in your
+              markup.</p>
+          </div>
+        </section>
+        <!-- Card 01 ends -->
+        <!-- Card 02 -->
+        <p id="card_02" class="p-grey"><strong>[Card 02]</strong></p>
+        <section class="card card_02">
+          <header class="bg_lightgrey">
+            <h1 class="title title_04 text_uppercase">Independent Inquiry</h1>
+          </header>
+          <section class="margin-top-0">
+            <header class="bg_dodgerblue">
+              <h2 class="subtitle text_uppercase text-color-white">Numbers Can Tell About...</h2>
+            </header>
+            <div class="padding-left-default padding-right-default">
+              <p>This is your body text for card 02, which can be any element, layout, and/or component you specify in your
+                markup.</p>
+            </div>
+          </section>
+        </section>
+        <section class="card card_02">
+          <header class="bg_lightgrey">
+            <h1 class="title title_04 text_uppercase">Independent Inquiry</h1>
+          </header>
+          <section class="margin-top-0">
+            <header class="bg_peru">
+              <h2 class="subtitle text_uppercase text-color-white">Numbers Can Tell About...</h2>
+            </header>
+            <div class="padding-left-default padding-right-default">
+              <p>This is your body text for card 02, which can be any element, layout, and/or component you specify in your
+                markup.</p>
+            </div>
+          </section>
+        </section>
+        <!-- Card 02 ends -->
+        <hr class="template_hr" />
+        <!-- Informaltable 01 -->
+        <p id="informaltable_01" class="p-grey"><strong>[Informaltable 01]</strong></p>
+        <table class="informaltable informaltable_01">
+          <caption>
+            <p><strong>Optional Caption</strong></p>
+          </caption>
+          <thead>
+            <tr class="bg_lightseagreen">
+              <th scope="col">
+                <p class="text_uppercase">
+                  <strong>Math Focus</strong>
+                </p>
+              </th>
+              <th scope="col">
+                <p class="text_uppercase">
+                  <strong>Large Group Options</strong>
+                </p>
+              </th>
+              <th scope="col">
+                <p class="text_uppercase">
+                  <strong>Small Group Options</strong>
+                </p>
+              </th>
+              <th scope="col">
+                <p class="text_uppercase">
+                  <strong>Options for Independent Work</strong>
+                </p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </td>
+              <td>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                  took a galley of type and scrambled it to make a type specimen book.</p>
+              </td>
+              <td>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s</p>
+              </td>
+              <td>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                  looking at its layout.</p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              </td>
+              <td>
+                <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+                  took a galley of type and scrambled it to make a type specimen book.</p>
+              </td>
+              <td>
+                <p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s</p>
+              </td>
+              <td>
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when
+                  looking at its layout.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- informaltable 01 ends -->
+        <hr class="template_hr" />
+        <!-- Long description -->
+        <p id="long_description" class="p-grey"><strong>[Long Description]</strong></p>
+        <figure class="informalfigure width-50">
+          <img src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+          <figcaption>
+            <div class="caption">
+              <p>Caption text will display below the figure like this.</p>
+              <details class="margin-top-default margin-bottom-default">
+                <summary class="margin-bottom-default">
+                  <p class="inline">
+                    <strong>Long Description</strong>
+                  </p>
+                </summary>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                  and scrambled it to make a type specimen book.</p>
+              </details>
+            </div>
+          </figcaption>
+        </figure>
+        <!-- Long description ends -->
+        <hr class="template_hr" />
+        <!-- Cover page-->
+        <p id="cover_page" class="p-grey"><strong>[Cover Page]</strong></p>
+        <div class="cover">
+          <img src="../../images/placeholder_images/cover.jpg" alt="alt text" />
+        </div>
+        <!-- Cover page ends -->
+        <hr class="template_hr" />
+        <!-- Acknowledgement -->
+        <p id="acknowledgement" class="p-grey"><strong>[Acknowledgement]</strong></p>
+        <section class="acknowledgements">
+          <section>
+            <header>
+              <h1 class="title title_04"><em>Mathology Little Books Team</em></h1>
+            </header>
+            <p>Publisher: Lorem Ipsum</p>
+            <p>Managaing Editor: Lorem Ipsum</p>
+          </section>
+          <section>
+            <header>
+              <h1 class="title title_04">Student Books</h1>
+            </header>
+            <p>Project Manager: Lorem Ipsum</p>
+            <p>Photo Researcher: Lorem Ipsum</p>
+          </section>
+        </section>
+        <!-- Acknowledgement ends -->
+        <hr class="template_hr" />
+        <!-- Back Matter -->
+        <p id="back_matter" class="p-grey"><strong>[Back Matter]</strong></p>
+        <section class="backmatter">
+          <section class="creditset">
+            <section class="creditsetdiv">
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
+                it to make
+                a type specimen book.</p>
+            </section>
+            <section class="creditsetdiv">
+              <header>
+                <h2 class="title title_02">Print Copyright</h2>
+              </header>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+              <p><a href="mailto:your_email@address_here.com" class="ulink">your_email@address_here.com</a></p>
+              <br>
+              <p><em>Name of Book</em></p>
+              <br>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+                a type
+                specimen book.</p>
+              <br>
+              <p><a href="#" class="ulink" target="_blank">www.website.com</a></p>
+              <br>
+              <div>
+                <figure class="float-left informalfigure">
+                  <img src="../../images/placeholder_images/pearson_logo.jpg" />
+                </figure>
+                <div class="clear-both"></div>
+              </div>
+            </section>
+          </section>
+        </section>
+        <!-- Back matter ends -->
+      </div>
+      <!-- End of Component -->
+
+    </section> <!-- Readspeaker section closed-->
+  </body>
+
+</html>

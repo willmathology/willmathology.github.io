@@ -1,0 +1,148 @@
+@charset "UTF-8";
+
+$font17Name: "OpenSansBold";
+$font17Src_EOT: url('../fonts/OpenSans-Bold.eot');
+$font17Src_EOTIE: url('../fonts/OpenSans-Bold.eot?#iefix') format('embedded-opentype');
+$font17Src_WOFF2: url('../fonts/OpenSans-Bold.woff2') format('woff2');
+$font17Src_WOFF: url('../fonts/OpenSans-Bold.woff') format('woff');
+$font17Src_TTF: url('../fonts/OpenSans-Bold.tff') format('truetype');
+$font17Src_SVG: url('../fonts/OpenSans-Bold.svg#svgFontName') format('svg');
+
+$font18Name: "OpenSansRegular";
+$font18Src_EOT: url('../fonts/OpenSans-Regular.eot');
+$font18Src_EOTIE: url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype');
+$font18Src_WOFF2: url('../fonts/OpenSans-Regular.woff2') format('woff2');
+$font18Src_WOFF: url('../fonts/OpenSans-Regular.woff') format('woff');
+$font18Src_TTF: url('../fonts/OpenSans-Regular.tff') format('truetype');
+$font18Src_SVG: url('../fonts/OpenSans-Regular.svg#svgFontName') format('svg');
+
+@mixin openSansBold { // Open Sans Bold
+	font-family: $font17Name;
+	font-weight: bold;
+	src: $font17Src_EOT, // IE9 Compat Modes 
+		$font17Src_EOTIE, // IE6-IE8
+		$font17Src_WOFF2, // Super Modern Browsers
+		$font17Src_WOFF, // Pretty Modern Browsers
+		$font17Src_TTF, // Safari, Android, iOS
+		$font17Src_SVG; // Legacy iOS
+}
+
+@mixin openSansRegular { // Open Sans Regular
+	font-family: $font18Name;
+	font-weight: normal;
+	src: $font18Src_EOT, // IE9 Compat Modes 
+		$font18Src_EOTIE, // IE6-IE8
+		$font18Src_WOFF2, // Super Modern Browsers
+		$font18Src_WOFF, // Pretty Modern Browsers
+		$font18Src_TTF, // Safari, Android, iOS
+		$font18Src_SVG; // Legacy iOS
+}
+
+@font-face {
+	@include openSansBold;
+}
+
+@font-face {
+	@include openSansRegular;
+}
+
+@mixin openSans_Bold {
+	font-family: "OpenSansBold", Arial, sans-serif;
+	font-weight: bold;
+}
+
+@mixin openSans_Regular {
+	font-family: "OpenSansRegular", Arial, sans-serif;
+	font-weight: normal;
+}
+
+// ************************************* Cover Page *************************************
+#cover-page {
+     background: transparent;
+     margin: 0;
+
+     & div {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+
+          & > img {
+               border-style: none;
+               width: auto;
+               height: 100%;
+               margin: 0 auto;
+               display: block;
+          }
+     }
+}
+
+/* ************************************* Back Matter ************************************* */
+
+.no-widow {
+	display: inline-block;
+}
+
+.backmatter {
+     background-color: #FFF;
+}
+
+.creditsetdiv {
+     margin: 2.5% 10%;
+     padding: 0;
+
+	& .title01 {
+		@include openSans_Bold;
+		font-size: 34px;
+		color: #000;
+		text-shadow: none;
+		text-transform: unset;
+		letter-spacing: initial;
+		line-height: initial;
+	}
+
+	&>p {
+		@include openSans_Regular;
+		font-size: 20px;
+		line-height: initial;
+          margin: 0;
+		padding: 0;
+		color: #000;
+	}
+
+	&>p .ulink, &>p .ulink span {
+		@include openSans_Bold;
+		font-size: 20px;
+          color: #000;
+          text-decoration: underline;
+	}
+}
+
+.informalfigurepearson {
+	max-width: 200px;
+	height: auto;
+	display: inline-block;
+	margin: 5px 0 0 0;
+
+	& img {
+		border-style: none;
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+		display: block;
+	}
+}
+
+/* ************************************* Mobile Responsive (767px - 600px) ************************************* */
+// vertical tablet
+@media only screen and (max-width: 767px) {
+
+     // ************************************* Cover Page *************************************
+     #cover-page {
+          & div > img {
+               width: 100%;
+               height: auto;
+          }
+     }
+}

@@ -1,0 +1,901 @@
+@charset "UTF-8";
+/* ------------------------------------Load the fonts into CSS-------------------------------------------- */
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 100;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-Light.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-Light.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-Light.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-Light.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 100;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-LightItalic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-LightItalic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-LightItalic.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-LightItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-Medium.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-Medium.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-Medium.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-Medium.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-MediumItalic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-MediumItalic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-MediumItalic.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-MediumItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBold.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBold.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBold.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBold.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBoldItalic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBoldItalic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBoldItalic.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-ExtraBoldItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-Black.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-Black.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-Black.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-Black.ttf") format("truetype"); }
+@font-face {
+  font-family: "Arial";
+  font-style: italic;
+  font-weight: 900;
+  src: url("../fonts/mathology_tr_fonts/ArialMTW05-BlackItalic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/ArialMTW05-BlackItalic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/ArialMTW05-BlackItalic.woff") format("woff"), url("../fonts/mathology_tr_fonts/ArialMTW05-BlackItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "TimesNewRoman";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Regular.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Regular.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Regular.woff") format("woff"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: "TimesNewRoman";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Italic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Italic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Italic.woff") format("woff"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Italic.ttf") format("truetype"); }
+@font-face {
+  font-family: "TimesNewRoman";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Bold.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Bold.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Bold.woff") format("woff"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: "TimesNewRoman";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-BoldIt.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-BoldIt.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-BoldIt.woff") format("woff"), url("../fonts/mathology_tr_fonts/TimesNewRomanPSW05-BoldIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/Andy-Regular.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/Andy-Regular.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/Andy-Regular.woff") format("woff"), url("../fonts/mathology_tr_fonts/Andy-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/mathology_tr_fonts/Andy-Italic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/Andy-Italic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/Andy-Italic.woff") format("woff"), url("../fonts/mathology_tr_fonts/Andy-Italic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/Andy-Bold.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/Andy-Bold.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/Andy-Bold.woff") format("woff"), url("../fonts/mathology_tr_fonts/Andy-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/mathology_tr_fonts/Andy-BoldItalic.eot") format("embedded-opentype"), url("../fonts/mathology_tr_fonts/Andy-BoldItalic.woff2") format("woff2"), url("../fonts/mathology_tr_fonts/Andy-BoldItalic.woff") format("woff"), url("../fonts/mathology_tr_fonts/Andy-BoldItalic.ttf") format("truetype"); }
+/* ------------------------------------Normalization Styles CSS-------------------------------------------- */
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  letter-spacing: 0.015rem;
+  line-height: 1.25rem;
+  -webkit-text-size-adjust: 100%;
+  font-size: 100%; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit; }
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4; }
+
+body {
+  font-family: "TimesNewRoman", Times, serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-size: 115%;
+  background-color: #FFFFFF; }
+
+strong {
+  font-weight: bold;
+  text-decoration: inherit; }
+
+em {
+  font-style: italic;
+  text-decoration: inherit; }
+
+section,
+aside {
+  display: block;
+  margin: 1.5rem 0;
+  padding: 0; }
+
+header {
+  display: block; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: block;
+  color: #000; }
+
+p,
+ol,
+ul,
+dl {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 1.5rem 0;
+  color: #000; }
+
+p,
+dt {
+  font-size: 1.25rem;
+  line-height: 1.75rem; }
+
+ul {
+  list-style-type: disc;
+  padding-inline-start: 20px;
+  padding-left: 20px; }
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent; }
+
+dl,
+dt,
+dd {
+  margin: 1.5rem 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+dt {
+  margin-bottom: 0;
+  font-weight: bold; }
+
+dd {
+  margin-inline-start: 0;
+  margin-top: 0; }
+  dd > p:first-of-type {
+    margin-top: 0; }
+
+dd:after {
+  display: block;
+  content: ""; }
+
+figure {
+  display: block;
+  margin-block-start: 1.5rem;
+  margin-block-end: 1.5rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  margin: 1.5rem auto;
+  padding: 0; }
+
+img {
+  border-style: none;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block; }
+
+figcaption,
+div {
+  display: block; }
+
+figcaption {
+  margin: 0.3rem auto 0.5rem auto;
+  text-align: left;
+  padding: 0; }
+
+blockquote {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  margin-inline-start: 4rem;
+  margin-inline-end: 4rem;
+  margin: 1.5rem;
+  padding: 0; }
+
+cite {
+  font-style: unset; }
+
+hr {
+  display: block;
+  margin-block-start: 0.575rem;
+  margin-block-end: 0.575rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  margin: 0.575rem auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px; }
+
+caption {
+  display: text-caption;
+  text-align: -webkit-center; }
+
+details {
+  display: block;
+  cursor: pointer;
+  pointer-events: auto; }
+
+details[open] {
+  cursor: initial;
+  pointer-events: auto; }
+
+summary {
+  cursor: pointer;
+  outline: none;
+  display: list-item;
+  pointer-events: auto; }
+
+/* ------------------------------------Elements Style CSS-------------------------------------------- */
+.title {
+  margin: 1.5rem 0; }
+
+.title_01 {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 2.5rem; }
+
+.title_02 {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem; }
+
+.title_03 {
+  font-family: "Andy", cursive, sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 2rem; }
+
+.title_04 {
+  font-family: "TimesNewRoman", Times, serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem; }
+
+.ul_none {
+  list-style-type: none;
+  padding-left: 0; }
+
+.ul_01 {
+  padding-inline-start: 25px;
+  padding-left: 25px; }
+  .ul_01 > li {
+    list-style: none;
+    margin: -1.5rem 0 0 0; }
+  .ul_01 > li:before {
+    content: "– ";
+    font-family: Times;
+    display: block;
+    position: relative;
+    max-width: 0;
+    max-height: 0;
+    left: -1.5rem;
+    top: 1rem;
+    font-size: 1.5rem;
+    line-height: 2.5rem; }
+
+.practicelist {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400; }
+  .practicelist > .general-problem p {
+    font-size: 1rem;
+    line-height: 1.5rem; }
+
+.caption p:first-of-type {
+  margin-top: 0; }
+.caption p:last-of-type {
+  margin-bottom: 0; }
+.caption p {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 100;
+  font-size: 0.9rem;
+  line-height: 1.25rem; }
+
+.design-icon {
+  display: inline-block;
+  width: auto;
+  height: 20px;
+  margin-bottom: -0.5rem; }
+
+/* ------------------------------------Layouts Styles CSS-------------------------------------------- */
+.grid-container {
+  display: grid;
+  grid-template-rows: auto; }
+  .grid-container > .grid-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2), .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col {
+      width: 48.5%; }
+
+.grid-container_01 {
+  grid-template-columns: 60% 40%; }
+  .grid-container_01 > .grid-item:nth-child(odd) {
+    grid-column: 2 / 3;
+    padding-left: 1.5rem; }
+  .grid-container_01 > .grid-item:nth-child(2) {
+    grid-row: 1 / span 2;
+    padding: 0; }
+  .grid-container_01 > .grid-item:nth-child(3) {
+    border-top: 1px solid #000; }
+
+.grid-container_02 {
+  grid-template-columns: 40% 60%;
+  grid-template-rows: auto 3fr;
+  grid-auto-flow: column dense; }
+  .grid-container_02 > .grid-item:nth-child(odd) {
+    grid-column: 2 / 3; }
+  .grid-container_02 > .grid-item:nth-child(2) {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    grid-row: 1 / span 2;
+    border-top: 1px solid #000;
+    padding-right: 1.5rem; }
+
+.grid-container_03 {
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto 3fr;
+  grid-auto-flow: column dense; }
+  .grid-container_03 > .grid-item:nth-child(2) {
+    margin-top: 3rem;
+    margin-bottom: 0;
+    grid-row: 1 / span 2;
+    border-top: 1px solid #000;
+    padding-left: 1.5rem; }
+
+.grid-container_04 {
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto 3fr; }
+  .grid-container_04 > .grid-item:nth-child(1) {
+    grid-column: 1 / span 2;
+    border-bottom: 1px solid #000; }
+  .grid-container_04 > .grid-item:nth-child(2) {
+    grid-row: 2 / span 2;
+    padding-right: 1.5rem; }
+  .grid-container_04 > .grid-item:nth-child(3) {
+    border-left: 1px solid #000; }
+  .grid-container_04 .practice {
+    border-right: 0;
+    border-bottom: 0; }
+
+    /*
+    .grid-container_05 {
+        grid-template-columns: 60% 40%;
+
+        .grid-item:nth-child(-n+2) {
+            grid-column: 1 / span 2;
+            border-bottom: 1px solid #000;
+        }
+
+        .grid-item:nth-child(3) {
+            padding-right: $margins;
+            border-right: 1px solid #000;
+        }
+    }*/
+.grid-container_05 {
+  grid-template-columns: 60% 40%;
+  grid-auto-flow: row; }
+  .grid-container_05 > .grid-item {
+    grid-column: 1 / span 2;
+    border-bottom: 1px solid #000; }
+  .grid-container_05 > .grid-item:last-child {
+    border-bottom: 0; }
+  .grid-container_05 .grid-container_05 > .grid-item:not(:first-child) {
+    grid-column: unset;
+    border-bottom: 0; }
+  .grid-container_05 .grid-container_05 > .grid-item:nth-child(2) {
+    border-right: 1px solid #000;
+    padding-right: 1.5rem; }
+
+.ul_column {
+  -webkit-column-fill: balance;
+  -moz-column-fill: balance;
+  column-fill: balance;
+  list-style-position: outside; }
+  .ul_column > li {
+    margin-right: 1.25rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid; }
+
+.ul_column_01 {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2; }
+
+.ul_column_02 {
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  columns: 3; }
+
+/* ------------------------------------Components Styles CSS-------------------------------------------- */
+.informaltable {
+  border: 1px solid #000;
+  margin: 1.5rem 0;
+  border-collapse: collapse; }
+
+.informaltable_01 td, .informaltable_01 th {
+  border: 1px solid #000;
+  vertical-align: top;
+  text-align: left;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400; }
+.informaltable_01 td {
+  padding: 0 1.5rem; }
+  .informaltable_01 td p {
+    font-size: 1rem;
+    line-height: 1.5rem; }
+.informaltable_01 th {
+  padding: 0.5rem 1.5rem; }
+  .informaltable_01 th p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.025rem; }
+.informaltable_01 thead p {
+  margin: 0; }
+
+.card {
+  border: 1px solid #000;
+  margin: 1.5rem 0; }
+
+.card_01 > header > .title_04 {
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+
+.card_02 > header > .title_04 {
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+.card_02 section > header > .subtitle {
+  margin: 0 0 1.5rem 0;
+  padding: 0.5rem 1.5rem;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+
+.note {
+  margin: 1.5rem 0; }
+
+.note_01 p {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+.practice {
+  border: 1px solid #000;
+  margin: 1.5rem 0;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400; }
+
+.practice_01 > header > .title_04 {
+  margin: 0 0 1.5rem 0;
+  border-bottom: 1px solid #000;
+  padding: 0.5rem 1.5rem;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+.practice_01 p {
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+.sidebar {
+  margin: 1.5rem 0;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400; }
+
+.sidebar_01 > header > .title_06 {
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+.sidebar_01 p {
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+.marginalia {
+  border: 1px solid #000;
+  margin: 1.5rem 0;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 400; }
+
+.marginalia_01 > header > .title_06 {
+  margin: 0 0 1.5rem 0;
+  border-bottom: 1px solid #000;
+  padding: 0.5rem 1.5rem;
+  font-family: "Arial", Arial, sans-serif;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  letter-spacing: 0.025rem; }
+.marginalia_01 p {
+  font-size: 1rem;
+  line-height: 1.5rem; }
+
+.cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .cover > img {
+    border-style: none;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    display: block; }
+
+.backmatter {
+  margin: 1.5rem 0;
+  background-color: #FFF; }
+  .backmatter > .creditset {
+    margin: 1rem 0; }
+  .backmatter .title_02 {
+    margin: 1rem 0; }
+  .backmatter p {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    margin: 0; }
+  .backmatter .ulink {
+    font-weight: bold;
+    color: #000; }
+  .backmatter .informalfigure:last-of-type {
+    width: 115px !important;
+    height: auto; }
+
+/* ------------------------------------Generic CSS that belongs to anywhere-------------------------------------------- */
+.text_uppercase {
+  text-transform: uppercase; }
+
+.text-timesnewroman {
+  font-family: "TimesNewRoman", Times, serif !important;
+  font-weight: 400 !important; }
+
+.text-arial {
+  font-family: "Arial", Arial, sans-serif !important; }
+
+.text-andy {
+  font-family: "Andy", cursive, sans-serif !important;
+  font-weight: 400 !important; }
+
+.bg_lightgrey {
+  background-color: #CBCCCE !important; }
+
+.bg_darkgreen {
+  background-color: #008555 !important; }
+
+.bg_lightseagreen {
+  background-color: #E2ECE6 !important; }
+
+.bg_lightblue {
+  background-color: #EAF1F9 !important; }
+
+.bg_dodgerblue {
+  background-color: #0077C1 !important; }
+
+.bg_peru {
+  background-color: #BF5817 !important; }
+
+/* ------------------------------------Helper Class CSS-------------------------------------------- */
+.width-100 {
+  width: 100% !important; }
+
+.width-95 {
+  width: 95% !important; }
+
+.width-90 {
+  width: 90% !important; }
+
+.width-85 {
+  width: 85% !important; }
+
+.width-80 {
+  width: 80% !important; }
+
+.width-75 {
+  width: 75% !important; }
+
+.width-70 {
+  width: 70% !important; }
+
+.width-66 {
+  width: 66.6% !important; }
+
+.width-60 {
+  width: 60% !important; }
+
+.width-57 {
+  width: 57.5% !important; }
+
+.width-50 {
+  width: 50% !important; }
+
+.width-40 {
+  width: 40% !important; }
+
+.width-33 {
+  width: 33.3% !important; }
+
+.width-30 {
+  width: 30% !important; }
+
+.width-25 {
+  width: 25% !important; }
+
+.width-20 {
+  width: 20% !important; }
+
+.width-15 {
+  width: 15% !important; }
+
+.width-10 {
+  width: 10% !important; }
+
+.width-5 {
+  width: 5% !important; }
+
+.no-widow {
+  display: inline-block;
+  text-decoration: inherit; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.clear-both {
+  clear: both; }
+
+.inline {
+  display: inline; }
+
+.force-break {
+  display: block; }
+
+.overflow-x {
+  overflow-x: auto; }
+
+.lc_align-left {
+  text-align: left !important; }
+
+.lc_align-right {
+  text-align: right !important; }
+
+.lc_align-center {
+  text-align: center !important; }
+
+.margin-0-auto {
+  margin: 0 auto !important; }
+
+.margin-left-0 {
+  margin-left: 0 !important; }
+
+.margin-right-0 {
+  margin-right: 0 !important; }
+
+.margin-top-0 {
+  margin-top: 0 !important; }
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important; }
+
+.margin-top-default {
+  margin-top: 1.5rem !important; }
+
+.margin-bottom-default {
+  margin-bottom: 1.5rem !important; }
+
+.margin-default-auto {
+  margin: 1.5rem auto !important; }
+
+.margin-left-default {
+  margin-left: 1.5rem !important; }
+
+.margin-right-default {
+  margin-right: 1.5rem !important; }
+
+.padding-top-0 {
+  padding-top: 0 !important; }
+
+.padding-bottom-0 {
+  padding-bottom: 0 !important; }
+
+.padding-left-0 {
+  padding-left: 0 !important; }
+
+.padding-right-0 {
+  padding-right: 0 !important; }
+
+.padding-top-default {
+  padding-top: 1.5rem !important; }
+
+.padding-bottom-default {
+  padding-bottom: 1.5rem !important; }
+
+.padding-left-default {
+  padding-left: 1.5rem !important; }
+
+.padding-right-default {
+  padding-right: 1.5rem !important; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto; }
+
+.text-color-dodgerblue {
+  color: #0077C1 !important; }
+
+.text-color-peru {
+  color: #BF5817 !important; }
+
+.text-color-black {
+  color: #000 !important; }
+
+.text-color-white {
+  color: #FFF !important; }
+
+.border-black {
+  border: 7px solid #000 !important; }
+
+/* ------------------------------------Responsive Big Phones (<600px)--------------------------------- */
+@media only screen and (max-width: 600px) {
+  /* ------------------------------------Layouts Styles CSS (<600px)-------------------------------------------- */
+  .grid-container > .grid-row {
+    flex-direction: column; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2), .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col {
+      width: 100%; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2):first-of-type {
+      margin-top: 0; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col:last-of-type {
+      margin-bottom: 0; }
+
+  .grid-container_01 {
+    grid-template-columns: 100%; }
+    .grid-container_01 > .grid-item:nth-child(odd) {
+      grid-column: 1;
+      padding: 0; }
+    .grid-container_01 > .grid-item:nth-child(2) {
+      grid-row: 2; }
+    .grid-container_01 > .grid-item:nth-child(3) {
+      border: 0; }
+
+  .grid-container_02,
+  .grid-container_03 {
+    grid-template-columns: 100%; }
+    .grid-container_02 > .grid-item:nth-child(n),
+    .grid-container_03 > .grid-item:nth-child(n) {
+      grid-column: 1;
+      padding: 0; }
+    .grid-container_02 > .grid-item:nth-child(2),
+    .grid-container_03 > .grid-item:nth-child(2) {
+      grid-row: 2;
+      margin-top: 0;
+      border: 0; }
+    .grid-container_02 > .grid-item:first-child:nth-last-child(2) ~ .grid-item,
+    .grid-container_03 > .grid-item:first-child:nth-last-child(2) ~ .grid-item {
+      margin-bottom: 0; }
+
+  .grid-container_04 {
+    grid-template-columns: 100%; }
+    .grid-container_04 .grid-item:nth-child(n) {
+      grid-column: 1; }
+    .grid-container_04 .grid-item:nth-child(2) {
+      padding-right: 0; }
+    .grid-container_04 .grid-item:nth-child(3) {
+      border-left: 0;
+      border-top: 1px solid #000; }
+    .grid-container_04 .practice {
+      border-left: 0; }
+
+    /*
+    .grid-container_05 {
+        grid-template-columns: 100%;
+
+        .grid-item:nth-child(-n+2) {
+            grid-column: 1;
+            border-bottom: 0;
+            margin-bottom: $margins;
+        }
+
+        .grid-item:nth-child(3) {
+            grid-column: 1;
+            border-right: 0;
+            margin-bottom: $margins;
+        }
+    }*/
+  .grid-container_05 {
+    grid-template-columns: 100%; }
+    .grid-container_05 .grid-container_05 > .grid-item:nth-child(n) {
+      grid-column: 1;
+      border-right: 0; }
+    .grid-container_05 .grid-container_05 > .grid-item:last-child {
+      border-top: 1px solid #000;
+      margin-bottom: 0; }
+
+  .ul_column_01,
+  .ul_column_02 {
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    columns: 1; }
+
+  /* ------------------------------------Helper Class CSS (<600px)-------------------------------------------- */
+  .width-95,
+  .width-90,
+  .width-85,
+  .width-80,
+  .width-75,
+  .width-70,
+  .width-66,
+  .width-60,
+  .width-57,
+  .width-50,
+  .width-40,
+  .width-33,
+  .width-30,
+  .width-25,
+  .width-20,
+  .width-15,
+  .width-10,
+  .width-5 {
+    width: 100% !important; } }

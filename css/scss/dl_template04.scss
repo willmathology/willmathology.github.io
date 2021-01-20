@@ -1,0 +1,1398 @@
+@charset "UTF-8";
+
+//  ************************************* Pearson Custom variables for SCSS(SASS) *************************************
+// paragraph text
+$pFontSize: 1.25rem;
+$pLineHeight: 2.25rem;
+$pFontColor: #000;
+//title 01
+$title01FontSize: 1.75rem;
+$title01LineHeight: 2.5rem;
+$title01Tracking: 0.15rem;
+//title 02
+$title02FontSize: 2.5rem;
+$title02LineHeight: 3.25rem;
+$title02FontSize_600: 2.1rem;
+$title02LineHeight_600: 2.8rem;
+//title 03
+$title03FontSize: 1.75rem;
+$title03LineHeight: 2.5rem;
+//title 04
+$title04FontSize: 1.3rem;
+$title04LineHeight: 2.35rem;
+$title04Tracking: 0.1rem;
+//title 05
+$title05FontSize: 1.5rem;
+$title05LineHeight: 2.35rem;
+$title05Tracking: 0.25rem;
+//dedication
+$dedicationFontSize: 1.75rem;
+$dedicationLineHeight: 2.5rem;
+//unordered square list
+$ul01FontSize: 1.5rem;
+//poem 01
+$poem01FontSize: 1.25rem;
+$poem01LineHeight: 2.25rem;
+//blockquote 01
+//source citation
+$captionFontSize: 1rem;
+$captionLineHeight: 1.25rem;
+//list header label & number & text
+$listHeader1FontSize: 1.75rem;
+$listHeader1LineHeight: 2.25rem;
+$listHeader1LetteringSpacing: 0.5rem;
+$listHeader1FontSize_600: 1.5rem;
+$listHeader1LineHeight_600: 2rem;
+//sidebar 01
+$sidebar01HeadingFontSize: 1.75rem;
+$sidebar01HeadingLineHeight: 2.25rem;
+$sidebar01LetteringSpacing: 0.5rem;
+//sidebar 02
+$sidebar02HeadingFontSize: 2rem;
+$sidebar02HeadingLineHeight: 2.5rem;
+$sidebar02FontSize: 1.5rem;
+$sidebar02LineHeight: 2.5rem;
+//practice 01
+$practice01LetteringSpacing: 0.5rem;
+//Front Matter (TOC)
+$nameOfBookHeadingFontSize: 2.25rem;
+$nameOfBookHeadingLineHeight: 2.75rem;
+$nameOfBookHeadingLetteringSpacing: 0;
+$nameOfBookHeadingFontSize_600: 2.1rem;
+$nameOfBookHeadingLineHeight_600: 2.5rem;
+$contentsFontSize: 1.5rem;
+$contentsLineHeight: 2.35rem;
+$contentsLetteringSpacing: 0.5rem;
+//Back Matter (Copyright)
+$bmPFontSize: 20px;
+$bmPLineHeight: initial;
+$bmTitleFontSize: 34px;
+$bmTitleLineHeight: initial;
+
+
+//Colors
+$greyColor: #BCBDC0;
+
+$margins: 2rem;
+// ************************************* Function to replace spaces with underscore in font names *************************************
+
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+// ************************************* Font mixin for general CSS styling *************************************
+
+@mixin generateGeneralFontCSS($fontSize, $fontLineHeight, $fontColor:null, $letterSpacing:null) {
+    font-size: $fontSize;
+    line-height: $fontLineHeight;
+    color: $fontColor;
+    letter-spacing: $letterSpacing;
+}
+
+@mixin genericMargin {
+    margin: #{$margins + " " + 0};
+}
+
+// ************************************* Font mixin for @font-face *************************************
+
+//@mixin font-face($name, $pathname, $path, $svgid, $weight: null, $style: null, $exts: eot woff2 woff ttf svg) {
+@mixin font-face($name, $pathname, $path, $svgid: null, $weight: null, $style: null, $exts: eot woff2 woff ttf) {
+    $src: null;
+    $svgidfinal: "";
+
+    @if $svgid !="" {
+        $svgidfinal: $svgid;
+    }
+
+    @else {
+        $svgidfinal: str-replace($name, " ", "_");
+    }
+
+    //$extmods: (eot: "?iefix",
+    //svg: "#"+ $svgidfinal);
+
+    $formats: (eot: "embedded-opentype",
+        otf: "opentype",
+        ttf: "truetype"
+    );
+
+    @each $ext in $exts {
+        //$extmod: if(map-has-key($extmods, $ext), $ext + map-get($extmods, $ext), $ext);
+        $format: if(map-has-key($formats, $ext), map-get($formats, $ext), $ext);
+        //$src: append($src, url(quote($path + $pathname + "." + $extmod)) format(quote($format)), comma);
+        $src: append($src, url(quote($path + "/" + $pathname + "." + $ext)) format(quote($format)), comma);
+    }
+
+    @font-face {
+        font-family: quote($name);
+        font-style: $style;
+        font-weight: $weight;
+        src: $src;
+    }
+}
+
+/* ------------------------------------Load the fonts into CSS-------------------------------------------- */
+@include font-face("StoneSans", "StoneSansIIITCW05-Medium", "../fonts/dl_template04_fonts", null, 400, normal);
+@include font-face("StoneSans", "StoneSansIIITCW05-MediumIt", "../fonts/dl_template04_fonts", null, 400, italic);
+@include font-face("StoneSans", "StoneSansIIITCW05-Semibold", "../fonts/dl_template04_fonts", null, 600, normal);
+@include font-face("StoneSans", "StoneSansIIITCW05-SmBdIt", "../fonts/dl_template04_fonts", null, 600, italic);
+@include font-face("StoneSans", "StoneSansIIITCW05-Bold", "../fonts/dl_template04_fonts", null, 700, normal);
+@include font-face("StoneSans", "StoneSansIIITCW05-BoldIt", "../fonts/dl_template04_fonts", null, 700, italic);
+@include font-face("StoneSerif", "StoneSerifITCW05-Medium", "../fonts/dl_template04_fonts", null, 400, normal);
+@include font-face("StoneSerif", "StoneSerifITCW05-MediumIt", "../fonts/dl_template04_fonts", null, 400, italic);
+@include font-face("StoneSerif", "StoneSerifITCW05-SemiBold", "../fonts/dl_template04_fonts", null, 600, normal);
+@include font-face("StoneSerif", "StoneSerifITCW05-SemiBoldIt", "../fonts/dl_template04_fonts", null, 600, italic);
+@include font-face("StoneSerif", "StoneSerifITCW05-Bold", "../fonts/dl_template04_fonts", null, 700, normal);
+@include font-face("StoneSerif", "StoneSerifITCW05-BoldItalic", "../fonts/dl_template04_fonts", null, 700, italic);
+@include font-face("Andy", "Andy-Regular", "../fonts/dl_template04_fonts", null, 400, normal);
+@include font-face("Andy", "Andy-Italic", "../fonts/dl_template04_fonts", null, 400, italic);
+@include font-face("Andy", "Andy-Bold", "../fonts/dl_template04_fonts", null, 700, normal);
+@include font-face("Andy", "Andy-BoldItalic", "../fonts/dl_template04_fonts", null, 700, italic);
+@include font-face("OpenSans", "OpenSans-Regular", "../fonts/dl_template04_fonts", null, 400, normal);
+@include font-face("OpenSans", "OpenSans-Bold", "../fonts/dl_template04_fonts", null, 700, normal);
+
+// ************************************* Font includes to be used on and inside elements *************************************
+@mixin stoneSans_Medium {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 400;
+}
+
+@mixin stoneSans_MediumItalic {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin stoneSans_SemiBold {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 600;
+}
+
+@mixin stoneSans_SemiBoldItalic {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+@mixin stoneSans_Bold {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 700;
+}
+
+@mixin stoneSans_BoldItalic {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin stoneSerif_Medium {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 400;
+}
+
+@mixin stoneSerif_MediumItalic {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin stoneSerif_SemiBold {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 600;
+}
+
+@mixin stoneSerif_SemiBoldItalic {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+@mixin stoneSerif_Bold {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 700;
+}
+
+@mixin stoneSerif_BoldItalic {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin andy_Regular {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 400;
+}
+
+@mixin andy_Italic {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+@mixin andy_Bold {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 700;
+}
+
+@mixin andy_BoldItalic {
+    font-family: "Andy", cursive, sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+@mixin openSans_Regular {
+    font-family: "OpenSans", arial, sans-serif;
+    font-weight: 400;
+}
+
+@mixin openSans_Bold {
+    font-family: "OpenSans", arial, sans-serif;
+    font-weight: 700;
+}
+
+// *************************************Normalization Styles CSS*************************************
+@mixin NormalizationBaseHtmlCSS {
+    html {
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        letter-spacing: 0.015rem;
+        line-height: 1.25rem;
+        -webkit-text-size-adjust: 100%;
+        font-size: 100%;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: inherit;
+        -moz-box-sizing: inherit;
+        -webkit-box-sizing: inherit;
+    }
+
+    :root {
+        -moz-tab-size: 4;
+        tab-size: 4;
+    }
+
+    body {
+        @include stoneSerif_Medium;
+        margin: 0;
+        padding: 0;
+        font-size: 115%;
+        background-color: #FFFFFF;
+    }
+
+    strong {
+        font-weight: bold;
+        text-decoration: inherit;
+    }
+
+    em {
+        font-style: italic;
+        text-decoration: inherit;
+    }
+
+    section,
+    aside {
+        display: block;
+        @include genericMargin;
+        padding: 0;
+    }
+
+    header {
+        display: block;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        display: block;
+        color: $pFontColor;
+    }
+
+    p,
+    ol,
+    ul,
+    dl {
+        display: block;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        @include genericMargin;
+        color: $pFontColor;
+    }
+
+    p,
+    dt {
+        @include generateGeneralFontCSS($pFontSize, $pLineHeight);
+    }
+
+    ol {
+        list-style-type: decimal;
+        padding-inline-start: 40px;
+        padding-left: 40px;
+    }
+
+    ul {
+        list-style-type: disc;
+        padding-inline-start: 40px;
+        padding-left: 40px;
+    }
+
+    li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+    }
+
+    dl,
+    dt,
+    dd {
+        @include genericMargin;
+        padding: 0;
+        display: block;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+    }
+
+    dt {
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    dd {
+        margin-inline-start: 0;
+        margin-top: 0;
+
+        &>p:first-of-type {
+            margin-top: 0;
+        }
+    }
+
+    dd:after {
+        display: block;
+        content: "";
+    }
+
+    figure {
+        display: block;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        margin: #{$margins + " " + auto};
+        padding: 0;
+    }
+
+    img {
+        border-style: none;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding: 0;
+        display: block;
+    }
+
+    figcaption,
+    div {
+        display: block;
+    }
+
+    figcaption {
+        margin: 0.3rem auto 0.5rem auto;
+        text-align: left;
+        padding: 0;
+    }
+
+    blockquote {
+        display: block;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
+        margin-inline-start: 4rem;
+        margin-inline-end: 4rem;
+        margin: $margins;
+        padding: 0;
+    }
+
+    cite {
+        font-style: unset;
+    }
+
+    hr {
+        display: block;
+        //unicode-bidi: isolate;
+        margin-block-start: 0.575rem;
+        margin-block-end: 0.575rem;
+        margin-inline-start: auto;
+        margin-inline-end: auto;
+        margin: 0.575rem auto;
+        overflow: hidden;
+        border-style: inset;
+        border-width: 1px;
+    }
+
+    caption {
+        display: text-caption;
+        text-align: -webkit-center;
+    }
+
+    details {
+        display: block;
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    details[open] {
+        cursor: initial;
+        pointer-events: auto;
+    }
+
+    summary {
+        cursor: pointer;
+        outline: none;
+        display: list-item;
+        pointer-events: auto;
+    }
+}
+
+// *************************************Elements Style CSS*************************************
+@mixin TitleCSS_Elements {
+    .title {
+        @include genericMargin;
+    }
+
+    .title_01 {
+        @include stoneSans_Bold;
+        @include generateGeneralFontCSS($title01FontSize, $title01LineHeight, null, $title01Tracking);
+    }
+
+    .title_02 {
+        @include stoneSerif_SemiBold;
+        @include generateGeneralFontCSS($title02FontSize, $title02LineHeight);
+    }
+
+    .title_03 {
+        @include stoneSerif_SemiBold;
+        @include generateGeneralFontCSS($title03FontSize, $title03LineHeight);
+    }
+
+    .title_04 {
+        @include stoneSans_Bold;
+        @include generateGeneralFontCSS($title04FontSize, $title04LineHeight, null, $title04Tracking);
+    }
+
+    .title_05 {
+        @include stoneSans_SemiBold;
+        @include generateGeneralFontCSS($title05FontSize, $title05LineHeight, null, $title05Tracking);
+    }
+}
+
+@mixin ListStyleCSS_Elements {
+
+    .ol_none,
+    .ul_none {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .ul_01 {
+        list-style-type: square;
+        @include generateGeneralFontCSS($ul01FontSize, normal, $greyColor);
+    }
+
+    .ul_02 {
+        &>li {
+            list-style: none;
+            margin: -1.5rem 0 0 0;
+        }
+
+        &>li:before {
+            content: "- ";
+            font-family: Times;
+            display: block;
+            position: relative;
+            max-width: 0;
+            max-height: 0;
+            left: -1.5rem;
+            top: 1.8rem;
+            font-size: 1.5rem;
+            line-height: 2.5rem;
+        }
+    }
+
+    .practicelist {
+        @include stoneSans_Bold;
+
+        &>.general-problem {
+            & p {
+                @include stoneSerif_Medium;
+            }
+
+            & p strong {
+                @include stoneSerif_Bold;
+            }
+        }
+    }
+
+    //TOC list
+    .tocentrylist {
+        @include stoneSans_Bold;
+
+        &>.tocpart,
+        &>.toccreditset {
+            &>p {
+                @include stoneSerif_Medium;
+
+                & strong {
+                    @include stoneSerif_Bold;
+                }
+            }
+
+            & .xref {
+                border-bottom: 1px dashed #000;
+                color: #000;
+                text-decoration: none;
+
+                &>.number {
+                    @include stoneSans_Bold;
+                }
+            }
+
+            & .text-stonesans {
+                & strong {
+                    @include stoneSans_Bold;
+                }
+            }
+        }
+    }
+}
+
+@mixin InformalFigureStyleCSS_Elements {
+    .caption {
+        & p:first-of-type {
+            margin-top: 0;
+        }
+
+        & p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        & p {
+            @include stoneSans_Medium;
+            @include generateGeneralFontCSS($captionFontSize, $captionLineHeight);
+        }
+    }
+
+    .design-icon {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+        background-color: $greyColor;
+    }
+}
+
+@mixin PoemStyleCSS_Elements {
+    .poem {
+        @include genericMargin;
+
+        &>.linegroup {
+            margin: $margins;
+
+            &>.line {
+                display: block;
+            }
+        }
+    }
+
+    .poem_01 {
+        & .line {
+            @include generateGeneralFontCSS($poem01FontSize, $poem01LineHeight);
+        }
+    }
+}
+
+@mixin BlockquoteStyleCSS_Elements {
+    .blockquotegroup {
+        @include genericMargin;
+    }
+
+    .blockquotegroup_01 {
+        & p {
+            @include stoneSans_Medium;
+        }
+
+        & p strong {
+            @include stoneSans_Bold;
+        }
+
+        & p:first-of-type {
+            margin-bottom: 0;
+        }
+
+        & p:last-of-type {
+            margin-top: 0;
+        }
+    }
+}
+
+@mixin DialogueStyleCSS_Elements {
+    .dialogue {
+        @include genericMargin;
+
+        & .speech {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-direction: row;
+            @include genericMargin;
+
+            &>.persona {
+                &>p:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                &>p:first-of-type {
+                    margin-top: 0;
+                }
+            }
+
+            &>.line {
+                &>p:last-of-type {
+                    margin-bottom: 0;
+                }
+
+                &>p:first-of-type {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}
+
+// *************************************Layout Styles CSS*************************************
+@mixin ResponsiveGridStyleCSS_Layouts {
+    .grid-container {
+        &>.grid-row {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: flex-start;
+            @include genericMargin;
+
+            //2 column grid
+            &>.grid-col:first-of-type:nth-last-of-type(2),
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col {
+                width: 48.5%;
+            }
+        }
+    }
+}
+
+@mixin ListStyleCSS_Layouts {
+
+    .ol_column,
+    .ul_column {
+        -webkit-column-fill: balance;
+        -moz-column-fill: balance;
+        column-fill: balance;
+        list-style-position: outside;
+
+        &>li {
+            margin-right: 1.25rem;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    }
+
+    .ol_column_01,
+    .ul_column_01 {
+        -webkit-columns: 2;
+        -moz-columns: 2;
+        columns: 2;
+    }
+
+    .ol_column_02,
+    .ul_column_02 {
+        -webkit-columns: 3;
+        -moz-columns: 3;
+        columns: 3;
+    }
+}
+
+@mixin FigureGroupStyleCSS_Layouts {
+    .figuregroup {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        &>figcaption:first-child {
+            width: 100%;
+        }
+
+        &>.informalfigure {
+            margin: 0;
+        }
+
+        &>.informalfigure:first-of-type:nth-last-of-type(2),
+        &>.informalfigure:first-of-type:nth-last-of-type(2)~.informalfigure {
+            width: 48.5%;
+        }
+    }
+}
+
+// *************************************Components Styles CSS*************************************
+@mixin HeaderStyleCSS_Components {
+    .part {
+        @include genericMargin;
+
+        &>header {
+            &>.title_02 {
+                &>span:first-of-type {
+                    display: inline-block;
+                    border: 0;
+                    border-bottom: 7px dotted $greyColor;
+                    @include stoneSans_Bold;
+
+                    &>.label,
+                    &>.number {
+                        @include generateGeneralFontCSS($listHeader1FontSize, $listHeader1LineHeight, $greyColor, $listHeader1LetteringSpacing);
+                    }
+                }
+
+                &>span:last-of-type {
+                    display: block;
+                    margin-top: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@mixin SidebarStyleCSS_Components {
+    .sidebar {
+        border: 0;
+        @include genericMargin;
+
+        &>header {
+            &>.title {
+                text-align: center;
+            }
+        }
+    }
+
+    .sidebar_01 {
+        border-top-width: 7px;
+        border-bottom-width: 7px;
+        border-style: dotted;
+        border-color: $greyColor;
+        @include stoneSans_Medium;
+
+        &>header {
+            &>.title_06 {
+                @include generateGeneralFontCSS($sidebar01HeadingFontSize, $sidebar01HeadingLineHeight, null, $sidebar01LetteringSpacing);
+            }
+        }
+    }
+
+    .sidebar_02 {
+        border-top-width: 12px;
+        border-bottom-width: 12px;
+        border-style: solid;
+        border-color: transparent;
+        border-image: url("../images/dl_template04_images/sidebar02.png") 10 / 1 0 / 0 round stretch;
+        /* source | slice | width | outset | repeat */
+        -webkit-border-image: url("../images/dl_template04_images/sidebar02.png") 10 / 1 0 / 0 round stretch;
+        -moz-border-image: url("../images/dl_template04_images/sidebar02.png") 10 / 1 0 / 0 round stretch;
+        -o-border-image: url("../images/dl_template04_images/sidebar02.png") 10 / 1 0 / 0 round stretch;
+        @include andy_Regular;
+
+        &>header {
+            &>.title_06 {
+                @include generateGeneralFontCSS($sidebar02HeadingFontSize, $sidebar02HeadingLineHeight);
+            }
+        }
+
+        & p,
+        ol,
+        ul {
+            @include generateGeneralFontCSS($sidebar02FontSize, $sidebar02LineHeight);
+        }
+    }
+}
+
+@mixin NoteStyleCSS_Components {
+    .note {
+        margin: $margins auto;
+        padding: 1px 2rem;
+    }
+
+    .note_01 {
+        border: 3px dashed $greyColor;
+    }
+}
+
+@mixin PracticeStyleCSS_Components {
+    .practice {
+        @include genericMargin;
+
+        &>header {
+            &>.title {
+                text-align: center;
+            }
+        }
+    }
+
+    .practice_01 {
+        &>header {
+            &>.title_04 {
+                text-transform: uppercase;
+                letter-spacing: $practice01LetteringSpacing;
+            }
+        }
+    }
+}
+
+@mixin CoverPageStyleCSS_Components {
+    .cover {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+
+        &>img {
+            border-style: none;
+            width: auto;
+            height: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+
+@mixin FrontMatterStyleCSS_Components {
+    .frontmatter {
+        @include genericMargin;
+        max-width: 1024px;
+
+        &>.titlepage {
+            &>header {
+                &>.title_01 {
+                    @include stoneSerif_Bold;
+                    @include generateGeneralFontCSS($nameOfBookHeadingFontSize, $nameOfBookHeadingLineHeight, null, $nameOfBookHeadingLetteringSpacing);
+                }
+            }
+
+            & .title {
+                text-align: center;
+            }
+
+            &>.toc {
+                &>header {
+                    &>.title_02 {
+                        @include stoneSans_SemiBold;
+                        @include generateGeneralFontCSS($contentsFontSize, $contentsLineHeight, null, $contentsLetteringSpacing);
+                        text-transform: uppercase;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin BackMatterStyleCSS_Components {
+    .backmatter {
+        @include genericMargin;
+        background-color: #FFF;
+
+        &>.creditset {
+            @include openSans_Regular;
+            margin: 1rem 0;
+
+            & .title_02 {
+                @include openSans_Bold;
+                @include generateGeneralFontCSS($bmTitleFontSize, $bmTitleLineHeight);
+                margin: 1rem 0;
+            }
+
+            & p {
+                @include generateGeneralFontCSS($bmPFontSize, $bmPLineHeight);
+                margin: 0;
+            }
+
+            & .ulink {
+                font-weight: bold;
+                color: #000;
+            }
+        }
+
+        & .informalfigure:last-of-type {
+            width: 115px !important;
+            height: auto;
+        }
+    }
+}
+
+// *************************************Generic Anywhere CSS*************************************
+@mixin GenericAnywhereCSS {
+    .text_uppercase {
+        text-transform: uppercase;
+    }
+
+    .hr_01 {
+        border: 2px solid #000;
+        margin: $margins 0;
+    }
+
+    .hr_02 {
+        border: 7px solid transparent;
+        border-image-source: url("../images/dl_template04_images/hr_02.svg");
+        border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+        -webkit-border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+        -moz-border-image: url("../images/dl_template04_images/hr_02.svg") 7 1 space;
+        -o-border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+        width: 165px;
+        margin: $margins auto;
+    }
+
+    .hr_03 {
+        padding: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, transparent 0, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent 100%);
+        text-align: center;
+        line-height: 1px;
+        font-size: 1rem;
+        border: 0;
+        margin: $margins auto;
+        overflow: visible;
+    }
+
+    .hr_03:after {
+        content: "\2756";
+        display: inline;
+        padding: 0.75rem;
+        background: #FFF;
+        color: #000;
+        font-size: 1.75rem;
+    }
+
+    .hr_04 {
+        border: 0;
+        border-bottom: 7px dotted $greyColor;
+        margin: $margins 0;
+    }
+
+    .text-stoneserif {
+        font-family: "StoneSerif", times, serif !important;
+        font-weight: 400 !important;
+    }
+
+    .text-stonesans {
+        font-family: "StoneSans", arial, sans-serif !important;
+        font-weight: 400 !important;
+    }
+
+    .text-andy {
+        font-family: "Andy", cursive, sans-serif !important;
+        font-weight: 400 !important;
+    }
+}
+
+// ************************************* Helper Class CSS*************************************
+@mixin HelperClassCSS {
+    .subtitle {
+        @include stoneSerif_Medium;
+    }
+
+    .dedicationset {
+        &>.dedication {
+            &>p {
+                @include stoneSerif_MediumItalic;
+                @include generateGeneralFontCSS($dedicationFontSize, $dedicationLineHeight);
+            }
+        }
+    }
+
+    .width-100 {
+        width: 100% !important;
+    }
+
+    .width-95 {
+        width: 95% !important;
+    }
+
+    .width-90 {
+        width: 90% !important;
+    }
+
+    .width-85 {
+        width: 85% !important;
+    }
+
+    .width-80 {
+        width: 80% !important;
+    }
+
+    .width-75 {
+        width: 75% !important;
+    }
+    
+    .width-70 {
+        width: 70% !important;
+    }
+
+    .width-66 {
+        width: 66.6% !important;
+    }
+
+    .width-60 {
+        width: 60% !important;
+    }
+
+    .width-57 {
+        width: 57.5% !important;
+    }
+
+    .width-50 {
+        width: 50% !important;
+    }
+
+    .width-40 {
+        width: 40% !important;
+    }
+
+    .width-33 {
+        width: 33.3% !important;
+    }
+
+    .width-30 {
+        width: 30% !important;
+    }
+
+    .width-25 {
+        width: 25% !important;
+    }
+
+    .width-20 {
+        width: 20% !important;
+    }
+
+    .width-15 {
+        width: 15% !important;
+    }
+
+    .width-10 {
+        width: 10% !important;
+    }
+
+    .width-5 {
+        width: 5% !important;
+    }
+
+    .no-widow {
+        display: inline-block;
+        text-decoration: inherit;
+    }
+
+    .float-right {
+        float: right;
+    }
+
+    .float-left {
+        float: left;
+    }
+
+    .clear-both {
+        clear: both;
+    }
+
+    .force-break {
+        display: block;
+    }
+
+    .inline {
+        display: inline;
+    }
+
+    .lc_align-center {
+        text-align: center !important;
+    }
+
+    .lc_align-left {
+        text-align: left !important;
+    }
+
+    .lc_align-right {
+        text-align: right !important;
+    }
+
+    .margin-0-auto {
+        margin: 0 auto !important;
+    }
+
+    .margin-left-0 {
+        margin-left: 0 !important;
+    }
+
+    .margin-right-0 {
+        margin-right: 0 !important;
+    }
+
+    .margin-top-0 {
+        margin-top: 0 !important;
+    }
+
+    .margin-bottom-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .margin-top-default {
+        margin-top: #{$margins + " " + !important};
+    }
+
+    .margin-bottom-default {
+        margin-bottom: #{$margins + " " + !important};
+    }
+
+    .margin-default-auto {
+        margin: #{$margins + " " + auto + " " + !important};
+    }
+
+    .margin-left-default {
+        margin-left: #{$margins + " " + !important};
+    }
+
+    .margin-right-default {
+        margin-right: #{$margins + " " + !important};
+    }
+
+    .padding-top-0 {
+        padding-top: 0 !important;
+    }
+
+    .padding-bottom-0 {
+        padding-bottom: 0 !important;
+    }
+
+    .padding-left-0 {
+        padding-left: 0 !important;
+    }
+
+    .padding-right-0 {
+        padding-right: 0 !important;
+    }
+
+    .padding-top-default {
+        padding-top: #{$margins + " " + !important};
+    }
+
+    .padding-bottom-default {
+        padding-bottom: #{$margins + " " + !important};
+    }
+
+    .padding-left-default {
+        padding-left: #{$margins + " " + !important};
+    }
+
+    .padding-right-default {
+        padding-right: #{$margins + " " + !important};
+    }
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    .sr-only-focusable:active,
+    .sr-only-focusable:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: visible;
+        clip: auto;
+    }
+}
+
+// *************************************Elements Style CSS (<600px)*************************************
+@mixin TitleCSS_Elements_600 {
+    .title_02 {
+        @include generateGeneralFontCSS($title02FontSize_600, $title02LineHeight_600);
+    }
+}
+
+@mixin DialogueStyleCSS_Elements_600 {
+    .dialogue {
+        & .speech {
+            flex-direction: column;
+        }
+    }
+}
+
+// *************************************Layouts Style CSS (<600px)*************************************
+@mixin ResponsiveGridStyleCSS_Layouts_600 {
+    .grid-container {
+        &>.grid-row {
+            flex-direction: column;
+
+            &>.grid-col:first-of-type:nth-last-of-type(2),
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col {
+                width: 100%;
+                margin: 1.25rem 0;
+            }
+
+            &>.grid-col:first-of-type:nth-last-of-type(2):first-of-type {
+                margin-top: 0;
+            }
+
+            &>.grid-col:first-of-type:nth-last-of-type(2)~.grid-col:last-of-type {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+@mixin ListStyleCSS_Layouts_600 {
+
+    .ol_column_01,
+    .ul_column_01,
+    .ol_column_02,
+    .ul_column_02 {
+        -webkit-columns: 1;
+        -moz-columns: 1;
+        columns: 1;
+    }
+}
+
+@mixin FigureGroupStyleCSS_Layouts_600 {
+    .figuregroup {
+        flex-direction: column;
+
+        &>.informalfigure:first-of-type {
+            margin-bottom: .75rem;
+        }
+
+        &>.informalfigure:last-of-type {
+            margin-top: .75rem;
+        }
+
+        &>.informalfigure:first-of-type:nth-last-of-type(2),
+        &>.informalfigure:first-of-type:nth-last-of-type(2)~.informalfigure {
+            width: 100%;
+        }
+    }
+}
+
+// *************************************Layouts Style CSS (<600px)*************************************
+@mixin HeaderStyleCSS_Components_600 {
+    .part {
+        &>header {
+            &>.title_02 {
+                &>span:first-of-type {
+                    &>.label,
+                    &>.number {
+                        @include generateGeneralFontCSS($listHeader1FontSize_600, $listHeader1LineHeight_600);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin FrontMatterStyleCSS_Components_600 {
+    .frontmatter {
+        &>.titlepage {
+            &>header {
+                &>.title_01 {
+                    @include generateGeneralFontCSS($nameOfBookHeadingFontSize_600, $nameOfBookHeadingLineHeight_600);
+                }
+            }
+        }
+    }
+}
+
+// ************************************* Helper Class CSS (<600px)*************************************
+@mixin HelperClassCSS_600 {
+
+    .width-95,
+    .width-90,
+    .width-85,
+    .width-80,
+    .width-75,
+    .width-70,
+    .width-66,
+    .width-60,
+    .width-57,
+    .width-50,
+    .width-40,
+    .width-33,
+    .width-30,
+    .width-25,
+    .width-20,
+    .width-15,
+    .width-10,
+    .width-5 {
+        width: 100% !important;
+    }
+}
+
+/* ------------------------------------Normalization Styles CSS-------------------------------------------- */
+@include NormalizationBaseHtmlCSS;
+/* ------------------------------------Elements Style CSS-------------------------------------------- */
+@include TitleCSS_Elements;
+@include ListStyleCSS_Elements;
+@include InformalFigureStyleCSS_Elements;
+@include PoemStyleCSS_Elements;
+@include BlockquoteStyleCSS_Elements;
+@include DialogueStyleCSS_Elements;
+/* ------------------------------------Layouts Styles CSS-------------------------------------------- */
+@include ResponsiveGridStyleCSS_Layouts;
+@include ListStyleCSS_Layouts;
+@include FigureGroupStyleCSS_Layouts;
+/* ------------------------------------Components Styles CSS-------------------------------------------- */
+@include HeaderStyleCSS_Components;
+@include SidebarStyleCSS_Components;
+@include NoteStyleCSS_Components;
+@include PracticeStyleCSS_Components;
+@include CoverPageStyleCSS_Components;
+@include FrontMatterStyleCSS_Components;
+@include BackMatterStyleCSS_Components;
+/* ------------------------------------Generic CSS that belongs to anywhere-------------------------------------------- */
+@include GenericAnywhereCSS;
+/* ------------------------------------Helper Class CSS-------------------------------------------- */
+@include HelperClassCSS;
+
+/* ------------------------------------Responsive Big Phones (<600px)--------------------------------- */
+@media only screen and (max-width: 600px) {
+    /* ------------------------------------Elements Style CSS (<600px)-------------------------------------------- */
+    @include TitleCSS_Elements_600;
+    @include DialogueStyleCSS_Elements_600;
+    /* ------------------------------------Layouts Styles CSS (<600px)-------------------------------------------- */
+    @include ResponsiveGridStyleCSS_Layouts_600;
+    @include ListStyleCSS_Layouts_600;
+    @include FigureGroupStyleCSS_Layouts_600;
+    /* ------------------------------------Components Styles CSS (<600px)-------------------------------------------- */
+    @include HeaderStyleCSS_Components_600;
+    @include FrontMatterStyleCSS_Components_600;
+    /* ------------------------------------Helper Class CSS (<600px)-------------------------------------------- */
+    @include HelperClassCSS_600;
+}

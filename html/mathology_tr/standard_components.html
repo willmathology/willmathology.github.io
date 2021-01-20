@@ -1,0 +1,1105 @@
+<html lang="en">
+
+	<head>
+		<title>Mathology Standard Component Styles</title>
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link rel="stylesheet" type="text/css" href="../../css/mathology_tr_template.css"/>
+
+		<style>
+			body {
+				max-width: 1024px;
+				margin: auto;
+				padding: 50px;
+				font-size: 115%;
+			}
+
+			hr {
+				margin: 0;
+			}
+
+			h1 {
+				font-size: 1.75rem;
+				line-height: 2rem;
+			}
+
+			.code_format {
+				display: block;
+				background-color: #e2f2f2;
+				border: solid #020202;
+				padding: 10px 20px;
+			}
+
+			code {
+				display: block;
+				font-family: monospace;
+				margin-top: -20px;
+				white-space: pre;
+				overflow-x: auto;
+			}
+
+			.code_format * {
+				padding: 0;
+				margin: 0;
+			}
+
+			.grid-col {
+				background-color: #e2f2f2;
+				border: 1px dotted #020202;
+				text-align: center;
+			}
+
+			.template_hr {
+				display: block;
+				height: 10px;
+				border: 0;
+				border-top: 10px solid red;
+				margin: 1rem 0;
+				padding: 0;
+			}
+
+			.code_snippet {
+				color: #600000;
+				font-weight: bold;
+			}
+
+			.main_title {
+				text-align: center;
+				font-size: 3rem;
+				font-family: Arial, Helvetica, sans-serif;
+				line-height: 3.25rem;
+				letter-spacing: 5px;
+				margin: 0;
+				font-variant: small-caps;
+			}
+
+			#myBtn {
+				display: none;
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				z-index: 99;
+				font-size: 1rem;
+				border: none;
+				outline: none;
+				background-color: black;
+				color: white;
+				cursor: pointer;
+				padding: 15px;
+				border-radius: 4px;
+			}
+
+			#myBtn:hover {
+				background-color: red;
+			}
+
+			.links {
+				column-count: 3;
+				column-gap: 40px;
+			}
+
+			.links a {
+				font-weight: unset;
+			}
+
+			.links li {
+				font-size: 0.85rem;
+				line-height: 1.45rem;
+				margin: 0;
+			}
+
+			.links p {
+				margin: 0;
+				font-size: 0.85rem;
+				line-height: 1.45rem;
+			}
+
+			.links ol {
+				list-style-type: upper-alpha;
+			}
+
+			.links2 {
+				display: none;
+				width: 100%;
+				font-size: 1.15rem;
+				margin: 1.15rem 0;
+				border: 1px solid black;
+			}
+
+			.p-darkred,
+			.p-grey {
+				color: #707070;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 1.15rem;
+				line-height: 1.65rem;
+			}
+
+			.p-darkred {
+				color: #600000;
+			}
+
+			@media only screen and (max-width: 600px) {
+				.links { display: none; }
+				.links2 {display: block; }
+
+				#cover_img {
+					height: 75vh;
+				}
+
+				#img_for_cover {
+					width: 100% !important;
+				}
+			}
+
+			@media only screen and (max-width: 450px) {
+				#myBtn {
+				bottom: 70px;
+				right: 10px;
+				}
+
+				.main_title {
+				font-size: 2.25rem;
+				line-height: 2.75rem;
+				letter-spacing: 1px;
+				}
+
+				#cover_img {
+					height: 50vh;
+				}
+			}
+		</style>
+
+		<script>
+			window.onload = function init() {
+				var codeblock = document.querySelectorAll(".code_format > code");
+				console.log(codeblock);
+				var len = codeblock.length;
+				console.log(typeof(len));
+				for (var i = 0; i < len; i++) {
+					var dom = codeblock[i];
+					var html = dom.innerHTML;
+					var pattern = html.match(/\s*\n[\t\s]*/);
+					var pattern01 = html.match(/\s+\n*$/);
+					var pattern02 = html.match(/^\n*(\<)/);
+					html = html.replace(new RegExp(pattern, "g"), '\n');
+					html = html.replace(/(<img([\w\W]+?))(>)/gm, "$1/>");
+					html = html.replace(/—/gm, "&#x2014;");
+					html = html.replace(/–/gm, "&#x2013;");
+					var temphtml = html.match(/^[^\n]+\n/gm);
+
+					//html = html.replace(new RegExp(pattern01, "m"), ''); html = html.replace(new RegExp(pattern02, "m", "g"), '<'); console.log(temphtml.join(""));
+					var text = document.createTextNode(String(temphtml.join("")));
+					dom.innerHTML = "";
+					dom.appendChild(text);
+				}
+			}
+
+			window.onscroll = function () {
+				scrollFunction()
+			};
+			function scrollFunction() {
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					document.getElementById("myBtn").style.display = "block";
+				} else {
+					document.getElementById("myBtn").style.display = "none";
+				}
+			}
+			function topFunction() {
+				document.body.scrollTop = 0;
+				document.documentElement.scrollTop = 0;
+			}
+		</script>
+	</head>
+
+	<body epub:type="bodymatter">
+		<button onclick="topFunction();" id="myBtn" title="Go to top">Top</button>
+		<section id="read_speaker">
+			<section>
+				<header>
+					<h1 class="main_title">Standard Components</h1>
+				</header>
+				<p class="p-grey">[A component is comprised of an element that is combined with other elements, styles, and/or layouts. This section displays a list of standard components that were created for those common book items and features in the Mathology teacher's guide. Refer to this section as you mark up each book item in your printer PDF, and then refer to Layouts or Styles if you need to specify the arrangement or style of that component.]</p>
+				<hr/>
+
+				<ol class="links">
+					<li>
+						<p>
+							<strong>
+								<a href="#marginalias">Marginalia</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#marginalia_01">Marginalia 01</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p>
+							<strong>
+								<a href="#sidebars">Sidebars</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#sidebar_01">Sidebar 01</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p>
+							<strong>
+								<a href="#notes">Notes</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#note_01">Note 01</a>
+								</p>
+							</li>
+							<li>
+								<p>
+									<a href="#note_02">Note 02</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p>
+							<strong>
+								<a href="#practices">Practice</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#practice_01">Practice 01</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p>
+							<strong>
+								<a href="#cards">Card</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#card_01">Card 01</a>
+								</p>
+							</li>
+							<li>
+								<p>
+									<a href="#card_02">Card 02</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p>
+							<strong>
+								<a href="#informaltables">Informaltable</a>
+							</strong>
+						</p>
+						<ol>
+							<li>
+								<p>
+									<a href="#informaltable_01">Informaltable 01</a>
+								</p>
+							</li>
+						</ol>
+					</li>
+
+					<li>
+						<p><strong><a href="#long_description">Long Description</a></strong></p>
+					</li>
+
+					<li>
+						<p><strong><a href="#cover_page">Cover Page</a></strong></p>
+					</li>
+
+					<li>
+						<p><strong><a href="#acknowledgement">Acknowledgement</a></strong></p>
+					</li>
+
+					<li>
+						<p><strong><a href="#back_matter">Back Matter</a></strong></p>
+					</li>
+				</ol>
+
+				<select class="links2" onchange="location = this.value;">
+					<option>** Pick from dropdown **</option>
+					<option value="#marginalias">- Marginalia -</option>
+					<option value="#marginalia_01">Marginalia 01</option>
+
+					<option value="#sidebars">- Sidebars -</option>
+					<option value="#sidebar_01">Sidebar 01</option>
+
+					<option value="#notes">- Note -</option>
+					<option value="#note_01">Note 01</option>
+					<option value="#note_02">Note 02</option>
+
+					<option value="#practices">- Practice -</option>
+					<option value="#practice_01">Practice 01</option>
+
+					<option value="#cards">- Card -</option>
+					<option value="#card_01">Card 01</option>
+					<option value="#card_02">Card 02</option>
+
+					<option value="#informaltables">- Informaltable -</option>
+					<option value="#informaltable_01">Informaltable 01</option>
+					
+					<option value="#long_description">- Long Description -</option>
+
+					<option value="#cover_page">- Cover Page -</option>
+
+					<option value="#acknowledgement">- Acknowledgement -</option>
+					
+					<option value="#back_matter">- Back Matter -</option>
+				</select>
+			</section>
+
+			<hr class="template_hr" style="border-top: 40px double MediumVioletRed;"/>
+
+			<!-- Marginalias Section Starts -->
+			<section id="marginalias">
+				<header>
+					<h1>Marginalia</h1>
+				</header>
+				<p class="p-grey">[Marginalia components are designed to catch the reader's attention by being positioned alongside the
+				content to which it relates.]</p>
+
+				<!-- Marginalia 01 Section Starts -->
+				<hr id="marginalia_01" />
+				<section>
+					<header>
+						<h2 class="p-grey">Marginalia 01:</h2>
+					</header>
+					<p class="p-grey">[Use this design treatment for "Marginalia 01". Note that the
+						header design structure is templated and cannot be changed.]</p>
+				
+					<aside class="marginalia marginalia_01">
+						<header class="bg_lightseagreen">
+							<h6 class="title title_06 text_uppercase">Connecting to Measurement</h6>
+						</header>
+						<div class="padding-left-default padding-right-default">
+							<p>This is your body text for marginalia 01, which can be any element, layout, and/or component you specify in your markup.</p>
+						</div>
+					</aside>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p class="p-darkred">[Notice there is a div tag after the header, wrapping the paragraph tag. This needs to follow after the header tag.]</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<aside id="unique_aside_id" class="marginalia marginalia_01" aria-labelledby="header_unique_header_id">
+									<header id="header_unique_header_id" class="bg_lightseagreen">
+										<h6 id="unique_heading_id" class="title title_06 text_uppercase">Connecting to Measurement</h6>
+									</header>
+									<div class="padding-left-default padding-right-default">
+										<p>This is your body text for marginalia 01, which can be any element, layout, and/or component you specify in
+											your markup.</p>
+									</div>
+								</aside>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Marginalia 01 Section Ends -->
+
+			</section>
+			<!-- Marginalia Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Sidebar Section Starts -->
+			<section id="sidebars">
+				<header>
+					<h1>Sidebars</h1>
+				</header>
+				<p class="p-grey">[Sidebar components can be used to treat marginalia features in the book. This section displays how each of the different
+				sidebar components are styled and will display.]</p>
+
+				<!-- Sidebar01 Section Starts -->
+				<hr id="sidebar_01" />
+				<section>
+					<header>
+						<h2 class="p-grey">Sidebar 01:</h2>
+					</header>
+					<p class="p-grey">[Use this design treatment for "Sidebar 01". Note that the design, especially the title are templated and cannot be changed.]</p>
+
+					<aside class="sidebar sidebar_01">
+						<header>
+							<h6 class="title title_06 text_uppercase">Math Focus</h6>
+						</header>
+						<p>This is your body text for sidebar 01, which can be any element, layout,
+							and/or component you specify in your markup.</p>
+					</aside>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<aside id="unique_aside_id" class="sidebar sidebar_01" aria-labelledby="header_unique_header_id">
+									<header id="header_unique_header_id">
+										<h6 id="unique_heading_id" class="title title_06 text_uppercase">Math Focus</h6>
+									</header>
+									<p>This is your body text for sidebar 01, which can be any element, layout,
+										and/or component you specify in your markup.</p>
+								</aside>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Sidebar 01 Section Ends -->
+
+			</section>
+			<!-- Sidebar Section Ends -->
+
+			<hr class="template_hr"/>
+
+			<!-- Note Section Starts -->
+			<section id="notes">
+				<header>
+					<h1>Notes</h1>
+				</header>
+				<p class="p-grey">[This section displays how each of the different note components are styled and will display. Please note that "Notes" can only be applied to book content that does not have a title or a heading level content.]</p>
+
+				<!-- Note 01 Section Starts -->
+				<hr id="note_01"/>
+				<section>
+					<header>
+						<h2 class="p-grey">Note 01:</h2>
+					</header>
+					<p class="p-grey">[Following is the style for "note 01".]</p>
+
+					<div class="note note_01">
+						<p>This is your body text for note 01, which can be any element, layout, and/or component you specify in your markup.</p>
+					</div>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<div id="unique_note_id" class="note note_01">
+									<p>This is your body text for note 01, which can be any element, layout, and/or component you specify in your markup.</p>
+								</div>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Note 01 Section Ends -->
+
+				<!-- Note 02 Section Starts -->
+				<hr id="note_02" />
+				<section>
+					<header>
+						<h2 class="p-grey">Note 02:</h2>
+					</header>
+					<p class="p-grey">[Following is the style for "note 02".]</p>
+				
+					<div class="note note_02">
+						<p>This is your body text for note 01, which can be any element, layout, and/or component you specify in your
+							markup.</p>
+					</div>
+				
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<div id="unique_note_id" class="note note_02">
+									<p>This is your body text for note 02, which can be any element, layout, and/or component you specify in your markup.</p>
+								</div>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Note 02 Section Ends -->
+
+			</section>
+			<!-- Note Section Ends -->
+
+			<hr class="template_hr"/>
+
+			<!-- Practice Section Starts -->
+			<section id="practices">
+				<header>
+					<h1>Practice</h1>
+				</header>
+				<p class="p-grey">[Practice components are generally used to style end-of-section features, such as practice questions or reflection
+				exercises. This section displays how each of the different practice components are styled and will display.]</p>
+
+				<!-- Practice 01 SEction Starts -->
+				<hr id="practice_01"/>
+				<section>
+					<header>
+						<h2 class="p-grey">Practice 01:</h2>
+					</header>
+					<p class="p-grey">[This is the design treatment for "practice 01" that are usually found at the end of the book or page.]</p>
+
+					<section class="practice practice_01 bg_lightseagreen">
+						<header class="bg_darkgreen">
+							<h4 class="title title_04 text_uppercase text-color-white">Watch For...</h4>
+						</header>
+						<div class="practicelist padding-right-default" style="padding-left: 1.5rem;">
+							<p>This is your body text, which can be any element, layout, and/or component you specify in your markup. However this is a practice, generally it should use the <strong>practicelist element</strong> within here.</p>
+						</div>
+					</section>
+
+					<section class="practice practice_01 bg_lightblue">
+						<header class="bg_darkgreen">
+							<h4 class="title title_04 text_uppercase text-color-white">Watch For...</h4>
+						</header>
+						<div class="practicelist padding-right-default" style="padding-left: 1.5rem;">
+							<p>This is your body text, which can be any element, layout, and/or component you specify in your markup.
+								However this is a practice, generally it should use the <strong>practicelist element</strong> within here.
+							</p>
+						</div>
+					</section>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p class="p-darkred">[The class "practicelist" needs to be following right after the header tag. The HTML that is using this class is
+					generally an ul tag. In this example it is shown as a div only.]</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<section id="unique_section_id" class="practice practice_01 bg_lightseagreen" aria-labelledby="header_unique_header_id">
+									<header id="header_unique_header_id" class="bg_darkgreen">
+										<h5 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Watch For...</h5>
+									</header>
+									<div class="practicelist padding-right-default">
+										<p>This is your body text, which can be any element, layout, and/or component you specify in your markup. However
+											this is a practice, generally it should use the <strong>practicelist element</strong> within here.</p>
+									</div>
+								</section>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Practice 01 SEction Ends -->
+
+			</section>
+			<!-- Practice Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Card Section Starts -->
+			<section id="cards">
+				<header>
+					<h1>Card</h1>
+				</header>
+				<p class="p-grey">[Card components are generally used to style specific sections to set it apart from the main narrative text. You must
+				indicate where the card starts and where it ends in your markup. This section displays how each of the different card
+				components are styled and will display.]</p>
+				
+				<!-- Card 01 SEction Starts -->
+				<hr id="card_01" />
+				<section>
+					<header>
+						<h2 class="p-grey">Card 01:</h2>
+					</header>
+					<p class="p-grey">[This is the design treatment for "card 01". Note that the header design structure minus the background colour is templated and cannot be changed.]
+					</p>
+				
+					<section class="card card_01">
+						<header class="bg_dodgerblue">
+							<h3 class="title title_04 text_uppercase text-color-white" style="border-bottom: 1px solid #000;">Eyes in 1 Minute!</h3>
+						</header>
+						<div class="padding-left-default padding-right-default">
+							<p>This is your body text for card 01, which can be any element, layout, and/or component you specify in your
+								markup.</p>
+						</div>
+					</section>
+				
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<section id="unique_section_id" class="card card_01" aria-labelledby="header_unique_header_id">
+									<header id="header_unique_header_id" class="bg_dodgerblue">
+										<h4 id="unique_heading_id" class="title title_04 text_uppercase text-color-white">Eyes in 1 Minute!</h4>
+									</header>
+									<div class="padding-left-default padding-right-default">
+										<p>This is your body text for card 01, which can be any element, layout, and/or component you specify in your
+											markup.</p>
+									</div>
+								</section>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Card 01 SEction Ends -->
+
+				<!-- Card 02 SEction Starts -->
+				<hr id="card_02" />
+				<section>
+					<header>
+						<h2 class="p-grey">Card 02:</h2>
+					</header>
+					<p class="p-grey">[This is the design treatment for "card 02". Note that the header design structure minus the background colour is templated
+						and cannot be changed.]
+					</p>
+				
+					<section class="card card_02">
+						<header class="bg_lightgrey">
+							<h3 class="title title_04 text_uppercase" style="border-bottom: 1px solid #000;">Solving Problems</h3>
+						</header>
+						<section class="margin-top-0">
+							<header class="bg_peru">
+								<h4 class="subtitle text_uppercase text-color-white" style="border-bottom: 1px solid #000;">Where To?</h4>
+							</header>
+							<div class="padding-left-default padding-right-default">
+								<p>This is your body text for card 02, which can be any element, layout, and/or component you specify in your
+									markup.</p>
+							</div>
+						</section>
+					</section>
+
+					<section class="card card_02">
+						<header class="bg_lightgrey">
+							<h3 class="title title_04 text_uppercase" style="border-bottom: 1px solid #000;">Independent Inquiry</h3>
+						</header>
+						<section class="margin-top-0">
+							<header class="bg_dodgerblue">
+								<h4 class="subtitle text_uppercase text-color-white" style="border-bottom: 1px solid #000;">Numbers Can Tell About...</h4>
+							</header>
+							<div class="padding-left-default padding-right-default">
+								<p>This is your body text for card 02, which can be any element, layout, and/or component you specify in your
+									markup.</p>
+							</div>
+						</section>
+					</section>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p class="p-darkred">[If card 02 requires layout grid 05, the extra div tag is necessary before the second section starts. Otherwise the div is not needed if it does not require layout grid 05.]</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<section id="unique_section_id" class="card card_02" aria-labelledby="header_unique_header_id">
+									<header id="header_unique_header_id" class="bg_lightgrey">
+										<h4 id="unique_heading_id" class="title title_04 text_uppercase">Independent Inquiry</h4>
+									</header>
+									<div>
+										<section id="unique_section_id" class="margin-top-0" aria-labelledby="header_unique_header_id">
+											<header id="header_unique_header_id" class="bg_dodgerblue">
+												<h5 id="unique_heading_id" class="subtitle text_uppercase text-color-white">Numbers Can Tell About...</h5>
+											</header>
+											<div class="padding-left-default padding-right-default">
+												<p>This is your body text for card 02, which can be any element, layout, and/or component you specify in your
+													markup.</p>
+											</div>
+										</section>
+									</div>
+								</section>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Card 02 SEction Ends -->
+
+			</section>
+			<!-- Card Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Informaltable Section Starts -->
+			<section id="informaltables">
+				<header>
+					<h1>Informaltable</h1>
+				</header>
+				<p class="p-grey">[Use the "informal table" component for your tables that have column headers. Note that border style and text style
+				(font, colour, and size) are templated and cannot be changed; however, the column widths and the number of rows and
+				columns can be customized.]</p>
+			
+				<!-- Informaltable 01 SEction Starts -->
+				<hr id="informaltable_01" />
+				<section>
+					<header>
+						<h2 class="p-grey">Informaltable 01:</h2>
+					</header>
+					<p class="p-grey">[This is the design treatment for "informaltable 01".]
+					</p>
+
+					<table class="informaltable informaltable_01">
+						<caption>
+							<p><strong>Optional Caption</strong></p>
+						</caption>
+						<thead>
+							<tr class="bg_lightseagreen">
+								<th scope="col">
+									<p class="text_uppercase">
+										<strong>Math Focus</strong>
+									</p>
+								</th>
+								<th scope="col">
+									<p class="text_uppercase">
+										<strong>Large Group Options</strong>
+									</p>
+								</th>
+								<th scope="col">
+									<p class="text_uppercase">
+										<strong>Small Group Options</strong>
+									</p>
+								</th>
+								<th scope="col">
+									<p class="text_uppercase">
+										<strong>Options for Independent Work</strong>
+									</p>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+								</td>
+								<td>
+									<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+										took a galley of type and scrambled it to make a type specimen book.</p>
+								</td>
+								<td>
+									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+										essentially unchanged. It was popularised in the 1960s</p>
+								</td>
+								<td>
+									<p>It is a long established fact that a reader will be distracted by the readable content of a page when
+										looking at its layout.</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+								</td>
+								<td>
+									<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+										took a galley of type and scrambled it to make a type specimen book.</p>
+								</td>
+								<td>
+									<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+										essentially unchanged. It was popularised in the 1960s</p>
+								</td>
+								<td>
+									<p>It is a long established fact that a reader will be distracted by the readable content of a page when
+										looking at its layout.</p>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<p class="code_snippet">Code Snippet for Vendor:</p>
+					<p>
+						<div class="code_format">
+							<code>
+								<table id="unique_table_id" class="informaltable informaltable_01">
+									<caption id="unique_caption_id">
+										<p><strong>Optional Caption</strong></p>
+									</caption>
+									<thead>
+										<tr class="bg_lightseagreen">
+											<th scope="col">
+												<p class="text_uppercase">
+													<strong>Math Focus</strong>
+												</p>
+											</th>
+											<th scope="col">
+												<p class="text_uppercase">
+													<strong>Large Group Options</strong>
+												</p>
+											</th>
+											<th scope="col">
+												<p class="text_uppercase">
+													<strong>Small Group Options</strong>
+												</p>
+											</th>
+											<th scope="col">
+												<p class="text_uppercase">
+													<strong>Options for Independent Work</strong>
+												</p>
+											</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>
+												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+											</td>
+											<td>
+												<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+													took a galley of type and scrambled it to make a type specimen book.</p>
+											</td>
+											<td>
+												<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+													essentially unchanged. It was popularised in the 1960s</p>
+											</td>
+											<td>
+												<p>It is a long established fact that a reader will be distracted by the readable content of a page when
+													looking at its layout.</p>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+											</td>
+											<td>
+												<p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
+													took a galley of type and scrambled it to make a type specimen book.</p>
+											</td>
+											<td>
+												<p>It has survived not only five centuries, but also the leap into electronic typesetting, remaining
+													essentially unchanged. It was popularised in the 1960s</p>
+											</td>
+											<td>
+												<p>It is a long established fact that a reader will be distracted by the readable content of a page when
+													looking at its layout.</p>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</code>
+						</div>
+					</p>
+				</section>
+				<!-- Informaltable 01 Section ends -->
+
+			</section>
+			<!-- Informaltable Section Ends -->
+
+			<hr class="template_hr"/>
+
+			<!-- Long Description Section Starts -->
+			<section id="long_description">
+				<header>
+					<h1 class="p-grey">Long Description:</h1>
+				</header>
+				<p class="p-grey">[Use this design treatment for long descriptions that may accompany an image or figure. It should consist of a heading
+				followed by the long description text that will display when the drop-down arrow is clicked.]
+				</p>
+
+				<figure class="informalfigure width-50">
+					<img src="../../images/placeholder_images/mathology_img.jpg" />
+					<figcaption>
+						<div class="caption">
+							<p>Caption text will display below the figure like this.</p>
+							<details class="margin-top-default margin-bottom-default">
+								<summary class="margin-bottom-default">
+									<p class="inline">
+										<strong>Long Description</strong>
+									</p>
+								</summary>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+									industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+									and scrambled it to make a type specimen book.</p>
+							</details>
+						</div>
+					</figcaption>
+				</figure>
+					
+				<p class="code_snippet">Code Snippet for Vendor:</p>
+				<p>
+					<div class="code_format">
+						<code>
+							<figure id="unique_figure_id" class="informalfigure width-50">
+								<img id="unique_image_id" src="../images/mathology_img.jpg" alt="alt text" />
+								<figcaption id="unique_figurecaption_id">
+									<div class="caption">
+										<p>Caption text will display below the figure like this.</p>
+										<details id="unique_details_id" class="margin-top-default margin-bottom-default">
+											<summary id="unique_summary_id" class="margin-bottom-default">
+												<p class="inline">
+													<strong>Long Description</strong>
+												</p>
+											</summary>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+												industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+												and scrambled it to make a type specimen book.</p>
+										</details>
+									</div>
+								</figcaption>
+							</figure>
+						</code>
+					</div>
+				</p>	
+			</section>
+			<!-- Long Description Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Cover Page Section Starts -->
+			<section id="cover_page">
+				<header>
+					<h1 class="p-grey">Cover Page:</h1>
+				</header>
+				<p class="p-grey">[This is the design treatment for a "Cover page" component. It is the first page of the ePub and is designed to always fit to any ePub browser width and height proportionally.]
+				</p>
+			
+				<div id="cover_img" class="cover">
+					<img id="img_for_cover" src="../../images/placeholder_images/cover.jpg" />
+				</div>
+
+				<p class="code_snippet">Code Snippet for Vendor:</p>
+				<p class="p-darkred">[Title page img tags do not need to be wrapped by a figure tag.]</p>
+				<p>
+					<div class="code_format">
+						<code>
+							<div class="cover">
+								<img id="unique_image_id" src="../images/cover.jpg" alt="alt text"/>
+							</div>
+						</code>
+					</div>
+				</p>
+			</section>
+			<!-- Title Page Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Acknowledgement Section Starts -->
+			<section id="acknowledgement">
+				<header>
+					<h1 class="p-grey">Acknowledgement:</h1>
+				</header>
+				<p class="p-grey">[This is the design treatment for "Acknowledgement" which is part of the front matter.]
+				</p>
+			
+				<section class="acknowledgements">
+					<section>
+						<header>
+							<h2 class="title title_04"><em>Mathology Little Books Team</em></h2>
+						</header>
+						<p>Publisher: Lorem Ipsum</p>
+						<p>Managaing Editor: Lorem Ipsum</p>
+					</section>
+					<section>
+						<header>
+							<h2 class="title title_04">Student Books</h2>
+						</header>
+						<p>Project Manager: Lorem Ipsum</p>
+						<p>Photo Researcher: Lorem Ipsum</p>
+					</section>
+				</section>
+			
+				<p class="code_snippet">Code Snippet for Vendor:</p>
+				<p class="p-darkred">[The section class "acknowledgement" does not require to have a header. All the sub sections require headers.]</p>
+				<p>
+					<div class="code_format">
+						<code>
+							<section id="unique_section_id" class="acknowledgements">
+								<section id="unique_section_id" aria-labelledby="header_unique_section_id">
+									<header id="header_unique_section_id">
+										<h1 id="unique_heading_id" class="title title_04"><em>Mathology Little Books Team</em></h1>
+									</header>
+									<p>Publisher: Lorem Ipsum</p>
+									<p>Managaing Editor: Lorem Ipsum</p>
+								</section>
+								<section id="unique_section_id" aria-labelledby="header_unique_section_id">
+									<header id="header_unique_section_id">
+										<h1 id="unique_heading_id" class="title title_04">Student Books</h1>
+									</header>
+									<p>Project Manager: Lorem Ipsum</p>
+									<p>Photo Researcher: Lorem Ipsum</p>
+								</section>
+							</section>
+						</code>
+					</div>
+				</p>
+			</section>
+			<!--Acknowledgement Section Ends -->
+
+			<hr class="template_hr" />
+
+			<!-- Back Matter Section Starts -->
+			<section id="back_matter">
+				<header>
+					<h1 class="p-grey">Back Matter:</h1>
+				</header>
+				<p class="p-grey">[This is the design treatment for "Back Matter", credits and copyright page.]</p>
+			
+				<section class="backmatter">
+					<section class="creditset">
+						<section class="creditsetdiv">
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+							dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+							book.</p>
+						</section>
+						<section class="creditsetdiv">
+							<header>
+								<h2 class="title title_02">Print Copyright</h2>
+							</header>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+							<p><a href="mailto:your_email@address_here.com" class="ulink">your_email@address_here.com</a></p>
+							<br />
+							<p><em>Name of Book</em></p>
+							<br />
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+							dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+							book.</p>
+							<br />
+							<p><a href="#" class="ulink" target="_blank">www.website.com</a></p>
+							<br />
+							<div>
+								<figure class="float-left informalfigure">
+									<img src="../../images/placeholder_images/pearson_logo.jpg" />
+								</figure>
+								<div class="clear-both"></div>
+							</div>
+						</section>
+					</section>
+				</section>
+
+				<p class="code_snippet">Code Snippet for Vendor:</p>
+				<p>
+					<div class="code_format">
+						<code>
+							<section class="backmatter">
+								<section class="creditset">
+									<section id="unique_section_id" class="creditsetdiv">
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+											industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
+											a type specimen book.</p>
+									</section>
+									<section id="unique_section_id" class="creditsetdiv">
+										<header id="header_unique_section_id">
+											<h2 id="unique_heading_id" class="title title_02">Print Copyright</h2>
+										</header>
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+										<p><a href="mailto:your_email@address_here.com" class="ulink">your_email@address_here.com</a></p>
+										<br />
+										<p><em>Name of Book</em></p>
+										<br />
+										<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+											standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+											specimen book.</p>
+										<br />
+										<p><a href="#" class="ulink" target="_blank">www.website.com</a></p>
+										<br />
+										<div>
+											<figure id="unique_figure_id" class="float-left informalfigure">
+												<img id="unique_image_id" src="../images/pearson_logo.jpg" />
+											</figure>
+											<div class="clear-both"></div>
+										</div>
+									</section>
+								</section>
+							</section>
+						</code>
+					</div>
+				</p>
+			</section>
+			<!--Back Matter Section Ends -->
+
+		</section>
+		<!-- Readspeaker section closed-->
+	</body>
+
+</html>

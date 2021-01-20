@@ -1,0 +1,872 @@
+<html lang="en">
+
+<head>
+    <title>Mathology Styles Styles</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../../css/mathology_tr_template.css" />
+    <style>
+        body {
+            max-width: 1024px;
+            margin: auto;
+            padding: 50px;
+            font-size: 115%;
+        }
+
+        hr {
+            margin: 0;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            line-height: 2rem;
+        }
+
+        .code_format {
+            display: block;
+            background-color: #e2f2f2;
+            border: solid #020202;
+            padding: 10px 20px;
+        }
+
+        code {
+            display: block;
+            font-family: monospace;
+            margin-top: -20px;
+            white-space: pre;
+            overflow-x: auto;
+        }
+
+        .code_format * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .grid-col {
+            background-color: #e2f2f2;
+            border: 1px dotted #020202;
+            text-align: center;
+        }
+
+        .template_hr {
+            display: block;
+            height: 10px;
+            border: 0;
+            border-top: 10px solid red;
+            margin: 1rem 0;
+            padding: 0;
+        }
+
+        .code_snippet {
+            color: #600000;
+            font-weight: bold;
+        }
+
+        .main_title {
+            text-align: center;
+            font-size: 3rem;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 3.25rem;
+            letter-spacing: 5px;
+            margin: 0;
+            font-variant: small-caps;
+        }
+
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        #myBtn:hover {
+            background-color: red;
+        }
+
+        .links {
+            column-count: 3;
+            column-gap: 40px;
+        }
+
+        .links a {
+            font-weight: unset;
+        }
+
+        .links li {
+            font-size: 0.85rem;
+            line-height: 1.45rem;
+            margin: 0;
+        }
+
+        .links p {
+            margin: 0;
+            font-size: 0.85rem;
+            line-height: 1.45rem;
+        }
+
+        .links ol {
+            list-style-type: upper-alpha;
+        }
+
+        .links2 {
+            display: none;
+            width: 100%;
+            font-size: 1.15rem;
+            margin: 1.15rem 0;
+            border: 1px solid black;
+        }
+
+        .p-grey,
+        .p-darkred {
+            color: #707070;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.15rem;
+            line-height: 1.65rem;
+        }
+
+        .p-darkred {
+            color: #600000;
+        }
+
+        @media only screen and (max-width: 600px) {
+        .links { display: none; }
+        .links2 {display: block; }
+      }
+
+      @media only screen and (max-width: 450px) {
+        #myBtn {
+          bottom: 70px;
+          right: 10px;
+        }
+
+        .main_title {
+          font-size: 2.25rem;
+          line-height: 2.75rem;
+          letter-spacing: 1px;
+        }
+      }
+    </style>
+
+    <script>
+        window.onload = function init() {
+            var codeblock = document.querySelectorAll(".code_format > code");
+            var len = codeblock.length;
+            for (var i = 0; i < len; i++) {
+                var dom = codeblock[i];
+                var html = dom.innerHTML;
+                console.log(html);
+                html = html.replace(/(<img([\w\W]+?))(>)/gm, "$1/>");
+                html = html.replace(/—/gm, "&#x2014;");
+                html = html.replace(/–/gm, "&#x2013;");
+                console.log(html);
+                var pattern = html.match(/\s*\n[\t\s]*/);
+                var pattern01 = html.match(/\s+\n*$/);
+                var pattern02 = html.match(/^\n*(\<)/);
+                html = html.replace(new RegExp(pattern, "g"), '\n');
+                var temphtml = html.match(/^[^\n]+\n/gm);
+
+                //html = html.replace(new RegExp(pattern01, "m"), ''); html = html.replace(new RegExp(pattern02, "m", "g"), '<');
+                var text = document.createTextNode(String(temphtml.join("")));
+                dom.innerHTML = "";
+                dom.innerText = String(temphtml.join(""));
+            }
+        }
+
+        window.onscroll = function () {
+            scrollFunction()
+        };
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("myBtn").style.display = "block";
+            } else {
+                document.getElementById("myBtn").style.display = "none";
+            }
+        }
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
+</head>
+
+<body epub:type="bodymatter">
+    <button onclick="topFunction();" id="myBtn" title="Go to top">Top</button>
+    <section id="read_speaker">
+        <section>
+            <header>
+                <h1 class="main_title">Styles</h1>
+            </header>
+            <p class="p-grey">[A style defines the look and feel of an element.]</p>
+            <hr />
+
+            <ol class="links">
+                <li>
+                    <p>
+                        <strong>
+                            <a href="#text_typeface">Text Typeface</a>
+                        </strong>
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <a href="#timesnewroman">Times New Roman</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#arial">Arial</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#andy">Andy</a>
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <p>
+                        <strong>
+                            <a href="#text_emphasis">Text Emphasis</a>
+                        </strong>
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <a href="#strong">Bold</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#em">Italic</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#uppercase">Uppercase</a>
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <p>
+                        <strong>
+                            <a href="#text_color">Text Colours</a>
+                        </strong>
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <a href="#dodgerblue_text">Dodger Blue Text Colour</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#peru_text">Peru Text Colour</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#black_text">Black Text Colour</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#white_text">White Text Colour</a>
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <p>
+                        <strong>
+                            <a href="#border_color">Border Colours</a>
+                        </strong>
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <a href="#black_border">Black Border</a>
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+
+                <li>
+                    <p>
+                        <strong>
+                            <a href="#background_color">Background Colours</a>
+                        </strong>
+                    </p>
+                    <ol>
+                        <li>
+                            <p>
+                                <a href="#lightgrey_bg">Lightgrey Background</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#darkgreen_bg">Darkgreen Background</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#lightseagreen_bg">Light Sea Green Background</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#lightblue_bg">Light Blue Background</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#dodgerblue_bg">Dodger Blue Background</a>
+                            </p>
+                        </li>
+                        <li>
+                            <p>
+                                <a href="#peru_bg">Peru Background</a>
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+            </ol>
+
+            <select class="links2" onchange="location = this.value;">
+                <option>** Pick from dropdown **</option>
+                <option value="#text_typeface">- Text Typeface -</option>
+                <option value="#timesnewroman">Times New Roman</option>
+                <option value="#arial">Arial</option>
+                <option value="#andy">Andy</option>
+
+                <option value="#text_emphasis">- Text Emphasis -</option>
+                <option value="#strong">Bold</option>
+                <option value="#em">Italic</option>
+                <option value="#uppercase">Uppercase</option>
+
+                <option value="#text_color">- Text Colours -</option>
+                <option value="#dodgerblue_text">Dodger Blue Text Colour</option>
+                <option value="#peru_text">Peru Text Colour</option>
+                <option value="#black_text">Black Text Colour</option>
+                <option value="#white_text">White Text Colour</option>
+
+                <option value="#border_color">- Border Colours -</option>
+                <option value="#black_border">Black Border</option>
+
+                <option value="#background_color">- Background Colours -</option>
+                <option value="#lightgrey_bg">Lightgrey Background</option>
+                <option value="#darkgreen_bg">Darkgreen Background</option>
+                <option value="#lightseagreen_bg">Light Sea Green Background</option>
+                <option value="#lightblue_bg">Light Blue Background</option>
+                <option value="#dodgerblue_bg">Dodger Blue Background</option>
+                <option value="#peru_bg">Peru Background</option>
+            </select>
+        </section>
+
+        <hr class="template_hr" style="border-top: 40px double MediumVioletRed;" />
+
+        <!-- Text Typeface Section Starts -->
+        <section id="text_typeface">
+            <header>
+                <h1>Text Typeface</h1>
+            </header>
+            <p class="p-grey">[This section displays text typefaces that can be applied to any text within an element or component for emphasis.]</p>
+        
+            <!-- Times New Roman Starts -->
+            <hr id="timesnewroman" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Times New Roman:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the Times New Roman typeface.]</p>
+
+                <p class="text-timesnewroman">This is normal paragraph text that uses the Times New Roman style class.</p>
+                <p>By default all paragraph text are using Times New Roman without the style class.</p>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-timesnewroman">This is normal paragraph text that uses the Times New Roman style class.</p>
+                            <p>By default all paragraph text are using Times New Roman without the style class.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Times New Roman Section Ends -->
+
+            <!-- Arial Section Starts -->
+            <hr id="arial" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Arial:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the Arial typeface.]</p>
+            
+                <p class="text-arial">This is normal paragraph text that uses the Arial style class.</p>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-arial">This is normal paragraph text that uses the Arial style class.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Arial Section Ends -->
+
+            <!-- Andy Section Starts -->
+            <hr id="andy" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Andy:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the Andy typeface.]</p>
+            
+                <p class="text-andy">This is normal paragraph text that uses the Andy style class.</p>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-andy">This is normal paragraph text that uses the Andy style class.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Andy Section Ends -->
+            
+        </section>
+        <!-- Text Typeface Section Ends -->
+
+        <hr class="template_hr" />
+
+        <!-- Text Emphasis Section Starts -->
+        <section id="text_emphasis">
+            <header>
+                <h1>Text Emphasis</h1>
+            </header>
+            <p class="p-grey">[This section displays the bold & italic and sans-serif & serif font style that can be applied to any text within an
+                element or component for
+                emphasis.]</p>
+
+            <!-- Strong/Bold Section starts -->
+            <hr id="strong" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Bold:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for bolded text.]</p>
+                <p>This is normal paragraph text.</p>
+                <p>This is
+                    <strong>strong</strong>
+                    bolded paragraph text.</p>
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                <p>This is
+                  <strong>strong</strong>
+                  bolded paragraph text.</p>
+              </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Strong/Bold Section ends -->
+
+            <!-- Italic/Em Section Starts -->
+            <hr id="em" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Italic:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for italicize text.]</p>
+                <p>This is normal paragraph text.</p>
+                <p>This is
+                    <em>italic</em>
+                    paragraph text.</p>
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                <p>This is
+                  <em>italic</em>
+                  paragraph text.</p>
+              </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Italic/Em Section ends -->
+
+            <!-- Text Uppercase Starts -->
+            <hr id="uppercase" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Uppercase:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for uppercase.]</p>
+            
+                <p class="text_uppercase">This text is uppercase.</p>
+                <p>This text is the default style.</p>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text_uppercase">This text is uppercase.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Text Uppercase Ends -->
+
+        </section>
+        <!-- Text Emphasis Section Ends -->
+
+        <hr class="template_hr" />
+        
+        <!-- Text Colours Section Starts -->
+        <section id="text_color">
+            <header>
+                <h1>Text Colours</h1>
+            </header>
+            <p class="p-grey">[This section captures each of the text colours available in the Mathology Teacher's Guide epub design template.]</p>
+        
+            <!-- Dodger Blue Text Colour Section starts -->
+            <hr id="dodgerblue_text" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Dodger Blue Text Colour:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the dodger blue text colour.]</p>
+
+                <p class="text-color-dodgerblue">This is dodger blue text colour.</p>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-color-dodgerblue">This is dodger blue text colour.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Dodger Blue Text Colour Section ends -->
+
+            <!-- Peru Text Colour Section starts -->
+            <hr id="peru_text" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Peru Text Colour:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the peru text colour.]</p>
+            
+                <p class="text-color-peru">This is peru text colour.</p>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-color-peru">This is peru text colour.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Peru Text Colour Section  ends -->
+
+            <!-- Black Text Colour Section starts -->
+            <hr id="black_text" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Black Text Colour:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the black text colour.]</p>
+
+                <p class="text-color-black">This is black text colour.</p>
+                <p>The default colour for all text is black.</p>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-color-black">This is black text colour.</p>
+                            <p>The default colour for all text is black.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Black Text Colour Section ends -->
+
+            <!-- White Text Colour Section starts -->
+            <hr id="white_text" />
+            <section>
+                <header>
+                    <h2 class="p-grey">White Text Colour:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the white text colour.]</p>
+
+                <div class="bg_dodgerblue width-50">
+                <p class="text-color-white">This is white text colour.</p>
+                </div>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <p class="text-color-white">This is white text colour.</p>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- White Text Colour Section ends -->
+
+        </section>
+        <!-- Text Colours Section ends -->
+
+        <hr class="template_hr" />
+        
+        <!-- Border Colours Section Starts -->
+        <section id="border_color">
+            <header>
+                <h1>Border Colours</h1>
+            </header>
+            <p class="p-grey">[This section captures each of the border styles available in the Mathology Teacher's Guide design template. Borders are often used on informalfigure images.]</p>
+        
+            <!-- Black Border Section starts -->
+            <hr id="black_border" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Black Border:</h2>
+                </header>
+                <p class="p-grey">[Below is the style for the black border.]</p>
+
+                <figure class="informalfigure width-33">
+                    <img class="border-black" src="../../images/placeholder_images/mathology_img.jpg" alt="alt text" />
+                    <figcaption>
+                        <div class="caption">
+                            <p>Caption text will display below the figure like this.</p>
+                        </div>
+                    </figcaption>
+                </figure>
+        
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <figure id="unique_figure_id" class="informalfigure width-33" role="group" aria-labelledby="unique_figurecaption_id">
+                                <img id="unique_image_id" class="border-black" src="../images/mathology_img.jpg" alt="alt text" />
+                                <figcaption id="unique_figurecaption_id">
+                                    <div class="caption">
+                                        <p>Caption text will display below the figure like this.</p>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Black Border Section ends -->
+        
+        </section>
+        <!-- Border Colours Section ends -->
+
+        <hr class="template_hr" />
+
+        <!-- Background Colours Section Starts -->
+        <section id="background_color">
+            <header>
+                <h1>Background Colours</h1>
+            </header>
+            <p class="p-grey">[This section captures each of the background style elements available in the Mathology Teacher's Guide design template. Background colours can be applied to a specific element, component, and/or to the entire page.]</p>
+        
+            <!-- Light Grey bg Section starts -->
+            <hr id="lightgrey_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Light Grey Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “light grey background” style will display. This can also be
+                    applied to other elements or components besides a note.]</p>
+            
+                <div class="note note_01 bg_lightgrey">
+                    <p class="text-color-black">This is the text colour that should be used for this type of background colour to
+                        pass accessibility.</p>
+                </div>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_lightgrey">
+                                <p class="text-color-black"></p>This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- light grey bg Section Ends -->
+
+            <!-- Dark green bg Section starts -->
+            <hr id="darkgreen_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Dark Green Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “dark green background” style will display. This can also be applied to other elements or components besides a note.]</p>
+        
+                <div class="note note_01 bg_darkgreen">
+                    <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass accessibility.</p>
+                </div>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_darkgreen">
+                                <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Dark green bg Section Ends -->
+
+            <!-- Light Sea green bg Section starts -->
+            <hr id="lightseagreen_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Light Sea Green Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “light sea green background” style will display. This can also be
+                    applied to other elements or components besides a note.]</p>
+            
+                <div class="note note_01 bg_lightseagreen">
+                    <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+                        accessibility.</p>
+                </div>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_lightseagreen">
+                                <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Light Sea green bg Section Ends -->
+
+            <!-- Light blue bg Section starts -->
+            <hr id="lightblue_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Light Blue Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “light blue background” style will display. This can
+                    also be
+                    applied to other elements or components besides a note.]</p>
+
+                <div class="note note_01 bg_lightblue">
+                    <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+                        accessibility.</p>
+                </div>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_lightblue">
+                                <p class="text-color-black">This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Light blue bg Section Ends -->
+
+            <!-- Dodger blue bg Section starts -->
+            <hr id="dodgerblue_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Dodger Blue Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “dodger blue background” style will display. This can
+                    also be
+                    applied to other elements or components besides a note.]</p>
+
+                <div class="note note_01 bg_dodgerblue">
+                    <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+                        accessibility.</p>
+                </div>
+            
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_dodgerblue">
+                                <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Dodger blue bg Section Ends -->
+
+            <!-- Peru bg Section starts -->
+            <hr id="peru_bg" />
+            <section>
+                <header>
+                    <h2 class="p-grey">Peru Background:</h2>
+                </header>
+                <p class="p-grey">[This is how a note applied with the “peru background” style will display. This can
+                    also be
+                    applied to other elements or components besides a note.]</p>
+            
+                <div class="note note_01 bg_peru">
+                    <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+                        accessibility.</p>
+                </div>
+
+                <p class="code_snippet">Code Snippet for Vendor:</p>
+                <p>
+                    <div class="code_format">
+                        <code>
+                            <div id="unique_note_id" class="note note_01 bg_peru">
+                                <p class="text-color-white">This is the text colour that should be used for this type of background colour to pass
+                                    accessibility.</p>
+                            </div>
+                        </code>
+                    </div>
+                </p>
+            </section>
+            <!-- Peru bg Section Ends -->
+        
+        </section>
+        <!-- Background Colours Section ends -->
+
+    </section>
+    <!-- Readspeaker section closed-->
+</body>
+
+</html>

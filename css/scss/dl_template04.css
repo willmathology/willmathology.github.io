@@ -1,0 +1,889 @@
+/* ------------------------------------Load the fonts into CSS-------------------------------------------- */
+@font-face {
+  font-family: "StoneSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Medium.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Medium.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Medium.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Medium.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-MediumIt.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-MediumIt.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-MediumIt.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-MediumIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSans";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Semibold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Semibold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Semibold.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Semibold.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSans";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-SmBdIt.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-SmBdIt.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-SmBdIt.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-SmBdIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Bold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Bold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Bold.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSans";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/StoneSansIIITCW05-BoldIt.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-BoldIt.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-BoldIt.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSansIIITCW05-BoldIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-Medium.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Medium.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Medium.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Medium.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-MediumIt.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-MediumIt.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-MediumIt.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-MediumIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBold.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBold.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: italic;
+  font-weight: 600;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBoldIt.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBoldIt.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBoldIt.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-SemiBoldIt.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-Bold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Bold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Bold.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: "StoneSerif";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/StoneSerifITCW05-BoldItalic.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-BoldItalic.woff2") format("woff2"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-BoldItalic.woff") format("woff"), url("../fonts/dl_template04_fonts/StoneSerifITCW05-BoldItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/Andy-Regular.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/Andy-Regular.woff2") format("woff2"), url("../fonts/dl_template04_fonts/Andy-Regular.woff") format("woff"), url("../fonts/dl_template04_fonts/Andy-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/Andy-Italic.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/Andy-Italic.woff2") format("woff2"), url("../fonts/dl_template04_fonts/Andy-Italic.woff") format("woff"), url("../fonts/dl_template04_fonts/Andy-Italic.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/Andy-Bold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/Andy-Bold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/Andy-Bold.woff") format("woff"), url("../fonts/dl_template04_fonts/Andy-Bold.ttf") format("truetype"); }
+@font-face {
+  font-family: "Andy";
+  font-style: italic;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/Andy-BoldItalic.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/Andy-BoldItalic.woff2") format("woff2"), url("../fonts/dl_template04_fonts/Andy-BoldItalic.woff") format("woff"), url("../fonts/dl_template04_fonts/Andy-BoldItalic.ttf") format("truetype"); }
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/dl_template04_fonts/OpenSans-Regular.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/OpenSans-Regular.woff2") format("woff2"), url("../fonts/dl_template04_fonts/OpenSans-Regular.woff") format("woff"), url("../fonts/dl_template04_fonts/OpenSans-Regular.ttf") format("truetype"); }
+@font-face {
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/dl_template04_fonts/OpenSans-Bold.eot") format("embedded-opentype"), url("../fonts/dl_template04_fonts/OpenSans-Bold.woff2") format("woff2"), url("../fonts/dl_template04_fonts/OpenSans-Bold.woff") format("woff"), url("../fonts/dl_template04_fonts/OpenSans-Bold.ttf") format("truetype"); }
+/* ------------------------------------Normalization Styles CSS-------------------------------------------- */
+html {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  letter-spacing: 0.015rem;
+  line-height: 1.25rem;
+  -webkit-text-size-adjust: 100%;
+  font-size: 100%; }
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  -webkit-box-sizing: inherit; }
+
+:root {
+  -moz-tab-size: 4;
+  tab-size: 4; }
+
+body {
+  font-family: "StoneSerif", Arial, sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  font-size: 115%;
+  background-color: #FFFFFF; }
+
+strong {
+  font-weight: bold;
+  text-decoration: inherit; }
+
+em {
+  font-style: italic;
+  text-decoration: inherit; }
+
+section,
+aside {
+  display: block;
+  margin: 2rem 0;
+  padding: 0; }
+
+header {
+  display: block; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  display: block;
+  color: #000; }
+
+p,
+ol,
+ul,
+dl {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 2rem 0;
+  color: #000; }
+
+p,
+dt {
+  font-size: 1.25rem;
+  line-height: 2.25rem; }
+
+ol {
+  list-style-type: decimal;
+  padding-inline-start: 40px;
+  padding-left: 40px; }
+
+ul {
+  list-style-type: disc;
+  padding-inline-start: 40px;
+  padding-left: 40px; }
+
+li {
+  display: list-item;
+  text-align: -webkit-match-parent; }
+
+dl,
+dt,
+dd {
+  margin: 2rem 0;
+  padding: 0;
+  display: block;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box; }
+
+dt {
+  margin-bottom: 0;
+  font-weight: bold; }
+
+dd {
+  margin-inline-start: 0;
+  margin-top: 0; }
+  dd > p:first-of-type {
+    margin-top: 0; }
+
+dd:after {
+  display: block;
+  content: ""; }
+
+figure {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  margin: 2rem auto;
+  padding: 0; }
+
+img {
+  border-style: none;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+  display: block; }
+
+figcaption,
+div {
+  display: block; }
+
+figcaption {
+  margin: 0.3rem auto 0.5rem auto;
+  text-align: left;
+  padding: 0; }
+
+blockquote {
+  display: block;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
+  margin-inline-start: 4rem;
+  margin-inline-end: 4rem;
+  margin: 2rem;
+  padding: 0; }
+
+cite {
+  font-style: unset; }
+
+hr {
+  display: block;
+  margin-block-start: 0.575rem;
+  margin-block-end: 0.575rem;
+  margin-inline-start: auto;
+  margin-inline-end: auto;
+  margin: 0.575rem auto;
+  overflow: hidden;
+  border-style: inset;
+  border-width: 1px; }
+
+caption {
+  display: text-caption;
+  text-align: -webkit-center; }
+
+details {
+  display: block;
+  cursor: pointer;
+  pointer-events: auto; }
+
+details[open] {
+  cursor: initial;
+  pointer-events: auto; }
+
+summary {
+  cursor: pointer;
+  outline: none;
+  display: list-item;
+  pointer-events: auto; }
+
+/* ------------------------------------Elements Style CSS-------------------------------------------- */
+.title {
+  margin: 2rem 0; }
+
+.title_01 {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 2.5rem;
+  letter-spacing: 0.15rem; }
+
+.title_02 {
+  font-family: "StoneSerif", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+  line-height: 3.25rem; }
+
+.title_03 {
+  font-family: "StoneSerif", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.75rem;
+  line-height: 2.5rem; }
+
+.title_04 {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  line-height: 2.35rem;
+  letter-spacing: 0.1rem; }
+
+.title_05 {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 2.35rem;
+  letter-spacing: 0.25rem; }
+
+.ol_none,
+.ul_none {
+  list-style-type: none;
+  padding-left: 0; }
+
+.ul_01 {
+  list-style-type: square;
+  font-size: 1.5rem;
+  line-height: normal;
+  color: #BCBDC0; }
+
+.ul_02 > li {
+  list-style: none;
+  margin: -1.5rem 0 0 0; }
+.ul_02 > li:before {
+  content: "- ";
+  font-family: Times;
+  display: block;
+  position: relative;
+  max-width: 0;
+  max-height: 0;
+  left: -1.5rem;
+  top: 1.8rem;
+  font-size: 1.5rem;
+  line-height: 2.5rem; }
+
+.practicelist {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 700; }
+  .practicelist > .general-problem p {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 400; }
+  .practicelist > .general-problem p strong {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 700; }
+
+.tocentrylist {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 700; }
+  .tocentrylist > .tocpart > p, .tocentrylist > .toccreditset > p {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 400; }
+    .tocentrylist > .tocpart > p strong, .tocentrylist > .toccreditset > p strong {
+      font-family: "StoneSerif", Arial, sans-serif;
+      font-weight: 700; }
+  .tocentrylist > .tocpart .xref, .tocentrylist > .toccreditset .xref {
+    border-bottom: 1px dashed #000;
+    color: #000;
+    text-decoration: none; }
+    .tocentrylist > .tocpart .xref > .number, .tocentrylist > .toccreditset .xref > .number {
+      font-family: "StoneSans", Arial, sans-serif;
+      font-weight: 700; }
+  .tocentrylist > .tocpart .text-stonesans strong, .tocentrylist > .toccreditset .text-stonesans strong {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 700; }
+
+.caption p:first-of-type {
+  margin-top: 0; }
+.caption p:last-of-type {
+  margin-bottom: 0; }
+.caption p {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.25rem; }
+
+.design-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #BCBDC0; }
+
+.poem {
+  margin: 2rem 0; }
+  .poem > .linegroup {
+    margin: 2rem; }
+    .poem > .linegroup > .line {
+      display: block; }
+
+.poem_01 .line {
+  font-size: 1.25rem;
+  line-height: 2.25rem; }
+
+.blockquotegroup {
+  margin: 2rem 0; }
+
+.blockquotegroup_01 p {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 400; }
+.blockquotegroup_01 p strong {
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 700; }
+.blockquotegroup_01 p:first-of-type {
+  margin-bottom: 0; }
+.blockquotegroup_01 p:last-of-type {
+  margin-top: 0; }
+
+.dialogue {
+  margin: 2rem 0; }
+  .dialogue .speech {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 2rem 0; }
+    .dialogue .speech > .persona > p:last-of-type {
+      margin-bottom: 0; }
+    .dialogue .speech > .persona > p:first-of-type {
+      margin-top: 0; }
+    .dialogue .speech > .line > p:last-of-type {
+      margin-bottom: 0; }
+    .dialogue .speech > .line > p:first-of-type {
+      margin-top: 0; }
+
+/* ------------------------------------Layouts Styles CSS-------------------------------------------- */
+.grid-container > .grid-row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin: 2rem 0; }
+  .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2), .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col {
+    width: 48.5%; }
+
+.ol_column,
+.ul_column {
+  -webkit-column-fill: balance;
+  -moz-column-fill: balance;
+  column-fill: balance;
+  list-style-position: outside; }
+  .ol_column > li,
+  .ul_column > li {
+    margin-right: 1.25rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid; }
+
+.ol_column_01,
+.ul_column_01 {
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  columns: 2; }
+
+.ol_column_02,
+.ul_column_02 {
+  -webkit-columns: 3;
+  -moz-columns: 3;
+  columns: 3; }
+
+.figuregroup {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .figuregroup > figcaption:first-child {
+    width: 100%; }
+  .figuregroup > .informalfigure {
+    margin: 0; }
+  .figuregroup > .informalfigure:first-of-type:nth-last-of-type(2), .figuregroup > .informalfigure:first-of-type:nth-last-of-type(2) ~ .informalfigure {
+    width: 48.5%; }
+
+/* ------------------------------------Components Styles CSS-------------------------------------------- */
+.part {
+  margin: 2rem 0; }
+  .part > header > .title_02 > span:first-of-type {
+    display: inline-block;
+    border: 0;
+    border-bottom: 7px dotted #BCBDC0;
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 700; }
+    .part > header > .title_02 > span:first-of-type > .label, .part > header > .title_02 > span:first-of-type > .number {
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+      color: #BCBDC0;
+      letter-spacing: 0.5rem; }
+  .part > header > .title_02 > span:last-of-type {
+    display: block;
+    margin-top: 1rem; }
+
+.sidebar {
+  border: 0;
+  margin: 2rem 0; }
+  .sidebar > header > .title {
+    text-align: center; }
+
+.sidebar_01 {
+  border-top-width: 7px;
+  border-bottom-width: 7px;
+  border-style: dotted;
+  border-color: #BCBDC0;
+  font-family: "StoneSans", Arial, sans-serif;
+  font-weight: 400; }
+  .sidebar_01 > header > .title_06 {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    letter-spacing: 0.5rem; }
+
+.sidebar_02 {
+  border-top-width: 12px;
+  border-bottom-width: 12px;
+  border-style: solid;
+  border-color: transparent;
+  border-image: url("../images/dl_template04_images/sidebar02.png") 10/1 0/0 round stretch;
+  /* source | slice | width | outset | repeat */
+  -webkit-border-image: url("../images/dl_template04_images/sidebar02.png") 10/1 0/0 round stretch;
+  -moz-border-image: url("../images/dl_template04_images/sidebar02.png") 10/1 0/0 round stretch;
+  -o-border-image: url("../images/dl_template04_images/sidebar02.png") 10/1 0/0 round stretch;
+  font-family: "Andy", cursive, sans-serif;
+  font-weight: 400; }
+  .sidebar_02 > header > .title_06 {
+    font-size: 2rem;
+    line-height: 2.5rem; }
+  .sidebar_02 p,
+  .sidebar_02 ol,
+  .sidebar_02 ul {
+    font-size: 1.5rem;
+    line-height: 2.5rem; }
+
+.note {
+  margin: 2rem auto;
+  padding: 1px 2rem; }
+
+.note_01 {
+  border: 3px dashed #BCBDC0; }
+
+.practice {
+  margin: 2rem 0; }
+  .practice > header > .title {
+    text-align: center; }
+
+.practice_01 > header > .title_04 {
+  text-transform: uppercase;
+  letter-spacing: 0.5rem; }
+
+.cover {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .cover > img {
+    border-style: none;
+    width: auto;
+    height: 100%;
+    margin: 0 auto;
+    display: block; }
+
+.frontmatter {
+  margin: 2rem 0;
+  max-width: 1024px; }
+  .frontmatter > .titlepage > header > .title_01 {
+    font-family: "StoneSerif", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 2.75rem;
+    letter-spacing: 0; }
+  .frontmatter > .titlepage .title {
+    text-align: center; }
+  .frontmatter > .titlepage > .toc > header > .title_02 {
+    font-family: "StoneSans", Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 2.35rem;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase; }
+
+.backmatter {
+  margin: 2rem 0;
+  background-color: #FFF; }
+  .backmatter > .creditset {
+    font-family: "OpenSans", arial, sans-serif;
+    font-weight: 400;
+    margin: 1rem 0; }
+    .backmatter > .creditset .title_02 {
+      font-family: "OpenSans", arial, sans-serif;
+      font-weight: 700;
+      font-size: 34px;
+      line-height: initial;
+      margin: 1rem 0; }
+    .backmatter > .creditset p {
+      font-size: 20px;
+      line-height: initial;
+      margin: 0; }
+    .backmatter > .creditset .ulink {
+      font-weight: bold;
+      color: #000; }
+  .backmatter .informalfigure:last-of-type {
+    width: 115px !important;
+    height: auto; }
+
+/* ------------------------------------Generic CSS that belongs to anywhere-------------------------------------------- */
+.text_uppercase {
+  text-transform: uppercase; }
+
+.hr_01 {
+  border: 2px solid #000;
+  margin: 2rem 0; }
+
+.hr_02 {
+  border: 7px solid transparent;
+  border-image-source: url("../images/dl_template04_images/hr_02.svg");
+  border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+  -webkit-border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+  -moz-border-image: url("../images/dl_template04_images/hr_02.svg") 7 1 space;
+  -o-border-image: url("../images/dl_template04_images/hr_02.svg") 1 1 space;
+  width: 165px;
+  margin: 2rem auto; }
+
+.hr_03 {
+  padding: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent 0, transparent 20%, #000 20%, #000 80%, transparent 80%, transparent 100%);
+  text-align: center;
+  line-height: 1px;
+  font-size: 1rem;
+  border: 0;
+  margin: 2rem auto;
+  overflow: visible; }
+
+.hr_03:after {
+  content: "\2756";
+  display: inline;
+  padding: 0.75rem;
+  background: #FFF;
+  color: #000;
+  font-size: 1.75rem; }
+
+.hr_04 {
+  border: 0;
+  border-bottom: 7px dotted #BCBDC0;
+  margin: 2rem 0; }
+
+.text-stoneserif {
+  font-family: "StoneSerif", times, serif !important;
+  font-weight: 400 !important; }
+
+.text-stonesans {
+  font-family: "StoneSans", arial, sans-serif !important;
+  font-weight: 400 !important; }
+
+.text-andy {
+  font-family: "Andy", cursive, sans-serif !important;
+  font-weight: 400 !important; }
+
+/* ------------------------------------Helper Class CSS-------------------------------------------- */
+.subtitle {
+  font-family: "StoneSerif", Arial, sans-serif;
+  font-weight: 400; }
+
+.dedicationset > .dedication > p {
+  font-family: "StoneSerif", Arial, sans-serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 1.75rem;
+  line-height: 2.5rem; }
+
+.width-100 {
+  width: 100% !important; }
+
+.width-95 {
+  width: 95% !important; }
+
+.width-90 {
+  width: 90% !important; }
+
+.width-85 {
+  width: 85% !important; }
+
+.width-80 {
+  width: 80% !important; }
+
+.width-75 {
+  width: 75% !important; }
+
+.width-70 {
+  width: 70% !important; }
+
+.width-66 {
+  width: 66.6% !important; }
+
+.width-60 {
+  width: 60% !important; }
+
+.width-57 {
+  width: 57.5% !important; }
+
+.width-50 {
+  width: 50% !important; }
+
+.width-40 {
+  width: 40% !important; }
+
+.width-33 {
+  width: 33.3% !important; }
+
+.width-30 {
+  width: 30% !important; }
+
+.width-25 {
+  width: 25% !important; }
+
+.width-20 {
+  width: 20% !important; }
+
+.width-15 {
+  width: 15% !important; }
+
+.width-10 {
+  width: 10% !important; }
+
+.width-5 {
+  width: 5% !important; }
+
+.no-widow {
+  display: inline-block;
+  text-decoration: inherit; }
+
+.float-right {
+  float: right; }
+
+.float-left {
+  float: left; }
+
+.clear-both {
+  clear: both; }
+
+.force-break {
+  display: block; }
+
+.inline {
+  display: inline; }
+
+.lc_align-center {
+  text-align: center !important; }
+
+.lc_align-left {
+  text-align: left !important; }
+
+.lc_align-right {
+  text-align: right !important; }
+
+.margin-0-auto {
+  margin: 0 auto !important; }
+
+.margin-left-0 {
+  margin-left: 0 !important; }
+
+.margin-right-0 {
+  margin-right: 0 !important; }
+
+.margin-top-0 {
+  margin-top: 0 !important; }
+
+.margin-bottom-0 {
+  margin-bottom: 0 !important; }
+
+.margin-top-default {
+  margin-top: 2rem !important; }
+
+.margin-bottom-default {
+  margin-bottom: 2rem !important; }
+
+.margin-default-auto {
+  margin: 2rem auto !important; }
+
+.margin-left-default {
+  margin-left: 2rem !important; }
+
+.margin-right-default {
+  margin-right: 2rem !important; }
+
+.padding-top-0 {
+  padding-top: 0 !important; }
+
+.padding-bottom-0 {
+  padding-bottom: 0 !important; }
+
+.padding-left-0 {
+  padding-left: 0 !important; }
+
+.padding-right-0 {
+  padding-right: 0 !important; }
+
+.padding-top-default {
+  padding-top: 2rem !important; }
+
+.padding-bottom-default {
+  padding-bottom: 2rem !important; }
+
+.padding-left-default {
+  padding-left: 2rem !important; }
+
+.padding-right-default {
+  padding-right: 2rem !important; }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0; }
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  clip: auto; }
+
+/* ------------------------------------Responsive Big Phones (<600px)--------------------------------- */
+@media only screen and (max-width: 600px) {
+  /* ------------------------------------Elements Style CSS (<600px)-------------------------------------------- */
+  .title_02 {
+    font-size: 2.1rem;
+    line-height: 2.8rem; }
+
+  .dialogue .speech {
+    flex-direction: column; }
+
+  /* ------------------------------------Layouts Styles CSS (<600px)-------------------------------------------- */
+  .grid-container > .grid-row {
+    flex-direction: column; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2), .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col {
+      width: 100%;
+      margin: 1.25rem 0; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2):first-of-type {
+      margin-top: 0; }
+    .grid-container > .grid-row > .grid-col:first-of-type:nth-last-of-type(2) ~ .grid-col:last-of-type {
+      margin-bottom: 0; }
+
+  .ol_column_01,
+  .ul_column_01,
+  .ol_column_02,
+  .ul_column_02 {
+    -webkit-columns: 1;
+    -moz-columns: 1;
+    columns: 1; }
+
+  .figuregroup {
+    flex-direction: column; }
+    .figuregroup > .informalfigure:first-of-type {
+      margin-bottom: .75rem; }
+    .figuregroup > .informalfigure:last-of-type {
+      margin-top: .75rem; }
+    .figuregroup > .informalfigure:first-of-type:nth-last-of-type(2), .figuregroup > .informalfigure:first-of-type:nth-last-of-type(2) ~ .informalfigure {
+      width: 100%; }
+
+  /* ------------------------------------Components Styles CSS (<600px)-------------------------------------------- */
+  .part > header > .title_02 > span:first-of-type > .label, .part > header > .title_02 > span:first-of-type > .number {
+    font-size: 1.5rem;
+    line-height: 2rem; }
+
+  .frontmatter > .titlepage > header > .title_01 {
+    font-size: 2.1rem;
+    line-height: 2.5rem; }
+
+  /* ------------------------------------Helper Class CSS (<600px)-------------------------------------------- */
+  .width-95,
+  .width-90,
+  .width-85,
+  .width-80,
+  .width-75,
+  .width-70,
+  .width-66,
+  .width-60,
+  .width-57,
+  .width-50,
+  .width-40,
+  .width-33,
+  .width-30,
+  .width-25,
+  .width-20,
+  .width-15,
+  .width-10,
+  .width-5 {
+    width: 100% !important; } }
+
+/*# sourceMappingURL=dl_template04.css.map */
